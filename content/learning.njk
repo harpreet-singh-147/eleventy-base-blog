@@ -1,0 +1,233 @@
+---
+layout: layouts/base.njk
+eleventyNavigation:
+  key: Learning
+  order: 4
+title: 'Currently learning'
+---
+
+<h1>{{ title }}</h1>
+
+{%- css %}{% include "public/css/tech-stack.css" %}{% endcss %}
+<ul class="tech-stack">
+    {% for tech in techStack.techStack %}
+    {% set id = tech.split(' ')[0] %}
+    <li class="tech-stack-item"><a href='#{{id}}'>{{ tech }}</a></li>
+    {% endfor %}
+</ul>
+
+<section>
+    <article id='HTML'>
+        <h2>HTML (HyperText Markup Language)</h2>
+        <p>HTML is the standard markup language for creating web pages. It defines the structure and content of web documents. See the example below:</p>
+{% raw %}
+<pre class="code-block">
+<code>
+&lt;html&gt;
+  &lt;head&gt;
+    &lt;title&gt;My Page&lt;/title&gt;
+  &lt;/head&gt;
+  &lt;body&gt;
+    &lt;h1&gt;Hello World!&lt;/h1&gt;
+  &lt;/body&gt;
+&lt;/html&gt;
+</code>
+</pre>
+{% endraw %}
+</article>
+    <article id='CSS'>
+        <h2>CSS (Cascading Style Sheets)</h2>
+        <p>CSS is used for designing the visual layout and appearance of web pages. It defines how elements should be displayed. See the example below:</p>
+{% raw %}
+<pre class="code-block">
+<code>
+&lt;style&gt;
+  body {
+    background-color: #f0f0f0;
+  }
+  h1 {
+    color: blue;
+  }
+&lt;/style&gt;
+</code>
+</pre>
+{% endraw %}
+
+</article>
+    <article id='JavaScript'>
+        <h2>JavaScript</h2>
+        <p>JavaScript is a versatile programming language for adding interactivity and functionality to web pages. See the example below:</p>
+{% raw %}
+<pre class="code-block">
+<code>
+// JavaScript code example
+document.addEventListener('DOMContentLoaded', function() {
+  document.querySelector('h1').textContent = 'Hello World!';
+});
+</code>
+</pre>
+{% endraw %}
+
+</article>
+    <article id='React'>
+        <h2>React</h2>
+        <p>React is a popular JavaScript library for building user interfaces. It uses a component-based architecture. See the example below:</p>
+{% raw %}
+<pre class="code-block"><code>
+// React Component Example
+function Welcome(props) {
+  return &lt;h1&gt;Hello, {props.name}&lt;/h1&gt;;
+}
+
+ReactDOM.render(
+  &lt;Welcome name="World" /&gt;,
+  document.getElementById('root')
+);
+</code>
+</pre>
+{% endraw %}
+
+
+</article>
+    <article id='Bootstrap'>
+        <h2>Bootstrap</h2>
+        <p>A Powerful, extensible, and feature-packed frontend toolkit. Build and customize with Sass, utilize prebuilt grid system and components, and bring projects to life with powerful JavaScript plugins. See the example below:</p>
+{% raw %}
+<pre class="code-block"><code>
+&lt;!-- Bootstrap Button Example --&gt;
+&lt;button type="button" class="btn btn-primary"&gt;
+  Click Me!
+&lt;/button&gt;
+</code>
+</pre>
+{% endraw %}
+</article>
+    <article id='Tailwind'>
+        <h2>Tailwind CSS</h2>
+        <p>Tailwind CSS is a "utility-first CSS framework" which provides several of these opinionated, single-purpose utility classes that you can use directly inside your markup to design an element. See the example below:</p>
+{% raw %}
+<pre class="code-block"><code>
+&lt;!-- HTML with Vanilla CSS --&gt;
+&lt;div class="center-div"&gt;
+  &lt;p&gt;Centered Content&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;!-- Corresponding CSS --&gt;
+&lt;style&gt;
+.center-div {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+&lt;/style&gt;
+
+&lt;!-- HTML with Tailwind CSS --&gt;
+&lt;div class="flex justify-center items-center"&gt;
+  &lt;p&gt;Centered Content&lt;/p&gt;
+&lt;/div&gt;
+</code></pre>
+{% endraw %}
+
+</article>
+    <article id='NodeJS'>
+        <h2>NodeJS</h2>
+        <p>Node.js® is an open-source, cross-platform JavaScript runtime environment. See the example below:</p>
+{% raw %}
+<pre class="code-block"><code>
+// Node.js: Read a file
+const fs = require('fs');
+
+fs.readFile('example.txt', 'utf8', (err, data) => {
+  if (err) {
+    console.error('Error reading the file:', err);
+    return;
+  }
+  console.log(data);
+});
+</code>
+</pre>
+{% endraw %}
+</article>
+    <article id='ExpressJS'>
+        <h2>ExpressJS</h2>
+        <p>Express is a minimal and flexible Node.js web application framework that provides a robust set of features for web and mobile applications. See the example below:</p>
+{% raw %}
+<pre class="code-block"><code>
+// Simple Express.js Server
+const express = require('express');
+const app = express();
+const port = 3000;
+
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
+app.listen(port, () => {
+  console.log(`Server listening at http://localhost:${port}`);
+});
+</code>
+</pre>
+{% endraw %}
+</article>
+    <article id='MongoDB'>
+        <h2>MongoDB</h2>
+        <p>MongoDB is an open source NoSQL database management program. NoSQL (Not only SQL) is used as an alternative to traditional relational databases. See the example below:</p>
+{% raw %}
+<pre class="code-block"><code>
+// Simple MongoDB Find Query
+const { MongoClient } = require('mongodb');
+const url = 'mongodb://localhost:27017';
+const dbName = 'myDatabase';
+
+async function findDocument() {
+  const client = new MongoClient(url);
+  try {
+    await client.connect();
+    const db = client.db(dbName);
+    const collection = db.collection('myCollection');
+    const document = await collection.findOne({});
+    console.log('Document found:', document);
+  } finally {
+    await client.close();
+  }
+}
+
+findDocument().catch(console.error);
+</code>
+</pre>
+{% endraw %}
+</article>
+<article id='PostgreSQL'>
+        <h2>PostgreSQL</h2>
+        <p>PostgreSQL is an advanced, enterprise-class open-source relational database that supports both SQL (relational) and JSON (non-relational) querying. See the example below:</p>
+{% raw %}
+<pre class="code-block"><code>
+// Simple PostgreSQL Query with Node.js
+const { Pool } = require('pg');
+const pool = new Pool({
+  user: 'myUser',
+  host: 'localhost',
+  database: 'myDatabase',
+  password: 'myPassword',
+  port: 5432,
+});
+
+async function queryDatabase() {
+  const client = await pool.connect();
+  try {
+    const res = await client.query('SELECT * FROM myTable LIMIT 1;');
+    console.log(res.rows[0]);
+  } finally {
+    client.release();
+  }
+}
+
+queryDatabase().catch(console.error);
+</code>
+</pre>
+{% endraw %}
+</article>
+</section>
+
+{{ content | safe }}
+
