@@ -61,6 +61,7 @@ body {
 	flex-direction: column;
 	justify-content: center;
 	align-items: center;
+	min-height: 100vh;
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -104,6 +105,7 @@ a[href]:active {
 
 main {
 	padding: 1rem;
+	flex: 1;
 }
 main :first-child {
 	margin-top: 0;
