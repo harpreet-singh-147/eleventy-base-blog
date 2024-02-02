@@ -39,7 +39,7 @@
 	<body>
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
-		<header>
+		<header class="header position-fixed border-bottom">
 			<nav class="navbar bg-body-tertiary">
 				<div class="container-fluid">
 					<a href="/" class="navbar-brand home-link"><img src='/logo.svg' alt='Logo of website' class='logo'/></a>
@@ -52,7 +52,7 @@
 					</button>
 					<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
 						<div class="offcanvas-header">
-							<h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src='/logo.svg' alt='Logo of website' class='logo'/></h5>
+							<h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src='/logo.svg' alt='Logo of website' class='logo-offcanvas'/></h5>
 							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
 						</div>
 						<div class="offcanvas-body">
@@ -69,34 +69,36 @@
 		
 		<div id="skip" class="container main-container">
   			<div class="row">
-				<aside class="d-none d-lg-block col-lg-4">
-					<h2>Latest</h2>
+				<div class="main-layout">
+					<aside class="aside">
+						<h2>Latest</h2>
 
-					{% set postslist = collections.posts %}
-					{%- css %}.postlist { counter-reset: start-from {{ postslist.length + 1 }} }{% endcss %}
-					<ol class="postlist">
-					{% for post in postslist | reverse %}
-						<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
-							<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-							<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
-						</li>
-					{% endfor %}
-					</ol>
-				</aside>
-				<main  class="col-sm-12 col-lg-8">
-				{{ content | safe }}
-				</main>
+						{% set postslist = collections.posts %}
+						{%- css %}.postlist { counter-reset: start-from {{ postslist.length + 1 }} }{% endcss %}
+						<ol class="postlist">
+						{% for post in postslist | reverse %}
+							<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
+								<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
+								<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
+							</li>
+						{% endfor %}
+						</ol>
+					</aside>
+					<main class="main">
+					{{ content | safe }}
+					</main>
+				</div>
   			</div>
 		</div>
 
-		<footer class="border-top text-center py-3 w-100" role="contentinfo" aria-label="Footer">
-			<div class="container">
+
+		<footer class="container-fluid border-top text-center py-3" role="contentinfo" aria-label="Footer">
 				<p>Made by <strong>Harpreet Singh Duggal</strong> under the guidance of <a href="https://thecodersguild.org.uk/" aria-label="Visit The Coders Guild website" target="_blank" rel="noopener noreferrer"><strong>The Coders Guild</strong></a>, Leeds</p>
-			</div>
 		</footer>
 
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
 		<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+		<script src="/script/index.js"></script>
 	</body>
 </html>
 

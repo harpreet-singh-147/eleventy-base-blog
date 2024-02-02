@@ -5,8 +5,6 @@ eleventyNavigation:
   order: 5
 ---
 
-<br />
-
 # Web Development Goals for Becoming a Full-Stack Developer
 
 ## 1. Master the Basics
