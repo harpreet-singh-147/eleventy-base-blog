@@ -59,7 +59,7 @@ body {
 	max-width: 70em;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
+	justify-content: start;
 	align-items: center;
 	min-height: 100vh;
 }
@@ -103,12 +103,9 @@ a[href]:active {
 	color: var(--text-color-link-active);
 }
 
-main {
+.main-container {
 	padding: 1rem;
 	flex: 1;
-}
-main :first-child {
-	margin-top: 0;
 }
 
 header {
