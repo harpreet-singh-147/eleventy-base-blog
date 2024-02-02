@@ -40,28 +40,27 @@
 
 /* Global stylesheet */
 * {
+	margin: 0;
+	padding: 0;
 	box-sizing: border-box;
 }
 
-html,
-body {
-	padding: 0;
-	margin: 0 auto;
-	font-family: var(--font-family);
-	color: var(--text-color);
-	background-color: var(--background-color);
-}
 html {
 	overflow-y: scroll;
 }
+
 body {
 	width: 100%;
-	max-width: 70em;
+	/* max-width: 70em; */
 	display: flex;
 	flex-direction: column;
 	justify-content: start;
 	align-items: center;
 	min-height: 100vh;
+	margin: 0 auto;
+	font-family: var(--font-family);
+	color: var(--text-color);
+	background-color: var(--background-color);
 }
 
 /* https://www.a11yproject.com/posts/how-to-hide-content/ */
@@ -104,13 +103,35 @@ a[href]:active {
 }
 
 .main-container {
-	padding: 1rem;
 	flex: 1;
 }
 
+.main-layout {
+	margin-top: 75px;
+}
+
+.aside {
+	position: fixed;
+	width: 380px;
+	min-height: 100vh;
+	padding: 2rem 1rem;
+}
+
+.main {
+	padding: 2rem;
+	margin-left: 380px;
+	background: #f2f2f229;
+	min-height: 100vh;
+}
+
 header {
-	border-bottom: 1px dashed var(--color-gray-20);
+	padding: 0.5em;
 	width: 100%;
+	transition: background 0.15s ease;
+}
+
+body.scrolled .header {
+	background: #262626;
 }
 /* header:after {
 	content: "";
@@ -157,7 +178,6 @@ code {
 
 /* Header */
 header {
-	padding: 0.5em;
 }
 
 .home-link {
@@ -175,9 +195,23 @@ header {
 
 .logo {
 	width: 120px;
+	transition: filter 0.15s ease;
+}
+
+body.scrolled .logo {
+	filter: invert(100%);
+}
+
+.logo-offcanvas {
+	width: 120px;
 }
 
 /* Nav */
+
+.navbar {
+	max-width: 70em;
+	margin: 0 auto;
+}
 
 .nav-item {
 	display: inline-block;
@@ -190,13 +224,14 @@ header {
 	text-decoration: underline !important;
 }
 
-.navbar-toggler {
-	padding: 0.25rem 0.5rem;
-	font-size: 1.25rem;
-	background-color: transparent;
-	border: 2px solid black;
-	border-radius: 0.25rem;
+body.scrolled .navbar-toggler {
+	transition: filter 0.15s ease;
+	filter: invert(100%);
 }
+
+/* .navbar-toggler-invert {
+	filter: invert(100%);
+} */
 
 .toggler {
 	display: flex;
@@ -301,6 +336,27 @@ a[href].header-anchor:focus,
 	color: #aaa;
 }
 
-h2 + .header-anchor {
-	font-size: 1.5em;
+h2 {
+	margin: 0 !important;
+}
+
+footer {
+	z-index: 10;
+	background: #fff;
+}
+
+@media only screen and (max-width: 991px) {
+	.aside {
+		display: none;
+	}
+
+	.main {
+		margin-left: 0;
+	}
+}
+
+@media only screen and (max-width: 575px) {
+	.main {
+		padding: 1rem;
+	}
 }
