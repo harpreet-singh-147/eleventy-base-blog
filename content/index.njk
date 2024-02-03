@@ -5,5 +5,47 @@ eleventyNavigation:
   order: 1
 ---
 
-<h1>Home</h1>
 
+
+{%- css %}{% include "public/css/home.css" %}{% endcss %}
+
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1" aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2" aria-label="Slide 3"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="3" aria-label="Slide 4"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="4" aria-label="Slide 5"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="5" aria-label="Slide 6"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706963434/cg-eleventy-blog/hola.jpg" class="d-block w-100" alt="Greeting 'Hello' in Spanish displayed on a sign">
+    </div>
+    <div class="carousel-item">
+      <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706963434/cg-eleventy-blog/hello.jpg" class="d-block w-100" alt="Greeting 'Hello' in English displayed on a sign">
+    </div>
+    <div class="carousel-item">
+      <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706964130/cg-eleventy-blog/welcome.jpg" class="d-block w-100" alt="Greeting 'Welcome' in English displayed on a sign">
+    </div>
+	<div class="carousel-item">
+      <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706964130/cg-eleventy-blog/howdy.jpg" class="d-block w-100" alt="Greeting 'Howdy' in English displayed on a sign">
+    </div>
+	<div class="carousel-item">
+      <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706964130/cg-eleventy-blog/hello-one.jpg" class="d-block w-100" alt="Greeting 'Hello' in English displayed on a sign">
+    </div>
+	<div class="carousel-item">
+      <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706964130/cg-eleventy-blog/love.jpg" class="d-block w-100" alt="Inspirational quote saying 'Do what you love'">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+
+<h1 class="text-center h2 mt-5">Welcome to my first 11ty blog with bootstrap</h1>
