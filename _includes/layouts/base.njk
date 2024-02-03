@@ -71,7 +71,7 @@
   			<div class="row">
 				<div class="main-layout">
 					<aside class="aside">
-						<h2>Latest</h2>
+						<h2 class="h3 mb-2">Latest</h2>
 
 						{% set postslist = collections.posts %}
 						{%- css %}.postlist { counter-reset: start-from {{ postslist.length + 1 }} }{% endcss %}
@@ -93,7 +93,7 @@
 
 
 		<footer class="container-fluid border-top text-center py-3" role="contentinfo" aria-label="Footer">
-				<p>Made by <strong>Harpreet Singh Duggal</strong> under the guidance of <a href="https://thecodersguild.org.uk/" aria-label="Visit The Coders Guild website" target="_blank" rel="noopener noreferrer"><strong>The Coders Guild</strong></a>, Leeds</p>
+				<p class="mb-0">Made by <strong>Harpreet Singh Duggal</strong> under the guidance of <a href="https://thecodersguild.org.uk/" aria-label="Visit The Coders Guild website" target="_blank" rel="noopener noreferrer"><strong>The Coders Guild</strong></a>, Leeds</p>
 		</footer>
 
 		<!-- Current page: {{ page.url | htmlBaseUrl }} -->
