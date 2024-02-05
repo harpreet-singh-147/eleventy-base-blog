@@ -293,6 +293,46 @@ footer {
 	background: #fff;
 }
 
+.loading {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: none;
+	justify-content: center;
+	align-items: center;
+	background-color: rgba(0, 0, 0, 0.809);
+	z-index: 2000;
+}
+
+.error-backdrop {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100vw;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	z-index: 1040;
+}
+
+.center-error {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	z-index: 1050;
+}
+
+.larger-alert {
+	font-size: 2.25rem;
+	padding: 2rem 1.5rem;
+}
+
+.btn-close-custom {
+	font-size: 1rem;
+}
+
 @media only screen and (max-width: 991px) {
 	.aside {
 		display: none;

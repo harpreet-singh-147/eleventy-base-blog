@@ -8,3 +8,4 @@ export const container = document.getElementById("alert-container");
 export const modalBtns = document.querySelectorAll(
 	"#open-modal-1, #open-modal-2,#open-modal-3,#open-modal-4"
 );
+export const loadingSpinner = document.querySelector(".loading");
