@@ -1,6 +1,6 @@
 exports.handler = async (event, context) => {
 	const API_KEY = process.env.OPENWEATHER_API_KEY;
-	const url = `https://api.openweathermap.org/data/2.5/weather?q=Leeds&units=metric&appid=${API_KEY}`;
+	const url = `https://api.openweathermap.org/data/2.5/weather?q=leeds&units=metric&appid=${API_KEY}`;
 
 	try {
 		const response = await fetch(url);
