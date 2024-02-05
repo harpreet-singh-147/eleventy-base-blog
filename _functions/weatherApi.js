@@ -4,6 +4,13 @@ exports.handler = async (event, context) => {
 
 	try {
 		const response = await fetch(url);
+
+		if (!response.ok) {
+			const errorData = await response.json();
+			const errorMessage = errorData.message || "An unexpected error occurred.";
+			throw new Error(errorMessage);
+		}
+
 		const data = await response.json();
 
 		return {
@@ -13,7 +20,7 @@ exports.handler = async (event, context) => {
 	} catch (error) {
 		return {
 			statusCode: 500,
-			body: JSON.stringify({ error: "Failed fetching data" }),
+			body: JSON.stringify({ error: error.message }),
 		};
 	}
 };
