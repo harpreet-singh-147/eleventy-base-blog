@@ -2,16 +2,13 @@ import fetch from "node-fetch";
 
 export const handler = async (event, context) => {
 	const API_KEY = process.env.OPENWEATHER_API_KEY;
-
 	const url = `https://api.openweathermap.org/data/2.5/weather?q=leeds&units=metric&appid=${API_KEY}`;
-	console.log("Request URL:", url);
 
 	try {
 		const response = await fetch(url);
 
 		if (!response.ok) {
 			const errorData = await response.json();
-			console.log("Error response:", errorData);
 			throw new Error(errorData.message || "An unexpected error occurred.");
 		}
 
