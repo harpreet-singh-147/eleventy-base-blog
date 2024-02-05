@@ -1,6 +1,6 @@
 import fetch from "node-fetch";
 
-exports.handler = async (event, context) => {
+export const handler = async (event, context) => {
 	const API_KEY = process.env.OPENWEATHER_API_KEY;
 	console.log("API Key:", API_KEY);
 
