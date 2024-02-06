@@ -135,6 +135,7 @@ export const modal = () => {
 					res.json()
 				);
 				body = functionToCall(data);
+				loadingSpinner.style.display = "none";
 			} catch (err) {
 				console.error(err);
 				showError("Sorry, there was an error. Please try again later.");
@@ -150,7 +151,6 @@ export const modal = () => {
 				const myModal = new bootstrap.Modal(document.getElementById(id));
 				myModal.show();
 			}
-			loadingSpinner.style.display = "none";
 		});
 	});
 };
