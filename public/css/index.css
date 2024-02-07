@@ -19,8 +19,14 @@
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050f;
-
+	--green: hsl(154, 59%, 51%);
 	--syntax-tab-size: 2;
+
+	--white: #fff;
+	--form-input-box-shadow: rgba(0, 0, 0, 0.16);
+	--form-input-box-shadow-focus: rgba(0, 0, 0, 0.505);
+	--form-btn-box-shadow: rgba(0, 0, 0, 0.16);
+	--form-btn-box-shadow-focus: rgba(0, 0, 0, 0.505);
 }
 
 @media (prefers-color-scheme: dark) {
