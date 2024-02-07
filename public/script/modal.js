@@ -135,11 +135,11 @@ export const modal = () => {
 					res.json()
 				);
 				body = functionToCall(data);
-				loadingSpinner.style.display = "none";
+				loadingSpinner.style.display = "";
 			} catch (err) {
 				console.error(err);
 				showError("Sorry, there was an error. Please try again later.");
-				loadingSpinner.style.display = "none";
+				loadingSpinner.style.display = "";
 				return;
 			}
 
