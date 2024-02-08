@@ -1,10 +1,10 @@
-import { button } from "./selectors.js";
+import { button, body } from "./selectors.js";
 import { handleNavStyles } from "./navbar.js";
+import { handleRegisterSubmit } from "./registerAccount.js";
 import { alert } from "./alert.js";
 import { modal } from "./modal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
-	const body = document.querySelector("body");
 	window.addEventListener("scroll", () => {
 		if (window.scrollY > 0) {
 			body.classList.add("scrolled");
@@ -16,6 +16,8 @@ document.addEventListener("DOMContentLoaded", () => {
 	modal();
 
 	handleNavStyles();
+
+	handleRegisterSubmit();
 
 	button.addEventListener("click", () => {
 		alert();

@@ -1,4 +1,4 @@
-import { offcanvasElement, aside } from "./selectors.js";
+import { offcanvasElement, aside, body } from "./selectors.js";
 
 export const handleNavStyles = () => {
 	offcanvasElement.addEventListener("show.bs.offcanvas", () => {
