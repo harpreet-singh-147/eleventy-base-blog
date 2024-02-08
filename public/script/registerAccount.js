@@ -71,7 +71,7 @@ const handleSubmit = (e) => {
 	}
 };
 
-const removeErrors = () => {
+export const removeErrors = () => {
 	inputs.forEach((input, i) => {
 		if (input.value.trim().length === 0) {
 			input.style.boxShadow = "";
@@ -98,10 +98,6 @@ const handleInputs = () => {
 			updateLabelPosition(input);
 		});
 
-		input.addEventListener("change", (e) => {
-			removeErrors();
-		});
-
 		input.addEventListener("blur", (e) => {
 			removeErrors();
 		});
@@ -109,6 +105,8 @@ const handleInputs = () => {
 };
 
 export const handleRegisterSubmit = () => {
-	registerForm.addEventListener("submit", handleSubmit);
-	handleInputs();
+	if (registerForm) {
+		registerForm.addEventListener("submit", handleSubmit);
+		handleInputs();
+	}
 };
