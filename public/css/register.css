@@ -111,7 +111,7 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	color: var(--white);
-	background: var(--tomato-red);
+	background: var(--btn-background-color);
 	border-radius: 0.3em;
 	border: none;
 	box-shadow: 0 0 1px 1px var(--form-btn-box-shadow);
