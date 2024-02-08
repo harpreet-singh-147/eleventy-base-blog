@@ -19,7 +19,9 @@
 	--text-color-link: #082840;
 	--text-color-link-active: #5f2b48;
 	--text-color-link-visited: #17050f;
-	--green: hsl(154, 59%, 51%);
+	--green: #43a047;
+	--tomato-red: #ff7979;
+
 	--syntax-tab-size: 2;
 
 	--white: #fff;

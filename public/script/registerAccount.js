@@ -6,10 +6,14 @@ import {
 } from "./handleFormErrors.js";
 
 const registerForm = document.querySelector("#register");
-const inputs = document.querySelectorAll(".register__form-input");
+export const inputs = document.querySelectorAll(".register__form-input");
 const errorIcons = document.querySelectorAll(".register__form-error-icon");
+const successIcons = document.querySelectorAll(".register__form-success-icon");
 const labels = document.querySelectorAll(".register__form-label");
 const errorMessages = document.querySelectorAll(".register__form-error");
+export const registerFormBtn = document.querySelector(
+	".register__form-btn-submit"
+);
 
 const updateLabelPosition = (input) => {
 	input.classList.toggle("has-content", input.value.trim() !== "");
@@ -58,10 +62,12 @@ const handleSubmit = (e) => {
 	}
 
 	if (isFormValid) {
-		inputs.forEach((input) => {
+		inputs.forEach((input, i) => {
 			input.value = "";
 			input.classList.remove("has-content");
+			successIcons[i].classList.remove("show-success-icon");
 		});
+		registerFormBtn.classList.remove("register-success");
 	}
 };
 
@@ -83,14 +89,17 @@ const removeErrors = () => {
 const handleInputs = () => {
 	inputs.forEach((input, i) => {
 		const errorIcon = errorIcons[i];
+		const successIcon = successIcons[i];
 		const errorMessage = errorMessages[i];
 		const label = labels[i];
 
 		input.addEventListener("input", () => {
-			removeErrors();
-
-			handleInput(input, errorIcon, errorMessage, label);
+			handleInput(input, errorIcon, errorMessage, successIcon, label);
 			updateLabelPosition(input);
+		});
+
+		input.addEventListener("change", (e) => {
+			removeErrors();
 		});
 
 		input.addEventListener("blur", (e) => {

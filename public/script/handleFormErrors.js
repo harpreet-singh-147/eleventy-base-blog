@@ -1,3 +1,16 @@
+import { inputs, registerFormBtn } from "./registerAccount.js";
+
+const allValidInputs = [];
+
+const updateSubmitButtonState = () => {
+	const allInputsValid = inputs.length === allValidInputs.length;
+	if (allInputsValid) {
+		registerFormBtn.classList.add("register-success");
+	} else {
+		registerFormBtn.classList.remove("register-success");
+	}
+};
+
 const mapAndCapitalise = (camelCase) => {
 	return camelCase
 		.split(/(?=[A-Z])/)
@@ -46,6 +59,7 @@ export const hideError = (input, errorIcon, errorMessage, label) => {
 	input.setAttribute("aria-invalid", "false");
 	input.classList.remove("placeholder-red");
 	errorIcon.classList.remove("show-error-icon");
+
 	label.style.color = "";
 	errorMessage.style.color = "";
 	errorMessage.textContent = "";
@@ -63,18 +77,42 @@ export const showError = (
 	input.setAttribute("aria-invalid", "true");
 	input.classList.add("placeholder-red");
 	errorIcon.classList.add("show-error-icon");
+
 	errorMessage.textContent = validationErrorMessage;
 	errorMessage.style.color = "#FF7979";
 	label.style.color = "#FF7979";
 };
 
-export const handleInput = (input, errorIcon, errorMessage, label) => {
+export const handleInput = (
+	input,
+	errorIcon,
+	errorMessage,
+	successIcon,
+	label
+) => {
 	const { isValid, errorMessage: validationErrorMessage } =
 		validateInput(input);
 
-	if (isValid || input.value.trim().length === 0) {
+	if (isValid) {
+		if (!allValidInputs.includes(input)) {
+			allValidInputs.push(input);
+		}
 		hideError(input, errorIcon, errorMessage, label);
+		successIcon.classList.add("show-success-icon");
 	} else {
-		showError(input, errorIcon, errorMessage, validationErrorMessage, label);
+		const index = allValidInputs.indexOf(input);
+		if (index > -1) {
+			allValidInputs.splice(index, 1);
+		}
+		showError(
+			input,
+			errorIcon,
+			errorMessage,
+			validationErrorMessage,
+			label,
+			successIcon
+		);
+		successIcon.classList.remove("show-success-icon");
 	}
+	updateSubmitButtonState();
 };
