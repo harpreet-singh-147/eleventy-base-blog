@@ -1,4 +1,4 @@
-import { inputs, registerFormBtn } from "./registerAccount.js";
+import { inputs, registerFormBtn, removeErrors } from "./registerAccount.js";
 
 const allValidInputs = [];
 
@@ -92,6 +92,12 @@ export const handleInput = (
 ) => {
 	const { isValid, errorMessage: validationErrorMessage } =
 		validateInput(input);
+
+	if (input.value.trim().length === 0) {
+		hideError(input, errorIcon, errorMessage, label);
+		removeErrors();
+		return;
+	}
 
 	if (isValid) {
 		if (!allValidInputs.includes(input)) {

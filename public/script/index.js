@@ -19,7 +19,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
 	handleRegisterSubmit();
 
-	button.addEventListener("click", () => {
-		alert();
-	});
+	if (button) {
+		button.addEventListener("click", () => {
+			alert();
+		});
+	}
 });
