@@ -1,12 +1,11 @@
 .register {
 	width: 60%;
-	margin: 2rem auto 0 auto;
+	margin: 1rem auto 0 auto;
 	padding: 3rem;
 	display: flex;
 	flex-direction: column;
-	gap: 1.7rem;
+	gap: 2.2rem;
 	border-radius: 0.3em;
-	outline: 1px solid red;
 }
 
 .register__form-group {
@@ -39,30 +38,35 @@
 	outline: none;
 }
 
+.placeholder-red::placeholder {
+	color: #ff7979;
+	font-weight: 500;
+}
+
 .register__form-label {
-	/* font-size: 1rem; */
-	/* font-weight: 600; */
 	position: absolute;
-	top: calc(50%);
-	left: 1rem;
-	transform: translateY(-50%);
+	top: 0.1rem;
+	left: 0.6rem;
+	font-size: 0.7rem;
 	pointer-events: none;
 	transition: all 0.3s ease;
 	color: var(--color-gray-90);
+	opacity: 0;
 }
 
-.register__form-input:focus + .register__form-label {
-	top: 0.5rem;
-	left: 0.6rem;
-	font-size: 0.7rem;
-	/* padding: 0.4rem; */
+.register__form-input:focus + .register__form-label.move-label {
+	opacity: 1;
+}
+
+.register__form-input.has-content + .register__form-label {
+	opacity: 1;
 }
 
 .register__form-error-icon {
 	width: 20px;
 	height: 20px;
-	/* visibility: hidden;
-	opacity: 0; */
+	visibility: hidden;
+	opacity: 0;
 	position: absolute;
 	top: 50%;
 	transform: translateY(-50%);
@@ -70,9 +74,22 @@
 	transition: all 0.1s ease;
 }
 
+.register__form-error-icon.show-error-icon {
+	visibility: visible;
+	opacity: 1;
+}
+
+.register__form-error {
+	font-size: 1rem;
+	align-self: flex-start;
+	transition: all 0.1s ease;
+	position: absolute;
+	bottom: -1.7rem;
+	left: 1rem;
+}
+
 .register__form-btn-submit {
-	/* margin-top: 0.1rem; */
-	padding: 0.6rem 1rem;
+	padding: 0.8rem 1rem;
 	font-size: 1rem;
 	font-weight: 600;
 	text-transform: uppercase;
@@ -80,7 +97,6 @@
 	background: var(--green);
 	border-radius: 0.3em;
 	border: none;
-	/* letter-spacing: 0.35px; */
 	box-shadow: 0 0 1px 1px var(--form-btn-box-shadow);
 	cursor: pointer;
 	transition: all 0.2s ease;
@@ -92,7 +108,7 @@
 }
 
 .register__form-btn-submit:active {
-	/* background: var(--green); */
+	filter: brightness(110%);
 }
 
 .register__form-btn-submit:focus {

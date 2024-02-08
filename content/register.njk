@@ -8,11 +8,11 @@ eleventyNavigation:
 {%- css %}{% include "public/css/register.css" %}{% endcss %}
 <h1 class="text-center">Register</h1>
 
-<form class="register">
+<form id="register" class="register" novalidate>
     <div class="register__form-group">
         <div class="register__form-input-container">
             <input type="text" id="firstName" name="firstName" class="register__form-input"
-            aria-describedby="firstNameError" aria-required="true" aria-invalid="false">
+            aria-describedby="firstNameError" aria-required="true" aria-invalid="false" placeholder="Enter your first name">
             <label for="firstName" class="register__form-label">First Name</label>
             <img src="/icon-error.svg" alt="" aria-hidden="true" class="register__form-error-icon">
         </div>
@@ -22,7 +22,7 @@ eleventyNavigation:
     <div class="register__form-group">
         <div class="register__form-input-container">
             <input type="text" id="username" name="username" class="register__form-input"
-            aria-describedby="usernameError" aria-required="true" aria-invalid="false">
+            aria-describedby="usernameError" aria-required="true" aria-invalid="false" placeholder="Enter your username">
             <label for="username" class="register__form-label">Username</label>
             <img src="/icon-error.svg" alt="" aria-hidden="true" class="register__form-error-icon">
         </div>
@@ -32,7 +32,7 @@ eleventyNavigation:
     <div class="register__form-group">
         <div class="register__form-input-container">
             <input type="password" id="password" name="password" class="register__form-input"
-            aria-describedby="passwordError" aria-required="true" aria-invalid="false">
+            aria-describedby="passwordError" aria-required="true" aria-invalid="false" placeholder="Enter your password">
             <label for="password" class="register__form-label">Password</label>
             <img src="/icon-error.svg" alt="" aria-hidden="true" class="register__form-error-icon">
         </div>
