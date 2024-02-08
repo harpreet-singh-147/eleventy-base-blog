@@ -39,7 +39,7 @@
 }
 
 .placeholder-red::placeholder {
-	color: #ff7979;
+	color: var(--tomato-red);
 	font-weight: 500;
 }
 
@@ -79,6 +79,23 @@
 	opacity: 1;
 }
 
+.register__form-success-icon {
+	width: 20px;
+	height: 20px;
+	visibility: hidden;
+	opacity: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	right: 1rem;
+	transition: all 0.1s ease;
+}
+
+.register__form-success-icon.show-success-icon {
+	visibility: visible;
+	opacity: 1;
+}
+
 .register__form-error {
 	font-size: 1rem;
 	align-self: flex-start;
@@ -94,12 +111,16 @@
 	font-weight: 600;
 	text-transform: uppercase;
 	color: var(--white);
-	background: var(--green);
+	background: var(--tomato-red);
 	border-radius: 0.3em;
 	border: none;
 	box-shadow: 0 0 1px 1px var(--form-btn-box-shadow);
 	cursor: pointer;
 	transition: all 0.2s ease;
+}
+
+.register__form-btn-submit.register-success {
+	background: var(--green);
 }
 
 .register__form-btn-submit:hover {
