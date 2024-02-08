@@ -95,6 +95,7 @@ export const handleInput = (
 
 	if (input.value.trim().length === 0) {
 		hideError(input, errorIcon, errorMessage, label);
+		successIcon.classList.remove("show-success-icon");
 		removeErrors();
 		return;
 	}
