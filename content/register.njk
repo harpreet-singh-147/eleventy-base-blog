@@ -42,6 +42,17 @@ eleventyNavigation:
         <span class="register__form-error" id="passwordError" aria-live="polite"></span>
     </div>
     
+    <div class="register__form-group">
+        <div class="register__form-input-container">
+            <input type="checkbox" id="agreeTerms" name="agreeTerms" class="register__form-checkbox"
+            aria-describedby="agreeTermsError" aria-required="true" aria-invalid="false">
+            <label for="agreeTerms" class="register__form-label-checkbox">&nbsp;I agree to the terms and conditions</label>
+            <img src="/icon-error.svg" alt="" aria-hidden="true" class="register__form-error-icon-checkbox" >
+            <img src="/icon-success.svg" alt="" aria-hidden="true" class="register__form-success-icon-checkbox">
+        </div>
+        <span class="register__form-error" id="agreeTermsError" aria-live="polite"></span>
+    </div>
+
 
     <button type="submit" class="register__form-btn-submit">Register Now</button>
 </form>

@@ -348,11 +348,12 @@ footer {
 
 	.main {
 		margin-left: 0;
+		padding: 1rem;
 	}
 }
 
-@media only screen and (max-width: 575px) {
+@media only screen and (max-width: 375px) {
 	.main {
-		padding: 1rem;
+		padding: 0.5rem;
 	}
 }

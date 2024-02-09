@@ -1,7 +1,7 @@
 .register {
 	width: 60%;
 	margin: 1rem auto 0 auto;
-	padding: 3rem;
+	padding: 2rem;
 	display: flex;
 	flex-direction: column;
 	gap: 2.2rem;
@@ -62,7 +62,10 @@
 	opacity: 1;
 }
 
-.register__form-error-icon {
+.register__form-error-icon,
+.register__form-success-icon,
+.register__form-error-icon-checkbox,
+.register__form-success-icon-checkbox {
 	width: 20px;
 	height: 20px;
 	visibility: hidden;
@@ -74,30 +77,15 @@
 	transition: all 0.1s ease;
 }
 
-.register__form-error-icon.show-error-icon {
-	visibility: visible;
-	opacity: 1;
-}
-
-.register__form-success-icon {
-	width: 20px;
-	height: 20px;
-	visibility: hidden;
-	opacity: 0;
-	position: absolute;
-	top: 50%;
-	transform: translateY(-50%);
-	right: 1rem;
-	transition: all 0.1s ease;
-}
-
-.register__form-success-icon.show-success-icon {
+.register__form-error-icon.show-error-icon,
+.register__form-success-icon.show-success-icon,
+.register__form-error-icon-checkbox.show-error-icon-cb,
+.register__form-success-icon-checkbox.show-success-icon-cb {
 	visibility: visible;
 	opacity: 1;
 }
 
 .register__form-error {
-	/* font-size: 1rem; */
 	align-self: flex-start;
 	transition: all 0.1s ease;
 	position: absolute;
@@ -139,30 +127,33 @@
 
 @media only screen and (max-width: 1400px) {
 	.register {
-		width: 70%;
+		width: 85%;
 	}
 }
 
-@media only screen and (max-width: 1200px) {
+@media only screen and (max-width: 1999px) {
 	.register {
-		width: 80%;
+		padding: 1rem;
 	}
 }
 
 @media only screen and (max-width: 768px) {
 	.register {
 		width: 100%;
-	}
-}
-
-@media only screen and (max-width: 480px) {
-	.register {
-		padding: 2rem;
-	}
-}
-
-@media only screen and (max-width: 375px) {
-	.register {
 		padding: 0;
+	}
+
+	.register__form-label-checkbox,
+	.register__form-error {
+		font-size: clamp(11px, 3vw, 16px);
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.register__form-error {
+		left: 50%;
+		transform: translateX(-50%);
+		width: 100%;
+		text-align: center;
 	}
 }
