@@ -3,6 +3,11 @@
 	margin: 0 auto;
 }
 
+/* Custom CSS file or <style> block */
+.dark-label .form-label {
+	color: #000; /* Or any dark color you prefer */
+}
+
 @media only screen and (max-width: 1400px) {
 	.login-form {
 		width: 100%;
