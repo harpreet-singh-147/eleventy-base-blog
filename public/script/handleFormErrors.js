@@ -1,9 +1,18 @@
-import { inputs, registerFormBtn, removeErrors } from "./registerAccount.js";
+import {
+	inputs,
+	registerFormBtn,
+	removeErrors,
+	termsCheckBox,
+	termsCheckBoxErrorMessage,
+	termsCheckBoxLabel,
+	termsCheckBoxErrorIcon,
+} from "./registerAccount.js";
 
-const allValidInputs = [];
+export const allValidInputs = [];
 
-const updateSubmitButtonState = () => {
-	const allInputsValid = inputs.length === allValidInputs.length;
+export const updateSubmitButtonState = () => {
+	const allInputsValid =
+		inputs.length === allValidInputs.length && termsCheckBox.checked;
 	if (allInputsValid) {
 		registerFormBtn.classList.add("register-success");
 	} else {
@@ -16,6 +25,14 @@ const mapAndCapitalise = (camelCase) => {
 		.split(/(?=[A-Z])/)
 		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
 		.join(" ");
+};
+
+export const showErrorForCheckbox = (errMsg) => {
+	termsCheckBox.setAttribute("aria-invalid", "true");
+	termsCheckBoxErrorMessage.textContent = errMsg;
+	termsCheckBoxErrorMessage.style.color = "#FF7979";
+	termsCheckBoxLabel.style.color = "#FF7979";
+	termsCheckBoxErrorIcon.classList.add("show-error-icon-cb");
 };
 
 export const validateInput = (input) => {
@@ -59,7 +76,6 @@ export const hideError = (input, errorIcon, errorMessage, label) => {
 	input.setAttribute("aria-invalid", "false");
 	input.classList.remove("placeholder-red");
 	errorIcon.classList.remove("show-error-icon");
-
 	label.style.color = "";
 	errorMessage.style.color = "";
 	errorMessage.textContent = "";
@@ -77,7 +93,6 @@ export const showError = (
 	input.setAttribute("aria-invalid", "true");
 	input.classList.add("placeholder-red");
 	errorIcon.classList.add("show-error-icon");
-
 	errorMessage.textContent = validationErrorMessage;
 	errorMessage.style.color = "#FF7979";
 	label.style.color = "#FF7979";
@@ -94,9 +109,14 @@ export const handleInput = (
 		validateInput(input);
 
 	if (input.value.trim().length === 0) {
+		const index = allValidInputs.indexOf(input);
+		if (index > -1) {
+			allValidInputs.splice(index, 1);
+		}
 		hideError(input, errorIcon, errorMessage, label);
 		successIcon.classList.remove("show-success-icon");
 		removeErrors();
+		updateSubmitButtonState();
 		return;
 	}
 
