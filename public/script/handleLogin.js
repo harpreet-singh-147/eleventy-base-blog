@@ -1,4 +1,5 @@
 import { displayResponseError } from "./handleFormErrors.js";
+import { loadingSpinner } from "./selectors.js";
 
 const loginForm = document.querySelector(".login-form");
 const inputs = document.querySelectorAll("input");
@@ -60,6 +61,7 @@ const handleSubmit = (e) => {
 	}
 
 	if (isFormValid) {
+		loadingSpinner.style.display = "flex";
 		fetch("/.netlify/functions/login", {
 			method: "POST",
 			headers: {
@@ -82,8 +84,10 @@ const handleSubmit = (e) => {
 				isFormValid = true;
 				resetEyeIcon();
 				console.log(data);
+				loadingSpinner.style.display = "";
 			})
 			.catch((error) => {
+				loadingSpinner.style.display = "";
 				displayResponseError(error.message);
 				console.error("Error:", error);
 			});
