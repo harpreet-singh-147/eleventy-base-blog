@@ -9,3 +9,6 @@ export const modalBtns = document.querySelectorAll(
 	"#open-modal-1, #open-modal-2,#open-modal-3,#open-modal-4"
 );
 export const loadingSpinner = document.querySelector(".loading");
+export const errorDialog = document.querySelector(".error__dialog");
+export const errorDialogBtn = document.querySelector(".error__dialog button");
+export const errorDialogMsg = document.querySelector(".error__dialog p");

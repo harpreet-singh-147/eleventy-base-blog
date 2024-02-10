@@ -6,6 +6,7 @@ import {
 	updateSubmitButtonState,
 	showErrorForCheckbox,
 	allValidInputs,
+	displayResponseError,
 } from "./handleFormErrors.js";
 
 const registerForm = document.querySelector("#register");
@@ -84,18 +85,38 @@ const handleSubmit = (e) => {
 	}
 
 	if (isFormValid) {
-		allValidInputs.length = 0;
-		inputs.forEach((input, i) => {
-			input.value = "";
-			input.classList.remove("has-content");
-			input.setAttribute("aria-invalid", "false");
-			successIcons[i].classList.remove("show-success-icon");
-		});
-		termsCheckBox.checked = false;
-		registerFormBtn.classList.remove("register-success");
-		termsCheckBoxSuccessIcon.classList.remove("show-success-icon-cb");
-		termsCheckBox.setAttribute("aria-invalid", "false");
-		console.log(formData);
+		fetch("/.netlify/functions/register", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formData),
+		})
+			.then(async (response) => {
+				if (!response.ok) {
+					const data = await response.json();
+					throw new Error(data.message || "An unknown error occurred");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				allValidInputs.length = 0;
+				inputs.forEach((input, i) => {
+					input.value = "";
+					input.classList.remove("has-content");
+					input.setAttribute("aria-invalid", "false");
+					successIcons[i].classList.remove("show-success-icon");
+				});
+				termsCheckBox.checked = false;
+				registerFormBtn.classList.remove("register-success");
+				termsCheckBoxSuccessIcon.classList.remove("show-success-icon-cb");
+				termsCheckBox.setAttribute("aria-invalid", "false");
+				console.log(data);
+			})
+			.catch((error) => {
+				displayResponseError(error.message);
+				console.error("Error:", error);
+			});
 	}
 };
 
