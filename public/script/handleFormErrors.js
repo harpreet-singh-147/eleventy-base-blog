@@ -1,3 +1,5 @@
+import { errorDialog, errorDialogBtn, errorDialogMsg } from "./selectors.js";
+
 import {
 	inputs,
 	registerFormBtn,
@@ -142,4 +144,10 @@ export const handleInput = (
 		successIcon.classList.remove("show-success-icon");
 	}
 	updateSubmitButtonState();
+};
+
+export const displayResponseError = (msg) => {
+	errorDialog.showModal();
+	errorDialogMsg.textContent = msg;
+	errorDialogBtn.addEventListener("click", () => errorDialog.close());
 };
