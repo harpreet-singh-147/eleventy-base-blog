@@ -15,7 +15,9 @@ if (!cached) {
 }
 
 async function dbConnect() {
+	console.log("Attempting to connect to MongoDB");
 	if (cached.conn) {
+		console.log("Using cached MongoDB connection");
 		return cached.conn;
 	}
 
@@ -23,10 +25,12 @@ async function dbConnect() {
 		const opts = {
 			bufferCommands: false,
 		};
-
+		console.log("Initializing new MongoDB connection");
 		cached.promise = mongoose.connect(MONGODB_URI, opts).then((mongoose) => {
 			return mongoose;
 		});
+	} else {
+		console.log("Waiting on existing MongoDB connection promise");
 	}
 	cached.conn = await cached.promise;
 	console.log("Connected to MongoDB");
