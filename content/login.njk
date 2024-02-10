@@ -22,20 +22,31 @@ eleventyNavigation:
         </div>
     </div>
 
-    <div class="col-md-8">
-        <div class="form-floating mb-3 dark-label">
-            <input type="password" class="form-control" id="password" name="password" required aria-required="true" aria-invalid="false" aria-describedby="passwordValidFeedback passwordInvalidFeedback">
-            <label for="password" class="form-label">Password</label>
-            <div class="valid-feedback" id="passwordValidFeedback">
-                Looks good!
-            </div>
-            <div class="invalid-feedback" id="passwordInvalidFeedback">
-                Password must be at least 8 characters long
+    <div class="col-md-8 d-flex justify-content-between gap-2">
+        <div class="password-input-container">
+            <div class="form-floating mb-3 dark-label">
+                <input type="password" class="form-control" id="password" name="password" required aria-required="true" aria-invalid="false" aria-describedby="passwordValidFeedback passwordInvalidFeedback">
+                <label for="password" class="form-label">Password</label>
+                <div class="valid-feedback" id="passwordValidFeedback">
+                    Looks good!
+                </div>
+                <div class="invalid-feedback" id="passwordInvalidFeedback">
+                    Password must be at least 8 characters long
+                </div>
             </div>
         </div>
+        <button type="button" class="eye-icon-btn" id="password-addon" aria-label="Show password" title="Show password">
+            <i class="bi bi-eye-slash" id="togglePasswordVisibility"></i> 
+        </button>
     </div>
-
+        
     <div class="col-md-8">
-        <button class="btn btn-primary w-100 p-3" type="submit">Login</button>
+        <button class="btn btn-primary w-100 p-2 fs-5" type="submit">Login</button>
     </div>
 </form>
+    
+
+
+
+
+

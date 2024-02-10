@@ -1,5 +1,8 @@
 const loginForm = document.querySelector(".login-form");
 const inputs = document.querySelectorAll("input");
+const eyeIconBtn = document.querySelector(".eye-icon-btn");
+const eyeIcon = document.querySelector("#togglePasswordVisibility");
+const passwordInput = document.querySelector("#password");
 
 const updateValidationState = (input, state) => {
 	input.classList.remove("is-valid", "is-invalid");
@@ -18,6 +21,14 @@ const updateValidationState = (input, state) => {
 			input.setAttribute("aria-invalid", "false");
 			break;
 	}
+};
+
+const resetEyeIcon = () => {
+	eyeIconBtn.setAttribute("aria-label", "Show password");
+	eyeIconBtn.setAttribute("title", "Show password");
+	eyeIcon.classList.remove("bi-eye", "bi-eye-slash");
+	passwordInput.setAttribute("type", "password");
+	eyeIcon.classList.add("bi-eye-slash");
 };
 
 const handleSubmit = (e) => {
@@ -52,6 +63,7 @@ const handleSubmit = (e) => {
 			updateValidationState(input, "neutral");
 			isFormValid = true;
 		});
+		resetEyeIcon();
 		console.log(formData);
 	}
 };
@@ -68,7 +80,7 @@ const handleInputChange = () => {
 	});
 };
 
-const addInputChangeListener = () => {
+const addInputListeners = () => {
 	inputs.forEach((input) => {
 		input.addEventListener("input", () => handleInputChange());
 
@@ -76,9 +88,24 @@ const addInputChangeListener = () => {
 	});
 };
 
+const toggleEyeIcon = () => {
+	const type =
+		passwordInput.getAttribute("type") === "password" ? "text" : "password";
+	const toggleAriaLabel =
+		eyeIconBtn.getAttribute("aria-label") === "Show password"
+			? "Hide password"
+			: "Show password";
+	passwordInput.setAttribute("type", type);
+	eyeIconBtn.setAttribute("aria-label", toggleAriaLabel);
+	eyeIconBtn.setAttribute("title", toggleAriaLabel);
+	eyeIcon.classList.toggle("bi-eye");
+	eyeIcon.classList.toggle("bi-eye-slash");
+};
+
 export const handleLogin = () => {
 	if (loginForm) {
 		loginForm.addEventListener("submit", handleSubmit);
-		addInputChangeListener();
+		eyeIconBtn.addEventListener("click", toggleEyeIcon);
+		addInputListeners();
 	}
 };
