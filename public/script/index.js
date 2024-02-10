@@ -1,3 +1,4 @@
+import { displayResponseError } from "./handleFormErrors.js";
 import { button, body } from "./selectors.js";
 import { handleNavStyles } from "./navbar.js";
 import { handleRegisterSubmit } from "./registerAccount.js";
@@ -26,4 +27,29 @@ document.addEventListener("DOMContentLoaded", () => {
 			alert();
 		});
 	}
+});
+
+document.addEventListener("DOMContentLoaded", () => {
+	fetch("/.netlify/functions/authStatus", {
+		credentials: "include",
+	})
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error("An unknown error occurred");
+			}
+			return response.json();
+		})
+		.then((data) => {
+			if (!data.authenticated) {
+				console.log("not authenticated");
+				console.log("log ran again");
+				return;
+			} else {
+				console.log("User is authenticated");
+			}
+		})
+		.catch((error) => {
+			console.error(error.message);
+			displayResponseError(error.message);
+		});
 });
