@@ -13,26 +13,34 @@ export const handler = async (event, context) => {
 
 	await dbConnect();
 
-	const { firstName, username, password, agreeTerms } = JSON.parse(event.body);
+	const { username, password } = JSON.parse(event.body);
 
-	if (!firstName || !username || !password || !agreeTerms) {
+	if (!username || !password) {
 		return {
 			statusCode: 400,
-			body: JSON.stringify({ message: "Missing fields" }),
+			body: JSON.stringify({ message: "Username and password are required" }),
 		};
 	}
 
-	const hashedPassword = await bcrypt.hash(password, 10);
-
 	try {
-		const newUser = await User.create({
-			firstName,
-			username,
-			password: hashedPassword,
-			agreeTerms,
-		});
+		const user = await User.findOne({ username });
 
-		const payload = { userId: newUser._id, firstName: newUser.firstName };
+		if (!user) {
+			return {
+				statusCode: 404,
+				body: JSON.stringify({ message: "User not found" }),
+			};
+		}
+
+		const isMatch = await bcrypt.compare(password, user.password);
+		if (!isMatch) {
+			return {
+				statusCode: 401,
+				body: JSON.stringify({ message: "Invalid credentials" }),
+			};
+		}
+
+		const payload = { userId: user._id, firstName: user.firstName };
 		const token = generateToken(payload);
 
 		const cookieString = `token=${token}; HttpOnly; ${
@@ -40,24 +48,20 @@ export const handler = async (event, context) => {
 		}SameSite=Strict; Path=/`;
 
 		return {
-			statusCode: 201,
+			statusCode: 200,
 			headers: {
 				"Set-Cookie": cookieString,
 			},
 			body: JSON.stringify({
-				message: "User registered successfully",
-				firstName: newUser.firstName,
+				message: "Login successful",
+				firstName: user.firstName,
 			}),
 		};
 	} catch (error) {
-		let message = "Server error";
-		if (error.code === 11000) {
-			message = "Username already exists. Please choose a different username.";
-		}
 		return {
 			statusCode: 500,
 			body: JSON.stringify({
-				message: message,
+				message: "Server error",
 				error: error.message,
 			}),
 		};

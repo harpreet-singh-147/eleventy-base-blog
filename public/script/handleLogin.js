@@ -1,3 +1,5 @@
+import { displayResponseError } from "./handleFormErrors.js";
+
 const loginForm = document.querySelector(".login-form");
 const inputs = document.querySelectorAll("input");
 const eyeIconBtn = document.querySelector(".eye-icon-btn");
@@ -58,13 +60,33 @@ const handleSubmit = (e) => {
 	}
 
 	if (isFormValid) {
-		inputs.forEach((input) => {
-			input.value = "";
-			updateValidationState(input, "neutral");
-			isFormValid = true;
-		});
-		resetEyeIcon();
-		console.log(formData);
+		fetch("/.netlify/functions/login", {
+			method: "POST",
+			headers: {
+				"Content-Type": "application/json",
+			},
+			body: JSON.stringify(formData),
+		})
+			.then(async (response) => {
+				if (!response.ok) {
+					const data = await response.json();
+					throw new Error(data.message || "An unknown error occurred");
+				}
+				return response.json();
+			})
+			.then((data) => {
+				inputs.forEach((input) => {
+					input.value = "";
+					updateValidationState(input, "neutral");
+				});
+				isFormValid = true;
+				resetEyeIcon();
+				console.log(data);
+			})
+			.catch((error) => {
+				displayResponseError(error.message);
+				console.error("Error:", error);
+			});
 	}
 };
 
