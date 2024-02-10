@@ -8,6 +8,7 @@ import {
 	allValidInputs,
 	displayResponseError,
 } from "./handleFormErrors.js";
+import { loadingSpinner } from "./selectors.js";
 
 const registerForm = document.querySelector("#register");
 export const inputs = document.querySelectorAll(".register__form-input");
@@ -85,6 +86,7 @@ const handleSubmit = (e) => {
 	}
 
 	if (isFormValid) {
+		loadingSpinner.style.display = "flex";
 		fetch("/.netlify/functions/register", {
 			method: "POST",
 			headers: {
@@ -111,9 +113,11 @@ const handleSubmit = (e) => {
 				registerFormBtn.classList.remove("register-success");
 				termsCheckBoxSuccessIcon.classList.remove("show-success-icon-cb");
 				termsCheckBox.setAttribute("aria-invalid", "false");
+				loadingSpinner.style.display = "";
 				console.log(data);
 			})
 			.catch((error) => {
+				loadingSpinner.style.display = "";
 				displayResponseError(error.message);
 				console.error("Error:", error);
 			});
