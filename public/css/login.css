@@ -1,15 +1,43 @@
 .login-form {
 	width: 70%;
 	margin: 0 auto;
+	position: relative;
 }
 
-/* Custom CSS file or <style> block */
 .dark-label .form-label {
-	color: #000; /* Or any dark color you prefer */
+	color: #000;
+}
+
+.password-input-container {
+	flex: 0.85;
+}
+
+.eye-icon-btn {
+	flex: 0.15;
+	border: 1px solid #ced4da;
+	height: 58px;
+	border-radius: 0.25rem;
+	display: grid;
+	place-items: center;
+	cursor: pointer;
+}
+
+.eye-icon-btn i {
+	font-size: 1.15rem;
 }
 
 @media only screen and (max-width: 1400px) {
 	.login-form {
 		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 410px) {
+	.password-input-container {
+		flex: 0.8;
+	}
+
+	.eye-icon-btn {
+		flex: 0.2;
 	}
 }
