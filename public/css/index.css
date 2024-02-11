@@ -193,6 +193,14 @@ header {
 	width: 100%;
 }
 
+.first-name {
+	display: none;
+	pointer-events: none;
+}
+.logout {
+	display: none;
+}
+
 /* Posts list */
 .postlist {
 	list-style: none;
