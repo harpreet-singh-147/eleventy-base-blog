@@ -1,13 +1,9 @@
 ---
-layout: layouts/base.njk
-eleventyNavigation:
-  key: Learning
-  order: 4
+title: Currently Learning
 ---
 
-<h1>Currently Learning</h1>
-
 {%- css %}{% include "public/css/tech-stack.css" %}{% endcss %}
+
 <ul class="tech-stack">
     {% for tech in techStack.techStack %}
     {% set id = tech.split(' ')[0] %}
@@ -79,13 +75,13 @@ function Welcome(props) {
 }
 
 ReactDOM.render(
-  &lt;Welcome name="World" /&gt;,
-  document.getElementById('root')
+&lt;Welcome name="World" /&gt;,
+document.getElementById('root')
 );
 </code>
+
 </pre>
 {% endraw %}
-
 
 </article>
     <article id='Bootstrap'>
@@ -114,15 +110,15 @@ ReactDOM.render(
 &lt;!-- Corresponding CSS --&gt;
 &lt;style&gt;
 .center-div {
-  display: flex;
-  justify-content: center;
-  align-items: center;
+display: flex;
+justify-content: center;
+align-items: center;
 }
 &lt;/style&gt;
 
 &lt;!-- HTML with Tailwind CSS --&gt;
 &lt;div class="flex justify-center items-center"&gt;
-  &lt;p&gt;Centered Content&lt;/p&gt;
+&lt;p&gt;Centered Content&lt;/p&gt;
 &lt;/div&gt;
 </code></pre>
 {% endraw %}
@@ -137,13 +133,14 @@ ReactDOM.render(
 const fs = require('fs');
 
 fs.readFile('example.txt', 'utf8', (err, data) => {
-  if (err) {
-    console.error('Error reading the file:', err);
-    return;
-  }
-  console.log(data);
+if (err) {
+console.error('Error reading the file:', err);
+return;
+}
+console.log(data);
 });
 </code>
+
 </pre>
 {% endraw %}
 </article>
@@ -158,13 +155,14 @@ const app = express();
 const port = 3000;
 
 app.get('/', (req, res) => {
-  res.send('Hello World!');
+res.send('Hello World!');
 });
 
 app.listen(port, () => {
-  console.log(`Server listening at http://localhost:${port}`);
+console.log(`Server listening at http://localhost:${port}`);
 });
 </code>
+
 </pre>
 {% endraw %}
 </article>
@@ -179,20 +177,21 @@ const url = 'mongodb://localhost:27017';
 const dbName = 'myDatabase';
 
 async function findDocument() {
-  const client = new MongoClient(url);
-  try {
-    await client.connect();
-    const db = client.db(dbName);
-    const collection = db.collection('myCollection');
-    const document = await collection.findOne({});
-    console.log('Document found:', document);
-  } finally {
-    await client.close();
-  }
+const client = new MongoClient(url);
+try {
+await client.connect();
+const db = client.db(dbName);
+const collection = db.collection('myCollection');
+const document = await collection.findOne({});
+console.log('Document found:', document);
+} finally {
+await client.close();
+}
 }
 
 findDocument().catch(console.error);
 </code>
+
 </pre>
 {% endraw %}
 </article>
@@ -212,21 +211,21 @@ const pool = new Pool({
 });
 
 async function queryDatabase() {
-  const client = await pool.connect();
-  try {
-    const res = await client.query('SELECT * FROM myTable LIMIT 1;');
-    console.log(res.rows[0]);
-  } finally {
-    client.release();
-  }
+const client = await pool.connect();
+try {
+const res = await client.query('SELECT \* FROM myTable LIMIT 1;');
+console.log(res.rows[0]);
+} finally {
+client.release();
+}
 }
 
 queryDatabase().catch(console.error);
 </code>
+
 </pre>
 {% endraw %}
 </article>
 </section>
 
 {{ content | safe }}
-

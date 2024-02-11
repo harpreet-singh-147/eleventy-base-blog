@@ -43,33 +43,27 @@
 		<a href="#skip" class="visually-hidden">Skip to main content</a>
 
 		<header class="header position-fixed border-bottom">
-			<nav class="navbar bg-body-tertiary">
+			<nav class="navbar navbar-expand-lg bg-body-tertiary">
 				<div class="container-fluid">
 					<a href="/" class="navbar-brand home-link"><img src='/logo.svg' alt='Logo of website' class='logo'/></a>
-					<button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+					<button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavDropdown" 			aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
 						<span class="navbar-toggler-icon toggler">
 							<span></span>
 							<span></span>
 							<span></span>
 						</span>
 					</button>
-					<div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-						<div class="offcanvas-header">
-							<h5 class="offcanvas-title" id="offcanvasNavbarLabel"><img src='/logo.svg' alt='Logo of website' class='logo-offcanvas'/></h5>
-							<button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-						</div>
-						<div class="offcanvas-body">
-							<ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-								{%- for entry in collections.all | eleventyNavigation %}
-									<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %} class="nav-link">{{ entry.title }}</a></li>
-								{%- endfor %}
-							</ul>
-						</div>
+					<div class="collapse navbar-collapse justify-content-end p-2" id="navbarNavDropdown">
+						<ul class="navbar-nav ">
+							{%- for entry in collections.all | eleventyNavigation %}
+								<li class="nav-item"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %} class="nav-link text-light">{{ entry.title }}</a></li>
+							{%- endfor %}
+						</ul>
 					</div>
 				</div>
 			</nav>
 		</header>
-		
+
 		<div id="skip" class="container main-container">
   			<div class="row">
 				<div class="main-layout">
@@ -82,7 +76,6 @@
 						{% for post in postslist | reverse %}
 							<li class="postlist-item{% if post.url == url %} postlist-item-active{% endif %}">
 								<a href="{{ post.url }}" class="postlist-link">{% if post.data.title %}{{ post.data.title }}{% else %}<code>{{ post.url }}</code>{% endif %}</a>
-								<time class="postlist-date" datetime="{{ post.date | htmlDateString }}">{{ post.date | readableDate("LLLL yyyy") }}</time>
 							</li>
 						{% endfor %}
 						</ol>
@@ -114,6 +107,11 @@
 
 	</body>
 </html>
+
+
+
+	
+
 
 
 
