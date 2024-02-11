@@ -1,6 +1,5 @@
 import { displayResponseError } from "./handleFormErrors.js";
 import { button, body } from "./selectors.js";
-import { handleNavStyles } from "./navbar.js";
 import { handleRegisterSubmit } from "./registerAccount.js";
 import { handleLogin } from "./handleLogin.js";
 import { alert } from "./alert.js";
@@ -16,8 +15,6 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	modal();
-
-	handleNavStyles();
 
 	handleRegisterSubmit();
 	handleLogin();

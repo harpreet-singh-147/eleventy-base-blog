@@ -122,6 +122,7 @@ header {
 	width: 100%;
 	transition: background 0.15s ease;
 	z-index: 5;
+	background: #262626;
 }
 
 body.scrolled .header {
@@ -161,7 +162,7 @@ header {
 	transition: filter 0.15s ease;
 }
 
-body.scrolled .logo {
+.logo {
 	filter: invert(100%);
 }
 
@@ -176,7 +177,7 @@ body.scrolled .logo {
 	margin: 0 auto;
 }
 
-body.scrolled .navbar-toggler {
+.navbar-toggler {
 	transition: filter 0.15s ease;
 	filter: invert(100%);
 }
