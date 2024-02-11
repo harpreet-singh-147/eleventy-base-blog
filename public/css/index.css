@@ -118,14 +118,10 @@ a[href]:active {
 }
 
 header {
-	padding: 0.5em;
+	padding: 0.2em;
 	width: 100%;
 	transition: background 0.15s ease;
 	z-index: 5;
-	background: #262626;
-}
-
-body.scrolled .header {
 	background: #262626;
 }
 
