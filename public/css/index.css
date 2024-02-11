@@ -201,6 +201,10 @@ header {
 	display: none;
 }
 
+.hide-nav-item {
+	display: none;
+}
+
 /* Posts list */
 .postlist {
 	list-style: none;

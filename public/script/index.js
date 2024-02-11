@@ -15,7 +15,9 @@ document.addEventListener("DOMContentLoaded", () => {
 	});
 
 	modal();
+
 	handleAuthUi();
+
 	handleRegisterSubmit();
 	handleLogin();
 

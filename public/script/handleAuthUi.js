@@ -1,8 +1,26 @@
 import { displayResponseError } from "./handleFormErrors.js";
 
-const navItems = document.querySelectorAll(".nav-item.items");
-const firstNameNavItem = document.querySelector(".nav-item.first-name");
-const logoutNavItem = document.querySelector(".nav-item.logout");
+const navItemFour = document.querySelector(".items:nth-child(4)");
+const navItemFive = document.querySelector(".items:nth-child(5)");
+const firstNameNavItem = document.querySelector(".first-name");
+const logoutNavItem = document.querySelector(".logout");
+
+const adjustUiForAuthenticatedUser = (firstName = "") => {
+	navItemFour.classList.add("hide-nav-item");
+	navItemFive.classList.add("hide-nav-item");
+	firstNameNavItem.style.display = "block";
+	if (firstName) {
+		firstNameNavItem.children[0].textContent = `Hello ${firstName}`;
+	}
+	logoutNavItem.style.display = "block";
+};
+
+const adjustUiForGuestUser = () => {
+	navItemFour.classList.remove("hide-nav-item");
+	navItemFive.classList.remove("hide-nav-item");
+	firstNameNavItem.style.display = "none";
+	logoutNavItem.style.display = "none";
+};
 
 export const handleAuthUi = () => {
 	fetch("/.netlify/functions/authStatus", {
@@ -15,25 +33,12 @@ export const handleAuthUi = () => {
 			return response.json();
 		})
 		.then((data) => {
-			if (!data.authenticated) {
-				navItems.forEach((navItem, i) => {
-					if (i === 2 || i === 3) {
-						navItem.style.display = "";
-					}
-				});
-				firstNameNavItem.style.display = "none";
-				logoutNavItem.style.display = "none";
+			if (data.authenticated) {
+				adjustUiForAuthenticatedUser(data.user.firstName);
 				return;
 			} else {
 				console.log(data);
-				navItems.forEach((navItem, i) => {
-					if (i === 2 || i === 3) {
-						navItem.style.display = "none";
-					}
-				});
-				firstNameNavItem.style.display = "block";
-				firstNameNavItem.children[0].textContent = `Hello ${data.user.firstName}`;
-				logoutNavItem.style.display = "block";
+				adjustUiForGuestUser();
 			}
 		})
 		.catch((error) => {
