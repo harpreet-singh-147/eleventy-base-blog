@@ -113,8 +113,8 @@ const handleSubmit = (e) => {
 				registerFormBtn.classList.remove("register-success");
 				termsCheckBoxSuccessIcon.classList.remove("show-success-icon-cb");
 				termsCheckBox.setAttribute("aria-invalid", "false");
+				window.location.href = "/";
 				loadingSpinner.style.display = "";
-				console.log(data);
 			})
 			.catch((error) => {
 				loadingSpinner.style.display = "";

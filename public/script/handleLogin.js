@@ -83,7 +83,7 @@ const handleSubmit = (e) => {
 				});
 				isFormValid = true;
 				resetEyeIcon();
-				console.log(data);
+				window.location.href = "/";
 				loadingSpinner.style.display = "";
 			})
 			.catch((error) => {

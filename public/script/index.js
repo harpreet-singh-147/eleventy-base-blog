@@ -42,9 +42,9 @@ document.addEventListener("DOMContentLoaded", () => {
 		.then((data) => {
 			if (!data.authenticated) {
 				console.log("not authenticated");
-				console.log("log ran again");
 				return;
 			} else {
+				console.log(data);
 				console.log("User is authenticated");
 			}
 		})
