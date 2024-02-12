@@ -1,6 +1,6 @@
 import { displayMessage } from "./utils.js";
 import { displayResponseError } from "./handleFormErrors.js";
-import { loadingSpinner, messageDialog } from "./selectors.js";
+import { loadingSpinner } from "./selectors.js";
 
 const contactForm = document.querySelector(".contact-form");
 const inputs = document.querySelectorAll(".contact-input");
@@ -8,6 +8,8 @@ const messageTextarea = document.querySelector("#message");
 const charCount = document.querySelector("#charCount");
 const termsContainer = document.querySelector(".checkbox-container");
 const terms = document.querySelector("#terms");
+
+const emailRegex = /.+\@.+\..+/;
 
 const updateValidationState = (input, state) => {
 	input.classList.remove("is-valid", "is-invalid");
@@ -49,7 +51,11 @@ const handleSubmit = (e) => {
 	let firstInvalidInput = null;
 
 	inputs.forEach((input) => {
-		const isInputValid = input.checkValidity();
+		let isInputValid = input.checkValidity();
+
+		if (input.type === "email" && !emailRegex.test(input.value)) {
+			isInputValid = false;
+		}
 
 		if (isInputValid) {
 			updateValidationState(input, "valid");
@@ -115,12 +121,7 @@ const handleSubmit = (e) => {
 				charCount.textContent = "150 characters left";
 				charCount.classList.remove("char-count-add-right");
 				loadingSpinner.style.display = "";
-				displayMessage("Thank you for your message!");
-				// setTimeout(() => {
-				// 	messageDialog.close();
-				// 	window.location.href = "/";
-				// }, 3000);
-				// console.log(data);
+				displayMessage(data.message);
 			})
 			.catch((error) => {
 				loadingSpinner.style.display = "";
@@ -143,7 +144,7 @@ const handleInputChange = () => {
 		if (input.name === "email") {
 			if (input.value.trim().length === 0) {
 				updateValidationState(input, "neutral");
-			} else if (!input.checkValidity()) {
+			} else if (!input.checkValidity() || !emailRegex.test(input.value)) {
 				updateValidationState(input, "invalid");
 			} else {
 				updateValidationState(input, "valid");
