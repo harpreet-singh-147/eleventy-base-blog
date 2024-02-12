@@ -11,3 +11,8 @@ export const loadingSpinner = document.querySelector(".loading");
 export const errorDialog = document.querySelector(".error__dialog");
 export const errorDialogBtn = document.querySelector(".error__dialog button");
 export const errorDialogMsg = document.querySelector(".error__dialog p");
+export const messageDialog = document.querySelector(".message__dialog");
+export const messageDialogBtn = document.querySelector(
+	".message__dialog button"
+);
+export const messageDialogMsg = document.querySelector(".message__dialog p");

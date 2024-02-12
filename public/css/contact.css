@@ -1,0 +1,46 @@
+.contact-form {
+	width: 70%;
+	margin: 0 auto;
+	position: relative;
+}
+
+.dark-label {
+	position: relative;
+}
+
+.dark-label .form-label {
+	color: #000;
+}
+
+.textarea-custom {
+	min-height: 100px !important;
+	resize: none;
+}
+
+.char-count {
+	position: absolute;
+	top: 0.55rem;
+	right: 1rem;
+	font-size: 0.8rem;
+	color: #000000b4;
+	letter-spacing: -0.2px;
+}
+
+.char-count-add-right {
+	right: 2rem;
+}
+
+@media only screen and (max-width: 1400px) {
+	.contact-form {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.char-count {
+		top: auto;
+		bottom: -1.2rem;
+		right: 0.2rem;
+		font-size: 0.65rem;
+	}
+}
