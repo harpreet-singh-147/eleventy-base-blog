@@ -10,9 +10,9 @@ export const handler = async (event) => {
 
 	await dbConnect();
 
-	const { firstName, surname, email, message } = JSON.parse(event.body);
+	const { firstName, surname, email, message, terms } = JSON.parse(event.body);
 
-	if (!firstName || !surname || !email || !message) {
+	if (!firstName || !surname || !email || !message || !terms) {
 		return {
 			statusCode: 400,
 			body: JSON.stringify({ message: "Missing fields" }),
@@ -24,6 +24,7 @@ export const handler = async (event) => {
 		surname,
 		email,
 		message,
+		terms,
 	});
 
 	return {
