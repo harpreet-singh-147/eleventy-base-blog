@@ -3,6 +3,7 @@ import { displayResponseError } from "./handleFormErrors.js";
 const navItemFour = document.querySelector(".items:nth-child(4)");
 const navItemFive = document.querySelector(".items:nth-child(5)");
 const firstNameNavItem = document.querySelector(".first-name");
+const messagesNavItem = document.querySelector(".messages");
 const logoutNavItem = document.querySelector(".logout");
 
 const adjustUiForAuthenticatedUser = (firstName = "") => {
@@ -12,14 +13,16 @@ const adjustUiForAuthenticatedUser = (firstName = "") => {
 	if (firstName) {
 		firstNameNavItem.children[0].textContent = `Hello ${firstName}`;
 	}
+	messagesNavItem.style.display = "block";
 	logoutNavItem.style.display = "block";
 };
 
 const adjustUiForGuestUser = () => {
 	navItemFour.classList.remove("hide-nav-item");
 	navItemFive.classList.remove("hide-nav-item");
-	firstNameNavItem.style.display = "none";
-	logoutNavItem.style.display = "none";
+	firstNameNavItem.style.display = "";
+	messagesNavItem.style.display = "";
+	logoutNavItem.style.display = "";
 };
 
 export const handleAuthUi = () => {
@@ -37,7 +40,6 @@ export const handleAuthUi = () => {
 				adjustUiForAuthenticatedUser(data.user.firstName);
 				return;
 			} else {
-				console.log(data);
 				adjustUiForGuestUser();
 			}
 		})
