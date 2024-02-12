@@ -1,4 +1,5 @@
 import dbConnect from "../utils/dbConnect";
+import Contact from "../models/ContactMessages";
 
 export const handler = async (event) => {
 	if (event.httpMethod !== "POST") {
@@ -8,27 +9,53 @@ export const handler = async (event) => {
 		};
 	}
 
-	await dbConnect();
+	try {
+		await dbConnect();
 
-	const { firstName, surname, email, message, terms } = JSON.parse(event.body);
+		const { firstName, surname, email, message, terms } = JSON.parse(
+			event.body
+		);
 
-	if (!firstName || !surname || !email || !message || !terms) {
+		if (
+			!firstName ||
+			!surname ||
+			!email ||
+			!message ||
+			!terms ||
+			terms !== "Agreed"
+		) {
+			return {
+				statusCode: 400,
+				body: JSON.stringify({ message: "Missing fields" }),
+			};
+		}
+
+		await Contact.create({
+			firstName,
+			surname,
+			email,
+			message,
+			terms: terms === "Agreed",
+		});
+
 		return {
-			statusCode: 400,
-			body: JSON.stringify({ message: "Missing fields" }),
+			statusCode: 200,
+			body: JSON.stringify({ message: "Thank you for your message!" }),
+		};
+	} catch (error) {
+		if (error.name === "ValidationError") {
+			return {
+				statusCode: 400,
+				body: JSON.stringify({
+					message: "Validation failed",
+				}),
+			};
+		}
+		return {
+			statusCode: 500,
+			body: JSON.stringify({
+				message: "Failed to save form data",
+			}),
 		};
 	}
-
-	console.log("Form submission received:", {
-		firstName,
-		surname,
-		email,
-		message,
-		terms,
-	});
-
-	return {
-		statusCode: 200,
-		body: JSON.stringify({ message: "Form data logged successfully" }),
-	};
 };
