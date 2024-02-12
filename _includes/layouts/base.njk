@@ -59,8 +59,9 @@
 							{%- for entry in collections.all | eleventyNavigation %}
 								<li class="nav-item items"><a href="{{ entry.url }}"{% if entry.url == page.url %} aria-current="page"{% endif %} class="nav-link text-light">{{ entry.title }}</a></li>
 							{%- endfor %}
+								<li class="nav-item contact"><a href='/contact' class="nav-link text-light">Contact Me</a></li>
+								<li class="nav-item messages"><a href='/messages' class="nav-link text-light">Messages</a></li>
 								<li class="nav-item logout"><a href='' class="nav-link text-light">Logout</a></li>
-
 						</ul>
 					</div>
 				</div>
