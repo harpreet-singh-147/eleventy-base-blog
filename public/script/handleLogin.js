@@ -2,7 +2,7 @@ import { displayResponseError } from "./handleFormErrors.js";
 import { loadingSpinner } from "./selectors.js";
 
 const loginForm = document.querySelector(".login-form");
-const inputs = document.querySelectorAll("input");
+const inputs = document.querySelectorAll(".login-input");
 const eyeIconBtn = document.querySelector(".eye-icon-btn");
 const eyeIcon = document.querySelector("#togglePasswordVisibility");
 const passwordInput = document.querySelector("#password");
