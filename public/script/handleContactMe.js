@@ -1,10 +1,13 @@
+import { displayMessage } from "./utils.js";
 import { displayResponseError } from "./handleFormErrors.js";
-import { loadingSpinner } from "./selectors.js";
+import { loadingSpinner, messageDialog } from "./selectors.js";
 
 const contactForm = document.querySelector(".contact-form");
 const inputs = document.querySelectorAll(".contact-input");
 const messageTextarea = document.querySelector("#message");
 const charCount = document.querySelector("#charCount");
+const termsContainer = document.querySelector(".checkbox-container");
+const terms = document.querySelector("#terms");
 
 const updateValidationState = (input, state) => {
 	input.classList.remove("is-valid", "is-invalid");
@@ -22,6 +25,20 @@ const updateValidationState = (input, state) => {
 		default:
 			input.setAttribute("aria-invalid", "false");
 			break;
+	}
+};
+
+const updateCheckboxValidationState = (el, container, isValid, uncheck) => {
+	el.setAttribute("aria-invalid", isValid ? "false" : "true");
+
+	if (isValid) {
+		container.classList.remove("was-validated");
+	} else {
+		container.classList.add("was-validated");
+	}
+
+	if (uncheck) {
+		terms.checked = false;
 	}
 };
 
@@ -59,12 +76,18 @@ const handleSubmit = (e) => {
 		}
 	}
 
+	if (terms.checkValidity()) {
+		formData[terms.name] = terms.value;
+	} else {
+		updateCheckboxValidationState(terms, termsContainer, false);
+		isFormValid = false;
+	}
+
 	if (firstInvalidInput) {
 		firstInvalidInput.focus();
 	}
 
 	if (isFormValid) {
-		console.log(formData);
 		loadingSpinner.style.display = "flex";
 		fetch("/.netlify/functions/contactFormHandler", {
 			method: "POST",
@@ -85,13 +108,19 @@ const handleSubmit = (e) => {
 					input.value = "";
 					updateValidationState(input, "neutral");
 				});
-				messageTextarea.value = "";
 				updateValidationState(messageTextarea, "neutral");
-				isFormValid = true;
+				updateCheckboxValidationState(terms, termsContainer, true, true);
 				firstInvalidInput = null;
-				// window.location.href = "/";
-				console.log(data);
+				messageTextarea.value = "";
+				charCount.textContent = "150 characters left";
+				charCount.classList.remove("char-count-add-right");
 				loadingSpinner.style.display = "";
+				displayMessage("Thank you for your message!");
+				// setTimeout(() => {
+				// 	messageDialog.close();
+				// 	window.location.href = "/";
+				// }, 3000);
+				// console.log(data);
 			})
 			.catch((error) => {
 				loadingSpinner.style.display = "";
@@ -122,6 +151,9 @@ const handleInputChange = () => {
 		}
 	});
 	handleTextareaChange();
+	if (!terms.checked && termsContainer.classList.contains("was-validated")) {
+		updateCheckboxValidationState(terms, termsContainer, true);
+	}
 };
 
 const handleTextareaChange = () => {
@@ -145,6 +177,16 @@ const handleTextArea = () => {
 	messageTextarea.style.height = messageTextarea.scrollHeight + "px";
 };
 
+const handleTerms = () => {
+	if (terms.checked) {
+		termsContainer.classList.add("was-validated");
+		terms.setAttribute("aria-invalid", "false");
+	} else {
+		termsContainer.classList.remove("was-validated");
+		terms.setAttribute("aria-invalid", "false");
+	}
+};
+
 const addInputListeners = () => {
 	inputs.forEach((input) => {
 		input.addEventListener("input", () => handleInputChange());
@@ -158,6 +200,7 @@ export const handleContactMe = () => {
 	if (contactForm) {
 		contactForm.addEventListener("submit", handleSubmit);
 		messageTextarea.addEventListener("input", () => handleTextArea());
+		terms.addEventListener("change", () => handleTerms());
 		addInputListeners();
 	}
 };
