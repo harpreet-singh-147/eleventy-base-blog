@@ -51,11 +51,3 @@ export const handleAuthUi = () => {
 			displayResponseError(error.message);
 		});
 };
-
-// import { fetchMessages } from "./fetchMessages.js";
-// 				setTimeout(() => {
-// if (sessionStorage.getItem("isLoggedIn") === "true") {
-// 	fetchMessages();
-// 	sessionStorage.setItem("isLoggedIn", "false");
-// }
-// 				}, 0);
