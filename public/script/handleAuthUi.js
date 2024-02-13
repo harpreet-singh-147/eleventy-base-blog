@@ -3,12 +3,14 @@ import { displayResponseError } from "./handleFormErrors.js";
 const navItemFour = document.querySelector(".items:nth-child(4)");
 const navItemFive = document.querySelector(".items:nth-child(5)");
 const firstNameNavItem = document.querySelector(".first-name");
-const messagesNavItem = document.querySelector(".messages");
 const logoutNavItem = document.querySelector(".logout");
+const contactNavItem = document.querySelector(".contact");
+const messagesNavItem = document.querySelector(".messages");
 
 const adjustUiForAuthenticatedUser = (firstName = "") => {
 	navItemFour.classList.add("hide-nav-item");
 	navItemFive.classList.add("hide-nav-item");
+	contactNavItem.classList.add("hide-nav-item");
 	firstNameNavItem.style.display = "block";
 	if (firstName) {
 		firstNameNavItem.children[0].textContent = `Hello ${firstName}`;
@@ -20,6 +22,7 @@ const adjustUiForAuthenticatedUser = (firstName = "") => {
 const adjustUiForGuestUser = () => {
 	navItemFour.classList.remove("hide-nav-item");
 	navItemFive.classList.remove("hide-nav-item");
+	contactNavItem.classList.remove("hide-nav-item");
 	firstNameNavItem.style.display = "";
 	messagesNavItem.style.display = "";
 	logoutNavItem.style.display = "";
@@ -38,6 +41,7 @@ export const handleAuthUi = () => {
 		.then((data) => {
 			if (data.authenticated) {
 				adjustUiForAuthenticatedUser(data.user.firstName);
+
 				return;
 			} else {
 				adjustUiForGuestUser();
@@ -47,3 +51,11 @@ export const handleAuthUi = () => {
 			displayResponseError(error.message);
 		});
 };
+
+// import { fetchMessages } from "./fetchMessages.js";
+// 				setTimeout(() => {
+// if (sessionStorage.getItem("isLoggedIn") === "true") {
+// 	fetchMessages();
+// 	sessionStorage.setItem("isLoggedIn", "false");
+// }
+// 				}, 0);

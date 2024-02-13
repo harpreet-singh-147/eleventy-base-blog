@@ -7,7 +7,6 @@ const userSchema = new Schema(
 		username: { type: String, required: true, unique: true },
 		password: { type: String, required: true },
 		agreeTerms: { type: Boolean, required: true },
-		// Add other fields as needed
 	},
 	{ timestamps: true }
 );

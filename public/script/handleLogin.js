@@ -83,8 +83,9 @@ const handleSubmit = (e) => {
 				});
 				isFormValid = true;
 				resetEyeIcon();
-				window.location.href = "/";
+				sessionStorage.setItem("isLoggedIn", "true");
 				loadingSpinner.style.display = "";
+				window.location.href = "/";
 			})
 			.catch((error) => {
 				loadingSpinner.style.display = "";
