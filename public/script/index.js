@@ -3,6 +3,7 @@ import { button, body } from "./selectors.js";
 import { handleRegisterSubmit } from "./registerAccount.js";
 import { handleLogin } from "./handleLogin.js";
 import { handleContactMe } from "./handleContactMe.js";
+import { handleLogoutClick } from "./handleLogout.js";
 import { alert } from "./alert.js";
 import { modal } from "./modal.js";
 
@@ -18,10 +19,10 @@ document.addEventListener("DOMContentLoaded", () => {
 	modal();
 
 	handleAuthUi();
-
 	handleRegisterSubmit();
 	handleLogin();
 	handleContactMe();
+	handleLogoutClick();
 
 	if (button) {
 		button.addEventListener("click", () => {

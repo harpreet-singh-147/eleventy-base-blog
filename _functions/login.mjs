@@ -44,8 +44,8 @@ export const handler = async (event, context) => {
 		const token = generateToken(payload);
 
 		const cookieString = `token=${token}; HttpOnly; ${
-			process.env.NODE_ENV === "production" ? "Secure; " : ""
-		}SameSite=Strict; Path=/`;
+			process.env.NODE_ENV === "production" ? "Secure; SameSite=None; " : ""
+		}Path=/`;
 
 		return {
 			statusCode: 200,
