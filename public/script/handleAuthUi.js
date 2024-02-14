@@ -1,4 +1,5 @@
 import { displayResponseError } from "./handleFormErrors.js";
+import { loadingSpinner } from "./selectors.js";
 
 const navItemFour = document.querySelector(".items:nth-child(4)");
 const navItemFive = document.querySelector(".items:nth-child(5)");
@@ -6,6 +7,8 @@ const firstNameNavItem = document.querySelector(".first-name");
 const logoutNavItem = document.querySelector(".logout");
 const contactNavItem = document.querySelector(".contact");
 const messagesNavItem = document.querySelector(".messages");
+
+const messagesContainer = document.querySelector(".messages__container");
 
 const adjustUiForAuthenticatedUser = (firstName = "") => {
 	navItemFour.classList.add("hide-nav-item");
@@ -28,6 +31,34 @@ const adjustUiForGuestUser = () => {
 	logoutNavItem.style.display = "";
 };
 
+const handleLogout = () => {
+	loadingSpinner.style.display = "flex";
+	if (messagesContainer) {
+		while (messagesContainer.firstChild) {
+			messagesContainer.removeChild(messagesContainer.firstChild);
+		}
+	}
+
+	fetch("/.netlify/functions/logout", {
+		method: "POST",
+		credentials: "include",
+	})
+		.then((response) => {
+			if (!response.ok) {
+				throw new Error("Failed to log out");
+			}
+			sessionStorage.removeItem("isLoggedIn");
+			setTimeout(() => {
+				window.location.href = "/";
+				loadingSpinner.style.display = "";
+			}, 100);
+		})
+		.catch((error) => {
+			loadingSpinner.style.display = "";
+			displayResponseError(error.message);
+		});
+};
+
 export const handleAuthUi = () => {
 	fetch("/.netlify/functions/authStatus", {
 		credentials: "include",
@@ -45,6 +76,9 @@ export const handleAuthUi = () => {
 				return;
 			} else {
 				adjustUiForGuestUser();
+				if (sessionStorage.getItem("isLoggedIn") === "true") {
+					handleLogout();
+				}
 			}
 		})
 		.catch((error) => {
