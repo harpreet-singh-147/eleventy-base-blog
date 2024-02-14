@@ -44,7 +44,7 @@ export const handler = async (event, context) => {
 		const token = generateToken(payload);
 
 		const cookieString = `token=${token}; HttpOnly; ${
-			process.env.NODE_ENV === "production" ? "Secure; SameSite=None; " : ""
+			process.env.NODE_ENV === "production" ? "Secure; SameSite=Lax; " : ""
 		}Path=/`;
 
 		return {
