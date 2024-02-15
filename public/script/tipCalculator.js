@@ -8,7 +8,7 @@ const buttons = document.querySelectorAll("button[data-action]");
 const tipAmount = document.querySelector("#tipAmount");
 const totalInput = document.querySelector("#total");
 
-const reset = () => {
+const resetTipCalculator = () => {
 	numberInputs.forEach((input) => {
 		input.value = "";
 		input.classList.remove("is-valid");
@@ -75,7 +75,7 @@ const handleClick = (btn) => {
 		});
 		input.dispatchEvent(event);
 	} else if (action === "reset") {
-		reset();
+		resetTipCalculator();
 	}
 };
 

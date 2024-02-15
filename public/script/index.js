@@ -4,6 +4,7 @@ import { handleRegisterSubmit } from "./registerAccount.js";
 import { handleLogin } from "./handleLogin.js";
 import { handleContactMe } from "./handleContactMe.js";
 import { handleLogoutClick } from "./handleLogout.js";
+import { handleTipCalculator } from "./tipCalculator.js";
 import { alert } from "./alert.js";
 import { modal } from "./modal.js";
 
@@ -23,6 +24,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleLogin();
 	handleContactMe();
 	handleLogoutClick();
+	handleTipCalculator();
 
 	if (button) {
 		button.addEventListener("click", () => {
