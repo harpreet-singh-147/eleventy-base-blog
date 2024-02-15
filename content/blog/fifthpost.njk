@@ -1,0 +1,112 @@
+---
+title: Tip Calculator
+---
+
+{%- css %}{% include "public/css/tip-calculator.css" %}{% endcss %}
+
+<section class="tip-calculator-container">
+    <form class="tip-calculator" novalidate>
+        <div class="calc-inputs">
+            <div class="d-flex gap-2 justify-content-between calc-total-input">
+                <div class="form-floating dark-label input-container">
+                    <input type="number" class="form-control" id="preTipTotal" name="preTipTotal" required aria-required="true" aria-invalid="false" aria-describedby="preTipDescription">
+                    <label for="preTipTotal" class="form-label">Pre tip total</label>
+                    <p id="preTipDescription" class="visually-hidden">
+                        Enter the total amount before tips.
+                    </p>
+                </div>
+                <div class="inc-dec-btns">
+                    <button class="btn custom-btn" data-action="inc" data-target="preTipTotal" type='button'>+</button>
+                    <button class="btn custom-btn" data-action="dec" data-target="preTipTotal" type='button'>-</button>
+                </div>
+            </div>
+
+            <fieldset class="select-percentages">
+                <legend class="legend-custom">Select or enter tip percentage</legend>
+                <div class="radio-percentages">
+                    <div>
+                        <input type="radio" class="btn-check" name="options" id="option1" autocomplete="off" value="5">
+                        <label class="btn btn-info btn-info-custom" for="option1">5%</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="btn-check" name="options" id="option2" autocomplete="off" value="10">
+                        <label class="btn btn-info btn-info-custom" for="option2">10%</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="btn-check" name="options" id="option3" autocomplete="off" value="20">
+                        <label class="btn btn-info btn-info-custom" for="option3">20%</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="btn-check" name="options" id="option4" autocomplete="off" value="25">
+                        <label class="btn btn-info btn-info-custom" for="option4">25%</label>
+                    </div>
+                    <div>
+                        <input type="radio" class="btn-check" name="options" id="option5" autocomplete="off" value="50">
+                        <label class="btn btn-info btn-info-custom" for="option5">50%</label>
+                    </div>
+                </div>
+            </fieldset>    
+            <div class="calc-percentages">
+                <div class="d-flex gap-2 justify-content-between">
+                    <div class="form-floating dark-label input-container">
+                        <input type="number" class="form-control" id="customPercentage" name="customPercentage" required aria-required="true" aria-invalid="false" aria-describedby="customPercentageHint">
+                        <label for="customPercentage" class="form-label">Custom Percentage</label>
+                        <p id="customPercentageHint" class="visually-hidden">
+                            Enter a custom tip percentage (optional).
+                        </p>
+                    </div>
+                    <div class="inc-dec-btns">
+                        <button class="btn custom-btn" data-action="inc" data-target="customPercentage" type='button'>+</button>
+                        <button class="btn custom-btn" data-action="dec" data-target="customPercentage" type='button'>-</button>  
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="calc-outputs">
+            <div class="form-floating dark-label">
+                <input class="form-control" id="tipAmount" name="tipAmount" readonly>
+                <label for="tipAmount" class="form-label">Tip Amount</label>
+            </div>
+            
+            <div class="form-floating dark-label">
+                <input class="form-control" id="total" name="total" readonly>
+                <label for="total" class="form-label">Total</label>
+            </div>
+
+            <div class="btn-container">
+                <button class="btn custom-btn-outputs fs-6" type="submit">Calculate</button>
+                <button class="btn custom-btn-outputs fs-6" data-action="reset" type="button">Reset</button>
+            </div>
+        </div>
+    </form> 
+
+    <article class="mt-5">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">Tip Calculator Project</h5>
+                <p class="card-text">In this project, I built a tip calculator using HTML, CSS, JavaScript and Bootstrap. The goal was to create a program that allows users to input their bill amount and select a tip percentage to calculate the total bill including the tip.</p>
+                <h6 class="card-subtitle mb-2">The process involved:</h6>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Setting Up Variables: I defined variables for the pre-tip total and the tip percentage.</li>
+                    <li class="list-group-item">Performing Calculations: Using these variables, I calculated the total bill amount by adding the tip to the pre-tip total.</li>
+                    <li class="list-group-item">Displaying Results: I displayed the total bill and tip amount on the page, ensuring the amounts are rounded to two decimal places for clarity.</li>
+                </ul>
+                <p class="card-text">Moreover, I paid attention to accessibility, implementing features to make the calculator usable for everyone. This includes using semantic HTML and ARIA attributes where necessary to ensure that the application is accessible to users with disabilities, such as those relying on screen readers.</p>
+                <p class="card-text">This project was a nice exercise in combining HTML for layout, CSS and Bootstrap for styling, and JavaScript for dynamic calculations and form validation, resulting in a useful web application.</p>
+            </div>
+        </div> 
+    </article>
+<section>                  
+
+
+           
+               
+
+
+
+
+
+    
+    
+
