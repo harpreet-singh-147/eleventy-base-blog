@@ -31,13 +31,17 @@ if (!isLoggedIn) {
 				credentials: "include",
 			}
 		)
-			.then((res) => res.json())
+			.then((res) => {
+				if (!res.ok) {
+					throw new Error("Something went wrong fetching messages");
+				}
+				return res.json();
+			})
 			.then((messages) => {
 				createMessageCards(messages);
 			})
 			.catch((err) => {
 				loadingSpinner.style.display = "";
-				console.log(err.message);
 				displayMessage(err.message);
 			});
 
