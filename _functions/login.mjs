@@ -51,6 +51,8 @@ export const handler = async (event, context) => {
 			statusCode: 200,
 			headers: {
 				"Set-Cookie": cookieString,
+				"Access-Control-Allow-Credentials": "true",
+				"Access-Control-Allow-Origin": "https://cg-eleventy-blog.netlify.app",
 			},
 			body: JSON.stringify({
 				message: "Login successful",
