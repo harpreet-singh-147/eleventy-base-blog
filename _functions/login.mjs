@@ -45,7 +45,7 @@ export const handler = async (event, context) => {
 
 		const cookieString = `token=${token}; HttpOnly; ${
 			process.env.NODE_ENV === "production" ? "Secure; SameSite=None; " : ""
-		} Path=/`;
+		}Domain=cg-eleventy-blog.netlify.app; Path=/`;
 
 		return {
 			statusCode: 200,

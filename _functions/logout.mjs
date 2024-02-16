@@ -8,7 +8,7 @@ export const handler = async (event, context) => {
 
 	const cookieString = `token=; HttpOnly; ${
 		process.env.NODE_ENV === "production" ? "Secure; SameSite=None; " : ""
-	}Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+	}Domain=cg-eleventy-blog.netlify.app; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 
 	return {
 		statusCode: 200,
