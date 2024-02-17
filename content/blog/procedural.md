@@ -3,6 +3,7 @@ title: Procedural Programming Paradigm
 order: 6
 tags: ["posts"]
 layout: "layouts/post.njk"
+permalink: /blog/procedural-programming-paradigm/index.html
 ---
 
 ---
