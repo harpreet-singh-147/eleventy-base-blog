@@ -96,26 +96,11 @@ module.exports = function (eleventyConfig) {
 		});
 	});
 
-	// eleventyConfig.addShortcode("modal", function (title, body, id) {
-	// 	return `
-	// 	<div class="modal fade" id=${id} tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-	// 		<div class="modal-dialog">
-	// 			<div class="modal-content">
-	// 				<div class="modal-header">
-	// 					<h1 class="modal-title fs-5" id="exampleModalLabel">${title}</h1>
-	// 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-	// 				</div>
-	// 				<div class="modal-body">
-	// 					${body}
-	// 				</div>
-	// 				<div class="modal-footer">
-	// 					<button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-	// 				</div>
-	// 			</div>
-	// 		</div>
-	// 	</div>
-	// `;
-	// });
+	eleventyConfig.addCollection("sortedPosts", function (collectionApi) {
+		return collectionApi.getFilteredByTag("posts").sort((a, b) => {
+			return a.data.order - b.data.order;
+		});
+	});
 
 	// Features to make your build faster (when you need them)
 
