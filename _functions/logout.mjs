@@ -13,7 +13,7 @@ export const handler = async (event, context) => {
 		headers: {
 			"Set-Cookie": cookieString,
 			"Content-Type": "application/json",
-			"Access-Control-Allow-Origin": "https://cg-eleventy-blog.netlify.app",
+			"Access-Control-Allow-Origin": "https://cg-11ty-blog.harpreetduggal.dev",
 			"Access-Control-Allow-Credentials": "true",
 		},
 		body: JSON.stringify({ message: "Logged out successfully" }),

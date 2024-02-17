@@ -52,7 +52,8 @@ export const handler = async (event, context) => {
 			headers: {
 				"Set-Cookie": cookieString,
 				"Access-Control-Allow-Credentials": "true",
-				"Access-Control-Allow-Origin": "https://cg-eleventy-blog.netlify.app",
+				"Access-Control-Allow-Origin":
+					"https://cg-11ty-blog.harpreetduggal.dev",
 			},
 			body: JSON.stringify({
 				message: "Login successful",

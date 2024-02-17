@@ -25,12 +25,9 @@ if (!isLoggedIn) {
 	handleUnauthorised();
 } else {
 	setTimeout(() => {
-		fetch(
-			"https://getmessages-11ty-blog-production.up.railway.app/api/messages",
-			{
-				credentials: "include",
-			}
-		)
+		fetch("https://get-11ty-blog.harpreetduggal.dev/api/messages", {
+			credentials: "include",
+		})
 			.then((res) => {
 				if (!res.ok) {
 					throw new Error("Something went wrong fetching messages");
