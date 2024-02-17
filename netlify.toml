@@ -2,4 +2,8 @@
 	publish = "_site"
 	command = "npm run build"
 	functions = "_functions"
-
+[[redirects]]
+  from = "/api/messages"
+  to = "https://getmessages-11ty-blog-production.up.railway.app/api/messages"
+  status = 200
+  force = true
