@@ -1,5 +1,8 @@
 ---
 title: About me
+order: 1
+tags: ["posts"]
+layout: "layouts/post.njk"
 ---
 
 Hi there! My name is Harpreet and i'm currently on an exciting journey learning web development. My goal is to become a skilled web developer in the future. I've been dedicating time to learn HTML, CSS, JavaScript, and delving into frameworks like React.

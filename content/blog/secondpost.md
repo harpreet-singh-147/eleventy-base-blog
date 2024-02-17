@@ -1,5 +1,8 @@
 ---
 title: My Web Development Goals
+order: 2
+tags: ["posts"]
+layout: "layouts/post.njk"
 ---
 
 ## 1. Master the Basics

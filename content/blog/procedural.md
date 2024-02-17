@@ -1,5 +1,8 @@
 ---
 title: Procedural Programming Paradigm
+order: 6
+tags: ["posts"]
+layout: "layouts/post.njk"
 ---
 
 ---
