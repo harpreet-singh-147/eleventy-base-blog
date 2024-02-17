@@ -35,14 +35,15 @@ export const handler = async (event, context) => {
 		const payload = { userId: newUser._id, firstName: newUser.firstName };
 		const token = generateToken(payload);
 
-		const cookieString = `token=${token}; HttpOnly; ${
-			process.env.NODE_ENV === "production" ? "Secure; SameSite=None; " : ""
-		}Path=/`;
+		const cookieString = `token=${token}; Domain=.harpreetduggal.dev; Path=/; HttpOnly; Secure; SameSite=None;`;
 
 		return {
 			statusCode: 201,
 			headers: {
 				"Set-Cookie": cookieString,
+				"Access-Control-Allow-Credentials": "true",
+				"Access-Control-Allow-Origin":
+					"https://cg-11ty-blog.harpreetduggal.dev",
 			},
 			body: JSON.stringify({
 				message: "User registered successfully",

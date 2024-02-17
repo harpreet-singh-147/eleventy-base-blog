@@ -11,8 +11,6 @@ export const handler = async (event, context) => {
 		};
 	}
 
-	console.log("NODE_ENV:", process.env.NODE_ENV);
-
 	await dbConnect();
 
 	const { username, password } = JSON.parse(event.body);
