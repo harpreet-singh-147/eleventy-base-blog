@@ -45,7 +45,7 @@ export const handler = async (event, context) => {
 		const payload = { userId: user._id, firstName: user.firstName };
 		const token = generateToken(payload);
 
-		const cookieString = `token=${token}; HttpOnly; Secure; SameSite=None; Path=/`;
+		const cookieString = `token=${token}; Domain=.harpreetduggal.dev; Path=/; HttpOnly; Secure; SameSite=None;`;
 
 		return {
 			statusCode: 200,

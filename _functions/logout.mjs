@@ -6,7 +6,7 @@ export const handler = async (event, context) => {
 		};
 	}
 
-	const cookieString = `token=; HttpOnly; Secure; SameSite=None; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
+	const cookieString = `token=; HttpOnly; Secure; SameSite=None; Domain=.harpreetduggal.dev; Path=/; Expires=Thu, 01 Jan 1970 00:00:00 GMT`;
 
 	return {
 		statusCode: 200,
