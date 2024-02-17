@@ -3,7 +3,7 @@
 	command = "npm run build"
 	functions = "_functions"
 [[redirects]]
-  from = "/api/messages"
-  to = "https://getmessages-11ty-blog-production.up.railway.app/api/messages"
+  from = "/api/messages/*"
+  to = "https://getmessages-11ty-blog-production.up.railway.app/api/messages/:splat"
   status = 200
   force = true
