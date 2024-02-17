@@ -74,7 +74,7 @@
 					<aside class="aside">
 						<h2 class="h3 mb-2">Latest</h2>
 
-						{% set postslist = collections.posts %}
+						{% set postslist = collections.sortedPosts %}
 						{%- css %}.postlist { counter-reset: start-from {{ postslist.length + 1 }} }{% endcss %}
 						<ol class="postlist">
 						{% for post in postslist | reverse %}
