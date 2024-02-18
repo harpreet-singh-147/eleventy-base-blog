@@ -1,11 +1,10 @@
 import { handleAuthUi } from "./handleAuthUi.js";
-import { button, body } from "./selectors.js";
+import { body } from "./selectors.js";
 import { handleRegisterSubmit } from "./registerAccount.js";
 import { handleLogin } from "./handleLogin.js";
 import { handleContactMe } from "./handleContactMe.js";
 import { handleLogoutClick } from "./handleLogout.js";
 import { handleTipCalculator } from "./tipCalculator.js";
-import { alert } from "./alert.js";
 import { modal } from "./modal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -25,10 +24,4 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleContactMe();
 	handleLogoutClick();
 	handleTipCalculator();
-
-	if (button) {
-		button.addEventListener("click", () => {
-			alert();
-		});
-	}
 });
