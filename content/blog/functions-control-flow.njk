@@ -1,0 +1,287 @@
+---
+title: Functions and Control Flow in JavaScript
+order: 7
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/functions-control-flow/index.html
+---
+
+{%- css %}{% include "public/css/functions-control-flow.css" %}{% endcss %}
+<div class="container container-bg">
+    <div class="row">
+        <div class="col mt-3">
+            <p class="lead">Today, we're going to talk about some cool stuff you can do with JavaScript, a programming language that makes websites interactive.</p>
+
+            <p>By the end of this post, you'll know how to create your own helpers (functions) and teach your code to make decisions (control flow). This is going to be fun and super useful, so let's get started!</p>
+
+            <p>First up, we're going to learn about <strong>functions</strong>. Think of functions like little helpers that do specific tasks for you. Whenever you need to do that task, you just call on that helper, and it gets the job done. This is great because it means you don't have to write the same thing over and over again. Instead, you write one function and then use it whenever you need to.</p>
+
+            <p>Now, let's dive right into our first task: making our own little helper in JavaScript, also known as a function. Functions are like recipes that tell your computer exactly what steps to take to whip up something cool, like showing a message on the screen.</p>
+
+            <h2 class="h3 mb-3">Task 1: Saying Hello with Functions</h2>
+
+            <p>Here's how we do it: We'll tell JavaScript, "Hey, every time I say <strong>'speak'</strong>, I want you to say <strong>'Hello World!'</strong>". That's what our function will do. It's a simple trick, but it's the start of some very exciting magic we can perform with JavaScript.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    function speak() {
+                        console.log('Hello, World!');
+                    }
+                    speak(); // Invoke the function (tell JavaScript to speak)
+                    // This will output 'Hello, World!' to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/oNVVGZR" target="_blank">live example on CodePen</a>.</p>
+
+            <p class="mt-3">This might seem like a small step, but it's a big deal in the world of programming. By creating this function, you've started a journey into making interactive and dynamic websites. There's so much more we can do with functions, but every big journey starts with a simple step.</p>
+
+            <h2 class="h3 mb-3">Task 2: Enhancing Our Helper with Personalized Greetings</h2>
+            
+            <p>In our journey of discovering JavaScript's incredible capabilities, we've already seen how to make a basic function perform a task. Now, let's make our function smarter and more personal by introducing hardcoded values and then evolving to use parameters and arguments.</p>
+
+            <h3 class="mb-2 h5">Start Simple: Hardcoded Greetings</h3>
+            <p>Initially, we create a function that doesn't need any external information to work. It has the names written directly into its code. We'll call this function greetMe, and at first, it will use predefined names.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    function greetMe() {
+                        const firstName = "Will";
+                        const lastName = "Sentance";
+                        console.log(`Hello, ${firstName} ${lastName}`);
+                    }
+                    greetMe() // Invoke the function
+                    // This will output "Hello Will Sentance" to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/QWooqOM" target="_blank">live example on CodePen</a>.</p>
+
+            <p>Here, greetMe is a simple function with names Will and Sentance hardcoded into it. Every time you ask greetMe to run, it will always say, "Hello Will Sentance." This is straightforward but not very flexible.</p>
+
+            <h3 class="mb-2 h5">Adding Flexibility: Parameters and Arguments</h3>
+            <p>To make our greetMe function more versatile, we'll upgrade it to accept two pieces of information (arguments) - a first name and a last name. This way, our function can greet anyone, not just Will Sentance.</p>
+            
+            <pre>
+                <code class="language-javascript">
+                    function greetPerson(firstName, lastName) {
+                        console.log(`Hello ${firstName} ${lastName}`);
+                    }
+                    greetPerson('Steve', 'Smith') // Invoke the function with arguments
+                    // This will output "Hello Steve Smith" to the console
+                    // You can now pass any first and last name into the function
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/OJqqxzb" target="_blank">live example on CodePen</a>.</p>
+
+            <p>Now, greetPerson is the improved version of our function. Instead of knowing only how to say "Hello Will Sentance" it can now greet anyone you tell it to. For example, if you use greetPerson('Steve', 'Smith'), it will say, "Hello Steve Smith."</p>   
+            
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <h3 class="m-0 h5">Hardcoded Function (greetMe)</h3>
+                    <p class="m-0">It's like having a robot that can only say one specific greeting. Simple, but limited.</p>
+                </li>
+                <li class="list-group-item">
+                    <h3 class="m-0 h5">Flexible Function (greetPerson)</h3>
+                    <p class="m-0">This is like upgrading your robot with the ability to learn names and use them in greetings. More complex, but infinitely more useful.</p>
+                </li>
+            </ul>
+
+            <h3 class="mt-3 h5">The Power of Parameters and Arguments</h3>
+           
+            <p>By introducing parameters (firstName and lastName) to the greetPerson function, we've unlocked a powerful feature of programming: reusability. The same piece of code can now perform personalised tasks based on the inputs it receives, making our little JavaScript helper not just a speaker, but a personalized greeter - awesome!</p>            
+
+            <h2 class="h3 mb-3">Task 3: Return Statements in Functions</h2>
+
+            <p>Returning values from functions is like the secret ingredient that makes code not just functional but powerful. It transforms functions from mere performers of tasks to suppliers of valuable data that can be reused, stored, or passed around in your program. This ability to return values makes functions incredibly versatile and integral to any program.</p>               
+         
+            <h3 class="mt-3 h5">Enhancing Our greetPerson Function</h3>
+
+            <p>Let's revisit our greetPerson function.</p> 
+            
+            <pre>
+                <code class="language-javascript">
+                    function greetPerson(firstName, lastName) {
+                        console.log(`Hello ${firstName} ${lastName}`); // *
+                    }
+                    greetPerson('Steve', 'Smith') 
+                    // * Direct communication with the console
+                </code>
+            </pre>
+            
+            <p>Initially, it directly communicated with the console, greeting the person right away. While friendly, this approach doesn't offer much flexibility. What if we want to get the greeting and use it in different ways, not just print it?</p>
+            <p>We'll update our function to return the greeting instead of printing it. This way, our function prepares the greeting and hands it back to us, allowing us to decide how and where to use it.</p>
+            
+            <pre>
+                <code class="language-javascript">
+                    // Define a function that creates a personalized greeting
+                    function createGreeting(firstName, lastName) {
+                        // Returns the greeting as a string
+                        return `Hello ${firstName} ${lastName}`;
+                    }
+
+                    // Save the returned greeting in a variable by calling the function with specific names
+                    const greeting = createGreeting('Steve', 'Smith');
+
+                    // Example usage of the greeting stored in the variable
+                    // Here, we're simply printing the greeting to the console, but this could be used in many other ways
+                    console.log(greeting); // This will output: "Hello Steve Smith"
+
+                    // The greeting variable can be used anywhere in your program. For example:
+                    // Display the greeting on a webpage, use it in conditional logic....
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/mdooBXV" target="_blank">live example on CodePen</a>.</p>
+
+            <p>Now, instead of immediately saying "Hello, Steve Smith," our function quietly creates the greeting and returns it. We then capture this returned value in a variable and use it as needed throughout our program.</p>
+
+            <h3 class="mt-3 h5">Embracing Versatility</h3>
+
+            <p>By updating our function to use a <strong>return</strong> statement, we unlock a new level of flexibility. The returned greeting can be stored in a variable, combined with other strings, passed to other functions, or even used in conditions to control the flow of our program. This change from a console-bound greeting to a returned value exemplifies how functions can serve as building blocks in our code, not just standalone pieces but interconnected parts of a larger whole.</p>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col">
+            <h2 class="h3 mb-3">Task 4: Control Flow</h2>
+
+            <p>Next, we'll dive into something called <strong>control flow</strong>. This might sound fancy, but it's really just a way for your code to make decisions. It's like when you're getting dressed in the morning. If it's cold, you decide to wear a coat. If it's really cold, maybe you add a hat. And if it's super cold, you might just stay inside. Control flow lets your code do something similar – it can make decisions based on different situations.</p>
+
+            <h3 class="mt-3 h5">The Essence of Control Flow</h3>
+
+            <p><strong>Control flow</strong> in programming is about making choices and executing different actions based on certain conditions. It's the if-this-then-that of code. Just as you might decide to grab a coat on a chilly day, we can write code that makes similar decisions.</p>
+
+            <h3 class="mt-3 h5">Dressing for the weather</h3>
+
+            <p>Let's start with something we all relate to: deciding whether to wear a coat. We'll translate this everyday decision into JavaScript code.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define a variable to represent the current temperature
+                    let temperature = 48; // Example temperature in degrees
+
+                    // Use an if statement to check if the temperature is below 50 degrees
+                    if (temperature < 50) {
+                        console.log("It's chilly outside. Don't forget to wear a coat!");
+                    }
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/JjzzrpV" target="_blank">live example on CodePen</a>.</p>
+
+            <h3 class="m-3 h5">In this code snippet:</h3>
+            <ul class="list-group mb-3">
+                <li class="list-group-item"><strong>Variable for Temperature:</strong> We start by creating a variable named <code>temperature</code> to store the current temperature. Think of this variable as our thermometer.</li>
+                <li class="list-group-item"><strong>Making a Decision with If:</strong> We then introduce an <code>if</code> statement to make a decision based on the temperature. The condition <code>temperature &lt; 50</code> checks if it's below 50 degrees.</li>
+                <li class="list-group-item"><strong>Taking Action:</strong> If the condition is true (meaning it's indeed chilly), our code advises us to wear a coat, displaying a helpful message.</li>
+            </ul>
+
+            <p>By incorporating control flow into our code, we've given it the ability to react to different situations. This simple example of deciding whether to wear a coat based on the temperature is just the beginning. Control flow can guide our code through complex decisions and actions, from managing user inputs to performing calculations and beyond.</p>
+
+            <h3 class="mt-3 h5">Extending our weather responsive program</h3>
+
+            <p>Let's continue our exploration of control flow in JavaScript by enhancing our program to handle more varied weather conditions. This extension will guide our code through a series of decisions, offering tailored advice for staying comfortable in different temperatures.</p>
+
+            <p>With our upgraded program, we won't just decide whether a coat is necessary; we'll also consider hats for colder weather and even recommend staying indoors when it's extremely cold. Here's how our more sophisticated decision-making process looks:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Initialize a variable to store the current temperature (in degrees)
+                    let temperature = 25; // Example: Setting the temperature to 25 degrees
+
+                    // Begin a series of checks to determine appropriate clothing advice based on the temperature
+                    if (temperature < 0) {
+                        // If the temperature is below 0 degrees, it's extremely cold
+                        console.log("It's extremely cold. Stay inside!");
+                        // Advising to stay inside due to extreme cold conditions
+                    } else if (temperature < 30) {
+                        // If the temperature is below 30 degrees but above 0, it's very cold
+                        console.log("It's very cold. Wear a coat and a hat!");
+                        // Recommending wearing a coat and a hat for significant cold
+                    } else if (temperature < 50) {
+                        // If the temperature is below 50 degrees but above 30, it's moderately cold
+                        console.log("It's chilly. Don't forget to wear a coat!");
+                        // Suggesting a coat as it's chilly but not extremely cold
+                    } else {
+                        // For temperatures 50 degrees or above, it's considered nice weather
+                        console.log("The weather is nice. Just pants and a vest are fine.");
+                        // Indicating that lighter clothing is sufficient in nice weather
+                    }
+
+                    // This enhanced code block systematically checks the temperature against different thresholds
+                    // to provide tailored advice on what to wear, showcasing the use of control flow in programming.
+                </code>
+            </pre>  
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/WNmmZzE" target="_blank">live example on CodePen</a>.</p>
+
+            <h3 class="mt-3 h5">Breaking Down the Extended Code</h3>
+
+            <p>In our extended program, we introduce a series of if-else statements to cover a range of temperatures, each with a specific recommendation:</p>
+            <ul class="list-group mb-3">
+                <li class="list-group-item"><strong>Below 0 Degrees:</strong> We advise staying indoors to avoid the extreme cold.</li>
+                <li class="list-group-item"><strong>Below 30 Degrees:</strong> It's very cold, so wearing a coat and a hat is recommended.</li>
+                <li class="list-group-item"><strong>Below 50 Degrees:</strong> It's chilly, and a coat should suffice to stay comfortable.</li>
+                <li class="list-group-item"><strong>Above 50 Degrees:</strong> The weather is pleasant, suggesting lighter attire, like pants and a vest.</li>
+            </ul>
+
+            <h3 class="mt-2 h5">Expanding Our Program with Logical Operators</h3>
+            
+            <p>As we further refine our weather-based clothing advice program, let's introduce a new concept: logical operators. These operators allow us to make more complex decisions by combining multiple conditions. Today, we'll focus on the "AND" operator, represented by && in JavaScript. This operator lets us check if two or more conditions are true at the same time. It's perfect for when we need to be extra specific about our decisions.</p>
+
+            <h3 class="mt-2 h5">Why Use the "AND" Operator?</h3>
+            
+            <p>Imagine you want to give advice not just based on temperature but also on whether it's raining. You'd only suggest an umbrella if it's both cold and rainy. The "AND" operator allows us to incorporate this additional condition seamlessly. Here's how we can modify our program to include a check for rain along with the temperature:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Initialize variables for the current temperature and rain status
+                    let temperature = 25; // Example: Setting the temperature to 25 degrees
+                    let isRaining = true; // Indicates whether it's raining
+
+                    // Begin a series of checks to determine appropriate clothing advice based on the temperature and rain status
+                    if (temperature < 0) {
+                        // If the temperature is below 0 degrees, it's extremely cold
+                        console.log("It's extremely cold. Stay inside!");
+                        // Advising to stay inside due to extreme cold conditions
+                    } else if (temperature < 30 && isRaining) {
+                        // Checks if it's very cold (below 30 degrees) AND raining
+                        console.log("It's very cold and raining. Wear a coat, a hat, and bring an umbrella!");
+                        // Recommending wearing a coat, a hat, and bringing an umbrella for cold and rainy weather
+                    } else if (temperature < 30) {
+                        // If the temperature is below 30 degrees but not raining, it's very cold
+                        console.log("It's very cold. Wear a coat and a hat!");
+                        // Recommending wearing a coat and a hat for significant cold
+                    } else if (temperature < 50) {
+                        // If the temperature is below 50 degrees but above 30 and not specifically raining, it's moderately cold
+                        console.log("It's chilly. Don't forget to wear a coat!");
+                        // Suggesting a coat as it's chilly but not extremely cold
+                    } else {
+                        // For temperatures 50 degrees or above, and it's not specifically cold and raining, it's considered nice weather
+                        console.log("The weather is nice. Just pants and a vest are fine.");
+                        // Indicating that lighter clothing is sufficient in nice weather
+                    }
+
+                    // This code block now uses a logical "AND" operator to provide more specific advice when it's both cold and raining,
+                    // showcasing a more advanced use of control flow for nuanced decision-making in programming.
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/dyrrVey" target="_blank">live example on CodePen</a>.</p>
+
+            <h3 class="mt-3 h5">The Role of Logical Operators</h3>
+
+            <p>Logical operators like && (AND) empower our programs to make decisions based on multiple factors simultaneously. In this case, using && allowed us to tailor our advice more precisely, considering both the coolness of the air and the presence of rain. It's a simple yet powerful way to enhance the decision-making capability of our code.</p>
+
+            <p>By integrating logical operators, we've not just made our program smarter; we've also opened up a world of possibilities for creating more complex and useful applications. This step illustrates how, with just a bit of additional logic, our programs can provide much more detailed and practical advice, making them more valuable and responsive to real-world conditions.</p>
+
+            <h3 class="mt-3 h5">In conclusion</h3>
+
+            <p>Control flow is a fundamental concept that brings our code to life, making it dynamic and responsive. Just like our daily decisions shape our day, control flow shapes how our programs run and respond to different conditions. It's a powerful tool in our programming toolkit, enabling us to write flexible and intelligent code.</p>
+        </div>
+    </div>
+</div>  
+
+
