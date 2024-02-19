@@ -5,16 +5,37 @@ eleventyNavigation:
   order: 1
 ---
 
+{%- css %}{% include "public/css/contact.css" %}{% endcss %}
 {%- css %}{% include "public/css/home.css" %}{% endcss %}
 
-<div class="d-flex flex-column justify-content-center align-items-center">
-    <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706964130/cg-eleventy-blog/love.jpg" class="home-img mb-4" alt="Inspirational quote saying 'Do what you love'">
 
-    <h1>Welcome to my blog!</h1>
+<div class="home__container">
+    <img src="https://res.cloudinary.com/cloudinary-h/image/upload/v1706964130/cg-eleventy-blog/hello-one.jpg" class="home-img vanishIn mb-4" alt="Inspirational quote saying 'Do what you love'">
 
-    <p class="subtitle mt-3">Journeying Through the Full Stack: Exploring the Layers of Modern Web Development</p>
+    <h1 class="fw-bold slideLeftReturn text-center">Welcome to my blog!</h1>
 
-    <p class="lead">I'm Harpreet, and this space is dedicated to documenting my journey through the Coders Guild bootcamp. Here, I'll be sharing the exercises, challenges, and key learnings as I progress. Enjoy the insights, and should they strike a chord, I'd love to hear from you. Feel free to follow along, and don't hesitate to reach out if you like what you see or have questions.</p>										
+    <p class="subtitle text-uppercase fw-bold mt-2 text-center slideRightReturn">Navigating The Coders Guild Bootcamp</p>
+
+    <p class="lead spaceInUp text-center custom-lead">I'm Harpreet, and this space is dedicated to documenting my journey through the Coders Guild bootcamp. Here, I'll be sharing the exercises, challenges, and key learnings as I progress. Enjoy the insights, and should they strike a chord, I'd love to hear from you. Feel free to follow along, and don't hesitate to reach out if you like what you see or have questions.</p>	
+
+    <button type="button" class="home__form-modal-btn btn btn-primary p-2 fs-5 fw-bold text-uppercase spaceInDown" data-bs-toggle="modal" data-bs-target="#homeContactForm">Contact Me</button>								
+</div>
+
+<div class="modal fade" id="homeContactForm" tabindex="-1" aria-labelledby="homeContactFormLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h2 class="modal-title fs-5" id="homeContactFormLabel">Contact Me</h2>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body modal-contact-form">
+        {% include "contact-form.njk" %}    
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 
