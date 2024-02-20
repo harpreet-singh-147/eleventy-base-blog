@@ -5,6 +5,7 @@ import { handleLogin } from "./handleLogin.js";
 import { handleContactMe } from "./handleContactMe.js";
 import { handleLogoutClick } from "./handleLogout.js";
 import { handleTipCalculator } from "./tipCalculator.js";
+import { handleHomePageModalContactForm } from "./homePageContactModal.js";
 import { modal } from "./modal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -24,4 +25,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleContactMe();
 	handleLogoutClick();
 	handleTipCalculator();
+	handleHomePageModalContactForm();
 });
