@@ -1,0 +1,51 @@
+---
+title: Functions and Control Flow Continued
+order: 8
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/functions-control-flow-continued/index.html
+---
+
+{%- css %}{% include "public/css/functions-control-flow-cont.css" %}{% endcss %}
+<div class="container container-bg">
+    <div class="row">
+        <div class="col mt-3">
+            <p class="lead">Ever wondered how much 30% of 135 is? Well, wonder no more.</p>
+
+            <p>Our magical tool to find out is a <strong>function</strong> named <code>percentageCalculator</code>. Think of it as your personal number-crunching assistant, ready to calculate what any percentage of any number is. It's like asking a friend to do the maths for you, except this friend is super quick and never gets it wrong.</p>
+
+            <p>Here's how we make it:</p>
+
+            <ol>
+                <li><p class="m-0">We create a <strong>function</strong> called <code>percentageCalculator</code>.</p></li>
+                <li><p class="m-0">We provide it with two arguments: “number” and “percentage”. These are needed to perform the calculation.</p></li>
+                <li><p class="m-0">Inside the <strong>function</strong>, we perform a mathematical operation to calculate the percentage of the number.</p></li>
+                <li><p class="m-0">The <strong>function</strong> then returns the result of the calculation.</p></li>
+                <li><p class="m-0">Finally, we call (invoke) our <strong>function</strong> with the arguments of 30 and 135. It then gives us our value back through the console.</p></li>
+            </ol>
+
+
+            <pre>
+                <code class="language-javascript">
+                    // Percentage calculator function
+                    // Here we will use the arrow function syntax
+                    // Step 1: Define the function called 'percentageCalculator'.
+                    const percentageCalculator = (number, percentage) => {
+                        // Step 3: Inside the function, calculate the percentage of the number.
+                        const result = (number * percentage) / 100;
+                        // Step 4: Return the result of the calculation.
+                        return `${result} is ${percentage}% of ${number}`;
+                    };
+
+                    // Step 5: Call the 'percentageCalculator' function with arguments 135 and 30, and log the result.
+                    const result = percentageCalculator(135, 30);
+                    console.log(result); // This will output the calculation result to the console.
+                    // "40.5 is 30% of 135" will be logged to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>
+        </div>
+    </div>
+</div>        
+        
