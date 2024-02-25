@@ -147,9 +147,68 @@ permalink: /blog/functions-control-flow-continued/index.html
 
             <p>Let's take our drinkOrder function and see it in action within a web page. A simple interface has been built using HTML, Bootstrap and CSS where users can select a drink size and a drink and see the output live on the web page.</p>
 
-            <p>Again, the application utilizes our drinkOrder function to compute and display the output directly on the page. This serves as another straightforward example of applying JavaScript functions in web development.</p>
+            <form class="drinks__form">
+                <fieldset class="drinks__form-select">
+                    <legend class="drinks__form-legend"><span>Select drink size</span> <i
+                            class="bi bi-check-circle-fill drink-size-icon bs-icon-custom"></i></legend>
+                    <div class="drinks__form-radio-container" aria-describedby="drinkSizeHelp">
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="size" id="small" autocomplete="off"
+                                value="small" required aria-required="true">
+                            <label class="btn btn-info" for="small">Small</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="size" id="medium" autocomplete="off"
+                                value="medium" aria-required="true">
+                            <label class="btn btn-info" for="medium">Medium</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="size" id="large" autocomplete="off"
+                                value="large" aria-required="true">
+                            <label class="btn btn-info" for="large">Large</label>
+                        </div>
+                    </div>
+                    <p id="drinkSizeHelp" class="visually-hidden">Choose your preferred sized drink</p>
+                    <div class="valid-feedback"></div>
+                </fieldset>
+                <fieldset class="drinks__form-select">
+                    <legend class="drinks__form-legend"><span>Select drink</span> <i
+                            class="bi bi-check-circle-fill drink-icon bs-icon-custom"></i>
+                    </legend>
+                    <div class="drinks__form-radio-container" aria-describedby="drinkHelp">
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="drink" id="cola" autocomplete="off"
+                                value="cola" required aria-required="true">
+                            <label class="btn btn-info" for="cola">Cola</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="drink" id="lemon" autocomplete="off"
+                                value="lemon" aria-required="true">
+                            <label class="btn btn-info" for="lemon">Lemon</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="drink" id="orange" autocomplete="off"
+                                value="orange" aria-required="true">
+                            <label class="btn btn-info" for="orange">Orange</label>
+                        </div>
+                    </div>
+                    <p id="drinkHelp" class="visually-hidden">Choose your preferred drink</p>
+                    <div class="valid-feedback"></div>
+                </fieldset>
+                <div class="drinks__form-output-container">
+                    <div class="form-floating dark-label">
+                        <input type="text" class="form-control" id="drinkCombo" name="drinkCombo"
+                            aria-describedby="displayDrinkCombo" readonly>
+                        <label for="drinkCombo" class="form-label">Your drink</label>
+                        <p id="displayDrinkCombo" class="visually-hidden">
+                            Your chosen drink combo
+                        </p>
+                    </div>
+                    <button class="btn btn-info drinks__form-reset" type="button">Reset</button>
+                </div>
+            </form>
 
-
+            <p class="mt-4">Again, the application utilizes our drinkOrder function to compute and display the output directly on the page. This serves as another straightforward example of applying JavaScript functions in web development.</p>           
 
 
         </div>

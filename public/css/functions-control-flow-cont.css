@@ -74,6 +74,77 @@ input[type="number"]::-webkit-outer-spin-button {
 	opacity: 1;
 }
 
+.drinks__form {
+	width: 100%;
+	max-width: 400px;
+	min-width: 200px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.7rem;
+	border: 1px solid #ced4da;
+}
+
+.drinks__form-legend {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.drinks__form-select {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	padding: 1rem;
+}
+
+.drinks__form-radio-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.5rem;
+	width: 100%;
+}
+
+.drinks__form .btn-check + label {
+	width: 100%;
+}
+
+.drinks__form-output-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 0.5rem;
+	margin-top: 0.4rem;
+}
+
+.drinks__form-output-container > div {
+	flex: 1;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: #fff;
+	opacity: 1;
+}
+
+.bs-icon-custom {
+	color: #198754;
+	margin-left: 1rem;
+	display: none;
+}
+
+@media only screen and (max-width: 325px) {
+	.drinks__form-output-container {
+		flex-direction: column;
+	}
+}
+
 @media only screen and (max-width: 1400px) {
 	.form {
 		width: 40%;
