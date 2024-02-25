@@ -8,20 +8,23 @@ permalink: /blog/functions-control-flow-continued/index.html
 
 {%- css %}{% include "public/css/functions-control-flow-cont.css" %}{% endcss %}
 <div class="container container-bg">
+
     <div class="row">
         <div class="col mt-3">
             <p class="lead">Ever wondered how much 30% of 135 is? Well, wonder no more.</p>
 
-            <p>Our magical tool to find out is a <strong>function</strong> named <code>percentageCalculator</code>. Think of it as your personal number-crunching assistant, ready to calculate what any percentage of any number is. It's like asking a friend to do the maths for you, except this friend is super quick and never gets it wrong.</p>
+            <p>Our magical tool to find out is a function named <code>percentageCalculator</code>. Think of it as your personal number-crunching assistant, ready to calculate what any percentage of any number is. It's like asking a friend to do the maths for you, except this friend is super quick and never gets it wrong.</p>
+
+            <h2 class="h3 mb-3">Task 1 - Percentage Calculator</h2>
 
             <p>Here's how we make it:</p>
 
             <ol>
-                <li><p class="m-0">We create a <strong>function</strong> called <code>percentageCalculator</code>.</p></li>
+                <li><p class="m-0">We create a function called <code>percentageCalculator</code>.</p></li>
                 <li><p class="m-0">We provide it with two arguments: “number” and “percentage”. These are needed to perform the calculation.</p></li>
-                <li><p class="m-0">Inside the <strong>function</strong>, we perform a mathematical operation to calculate the percentage of the number.</p></li>
-                <li><p class="m-0">The <strong>function</strong> then returns the result of the calculation.</p></li>
-                <li><p class="m-0">Finally, we call (invoke) our <strong>function</strong> with the arguments of 30 and 135. It then gives us our value back through the console.</p></li>
+                <li><p class="m-0">Inside the function, we perform a mathematical operation to calculate the percentage of the number.</p></li>
+                <li><p class="m-0">The function then returns the result of the calculation.</p></li>
+                <li><p class="m-0">Finally, we call (invoke) our function with the arguments of 30 and 135. It then gives us our value back through the console.</p></li>
             </ol>
 
 
@@ -46,7 +49,7 @@ permalink: /blog/functions-control-flow-continued/index.html
 
             <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>
 
-            <p>Let's take our percentageCalculator function and see it in action within a web page. A simple interface has been built using HTML and CSS where users can input a number and a percentage to see the calculation performed live on the web page. This practical demonstration shows how the JavaScript function created above can be integrated into a real-world scenario, allowing for interactive user engagement.</p>
+            <p>Let's take our percentageCalculator function and see it in action within a web page. A simple interface has been built using HTML, Bootstrap and CSS where users can input a number and a percentage to see the calculation performed live on the web page. This practical demonstration shows how the JavaScript function created above can be integrated into a real-world scenario, allowing for interactive user engagement.</p>
 
             <p>By entering values into the provided fields, the application utilizes our percentageCalculator to compute and display the result directly on the page. This serves as a straightforward example of applying JavaScript functions in web development, illustrating the seamless interaction between HTML, CSS, and JavaScript in creating dynamic and interactive web applications.</p>
 
@@ -98,8 +101,61 @@ permalink: /blog/functions-control-flow-continued/index.html
             </form>            
         </div>
     </div>
+
     <div class="row">
-        <div class="col mt-3"></div>
+        <div class="col mt-5">
+            <h2 class="h3 mb-3">Task 2 - Switch Statement</h2>
+            <p>Next we'll tackle a scenario where customers can choose from three different drinks and three sizes. Whether it's a cola, lemonade, or orangeade, in small, medium, or large sizes, we've got a handy function to handle these choices seamlessly.</p>
+
+            <p>We introduce a function named <code>drinkOrder</code> that takes two arguments: one for the size of the drink and another for the type of drink (cola, lemon, or orange). The core of this function lies in its use of a switch statement, a powerful tool in JavaScript that steers the code in different directions based on the drink selected.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define the drinkOrder function with size and drink as parameters
+                    const drinkOrder = (size, drink) => {
+                    let requestedDrink = '';
+
+                    // Use a switch statement to handle different drink types
+                    switch (drink) {
+                        case 'cola': // If the drink type is 'cola'
+                        requestedDrink = 'Cola'; // Set the requestedDrink variable to 'Cola'
+                        break; // Exit the switch statement
+                        case 'lemon': // If the drink type is 'lemon'
+                        requestedDrink = 'Lemonade'; // Set the requestedDrink variable to 'Lemonade'
+                        break; // Exit the switch statement
+                        case 'orange': // If the drink type is 'orange'
+                        requestedDrink = 'Orangeade'; // Set the requestedDrink variable to 'Orangeade'
+                        break; // Exit the switch statement
+                        default: // If none of the cases match the drink type
+                        return 'Drink not found'; // Return a 'Drink not found' message
+                    }
+
+                    // Return a message indicating the ordered drink size and type
+                    return `You ordered a ${size} ${requestedDrink}`;
+                    };
+
+                    // Call the drinkOrder function with 'small' size and 'orange' drink type
+                    const orderedDrink = drinkOrder('small', 'orange');
+                    console.log(orderedDrink); // Log the result to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>
+
+            <p class="mt-3">Here's how it works: You start with the switch keyword, followed by the expression you want to evaluate (like a variable containing a drink type in our example). Inside the curly braces, you have multiple case statements, each representing a potential match for the expression's value. If the expression matches a case, the code block under that case runs. If none of the cases match, an optional default case can catch and handle these situations.</p>
+
+
+            <p>Let's take our drinkOrder function and see it in action within a web page. A simple interface has been built using HTML, Bootstrap and CSS where users can select a drink size and a drink and see the output live on the web page.</p>
+
+            <p>Again, the application utilizes our drinkOrder function to compute and display the output directly on the page. This serves as another straightforward example of applying JavaScript functions in web development.</p>
+
+
+
+
+        </div>
     </div>    
 </div>        
-        
+                
+
+
+
