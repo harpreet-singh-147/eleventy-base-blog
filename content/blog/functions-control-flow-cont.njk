@@ -46,11 +46,15 @@ permalink: /blog/functions-control-flow-continued/index.html
 
             <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>
 
+            <p>Let's take our percentageCalculator function and see it in action within a web page. A simple interface has been built using HTML and CSS where users can input a number and a percentage to see the calculation performed live on the web page. This practical demonstration shows how the JavaScript function created above can be integrated into a real-world scenario, allowing for interactive user engagement.</p>
+
+            <p>By entering values into the provided fields, the application utilizes our percentageCalculator to compute and display the result directly on the page. This serves as a straightforward example of applying JavaScript functions in web development, illustrating the seamless interaction between HTML, CSS, and JavaScript in creating dynamic and interactive web applications.</p>
+
             <form class="percentage-form mt-4">
                 <h2 class="text-center">Percentage Calculator</h2>
                 <div class="d-flex gap-2 justify-content-between">
                     <div class="form-floating percentage-input-container">
-                        <input type="number" class="form-control" id="numberEntered" name="numberEntered" required
+                        <input type="number" class="form-control percentage-form-inputs" id="numberEntered" name="numberEntered" required
                             aria-required="true" aria-invalid="false" aria-describedby="numberEnteredAria">
                         <label for="numberEntered" class="form-label">Enter number</label>
                         <p id="numberEnteredAria" class="visually-hidden">
@@ -65,7 +69,7 @@ permalink: /blog/functions-control-flow-continued/index.html
 
                 <div class="d-flex gap-2 justify-content-between">
                     <div class="form-floating percentage-input-container">
-                        <input type="number" class="form-control" id="percentage" name="percentage" required
+                        <input type="number" class="form-control percentage-form-inputs" id="percentage" name="percentage" required
                             aria-required="true" aria-invalid="false" aria-describedby="percentageAria">
                         <label for="percentage" class="form-label">Enter percentage</label>
                         <p id="percentageAria" class="visually-hidden">
@@ -80,7 +84,7 @@ permalink: /blog/functions-control-flow-continued/index.html
 
                 <div class="d-flex gap-2 justify-content-between">
                     <div class="form-floating percentage-input-container">
-                        <input type="text" class="form-control" id="result" name="result"
+                        <input type="text" class="form-control percentage-form-inputs" id="result" name="result"
                             aria-describedby="percentageResultAria" readonly>
                         <label for="result" class="form-label">Result</label>
                         <p id="percentageResultAria" class="visually-hidden">
@@ -94,5 +98,8 @@ permalink: /blog/functions-control-flow-continued/index.html
             </form>            
         </div>
     </div>
+    <div class="row">
+        <div class="col mt-3"></div>
+    </div>    
 </div>        
         
