@@ -265,10 +265,57 @@ permalink: /blog/functions-control-flow-continued/index.html
             <p>This efficient approach allows calculator to swiftly determine and execute the required arithmetic operation. The switch statement's clear structure demonstrates the flexibility and utility of JavaScript for mathematical tasks.</p>
 
             <p>Let's highlight the calculator function through a sleek calculator interface crafted with HTML and CSS. It uses a switch statement to handle user inputs: two numbers and an operation (add, subtract, multiply, divide, or modulus). Upon calculation, the function instantly displays the result, demonstrating JavaScript's ability to dynamically process and present data based on user interactions.</p>
+
+            <div class="calculator" role="application" aria-label="Calculator" tabindex="0">
+                <form id="calculatorForm">
+                    <input type="text" id="calculatorDisplay" aria-label="Calculator display" class="calculator-display"
+                        readonly>
+                    <p id="calculatorErrorMessage" aria-live="polite"></p>
+                    <fieldset class="calculator-keys">
+                        <div class="structure">
+                            <div class="numbers">
+                                <div class="clearDel">
+                                    <button type="button" class="clear" data-clear="all" aria-label="clear all">C</button>
+                                    <button type="button" class="delete" data-delete="last"
+                                        aria-label="backspace">&#x232B;</button>
+                                </div>
+                                <div class="seven89">
+                                    <button type="button" class="number" data-number="7" aria-label="7">7</button>
+                                    <button type="button" class="number" data-number="8" aria-label="8">8</button>
+                                    <button type="button" class="number" data-number="9" aria-label="9">9</button>
+                                </div>
+                                <div class="four56">
+                                    <button type="button" class="number" data-number="4" aria-label="4">4</button>
+                                    <button type="button" class="number" data-number="5" aria-label="5">5</button>
+                                    <button type="button" class="number" data-number="6" aria-label="6">6</button>
+                                </div>
+                                <div class="one23">
+                                    <button type="button" class="number" data-number="1" aria-label="1">1</button>
+                                    <button type="button" class="number" data-number="2" aria-label="2">2</button>
+                                    <button type="button" class="number" data-number="3" aria-label="3">3</button>
+                                </div>
+                                <div class="zeroDecEquals">
+                                    <button type="button" class="number" data-number="0" aria-label="0">0</button>
+                                    <button type="button" class="decimal" data-decimal="." aria-label="decimal point">.</button>
+                                    <button type="button" class="equal" data-equal="=" aria-label="calculate">=</button>
+                                </div>
+                            </div>
+                            <div class="operators">
+                                <button type="button" class="operator" data-operator="-" aria-label="subtract">-</button>
+                                <button type="button" class="operator" data-operator="/" aria-label="divide">/</button>
+                                <button type="button" class="operator" data-operator="*" aria-label="multiply">*</button>
+                                <button type="button" class="operator" data-operator="+" aria-label="add">+</button>
+                                <button type="button" class="operator" data-operator="%" aria-label="modulus">%</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>           
         </div>
     </div>
-
-</div>     
+    
+</div> 
+    
 
    
                 
