@@ -7,6 +7,7 @@ import { handleLogoutClick } from "./handleLogout.js";
 import { handleTipCalculator } from "./tipCalculator.js";
 import { handleHomePageModalContactForm } from "./homePageContactModal.js";
 import { handlePercentageCalculator } from "./percentageForm.js";
+import { handleDrinksForm } from "./drinkOrder.js";
 import { modal } from "./modal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -28,4 +29,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleTipCalculator();
 	handleHomePageModalContactForm();
 	handlePercentageCalculator();
+	handleDrinksForm();
 });
