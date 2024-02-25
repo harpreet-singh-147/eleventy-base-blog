@@ -11,6 +11,9 @@
 	margin-top: 2rem;
 	width: 100%;
 }
+/* ***************************************************************************************************************** */
+
+/* Percentage calculator */
 
 .percentage-form {
 	width: 100%;
@@ -74,10 +77,13 @@ input[type="number"]::-webkit-outer-spin-button {
 	opacity: 1;
 }
 
+/* ***************************************************************************************************************** */
+
+/* Drinks selector */
+
 .drinks__form {
 	width: 100%;
 	max-width: 400px;
-	min-width: 200px;
 	margin: 0 auto;
 	display: flex;
 	flex-direction: column;
@@ -127,6 +133,14 @@ input[type="number"]::-webkit-outer-spin-button {
 	flex: 1;
 }
 
+.drinks__form-output-container .form-label {
+	color: #000;
+}
+
+.drinks__form-output-container .drink-combo {
+	resize: none;
+}
+
 .form-control:disabled,
 .form-control[readonly] {
 	background-color: #fff;
@@ -139,10 +153,14 @@ input[type="number"]::-webkit-outer-spin-button {
 	display: none;
 }
 
+/* ***************************************************************************************************************** */
+
+/* Calculator */
+
 .calculator {
 	width: 100%;
 	max-width: 25rem;
-	margin: 0 auto;
+	margin: 2rem auto;
 	padding: 1.2rem;
 	border: 1px solid #ccc;
 	border-radius: 0.3rem;
@@ -251,32 +269,44 @@ input[type="number"]::-webkit-outer-spin-button {
 	background-color: #d94747;
 }
 
-@media only screen and (max-width: 325px) {
+/* ***************************************************************************************************************** */
+
+/* Media queries */
+
+@media only screen and (max-width: 520px) {
 	.drinks__form-output-container {
 		flex-direction: column;
 	}
 }
 
-@media only screen and (max-width: 1400px) {
-	.form {
-		width: 40%;
+@media only screen and (max-width: 450px) {
+	.drinks__form-output-container .drink-combo {
+		height: 6rem !important;
 	}
 }
 
-@media only screen and (max-width: 991px) {
-	.form {
-		width: 50%;
+@media only screen and (max-width: 375px) {
+	.percentage-form {
+		padding: 0.8rem;
+	}
+
+	.custom-percentage-result {
+		flex-direction: column;
+	}
+
+	.drinks__form-radio-container {
+		grid-template-columns: repeat(1, 1fr);
 	}
 }
 
-@media only screen and (max-width: 620px) {
-	.form {
-		width: 70%;
+@media only screen and (max-width: 340px) {
+	.calculator {
+		padding: 1rem 0.5rem;
 	}
 }
 
-@media only screen and (max-width: 435px) {
-	.form {
-		width: 95%;
+@media only screen and (max-width: 300px) {
+	.percentage-form .form-label {
+		padding: 0.8rem 0 0 0.4rem;
 	}
 }

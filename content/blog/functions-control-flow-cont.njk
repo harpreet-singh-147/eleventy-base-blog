@@ -85,7 +85,7 @@ permalink: /blog/functions-control-flow-continued/index.html
                     </div>
                 </div>
 
-                <div class="d-flex gap-2 justify-content-between">
+                <div class="d-flex gap-2 justify-content-between custom-percentage-result">
                     <div class="form-floating percentage-input-container">
                         <input type="text" class="form-control percentage-form-inputs" id="result" name="result"
                             aria-describedby="percentageResultAria" readonly>
@@ -198,8 +198,8 @@ permalink: /blog/functions-control-flow-continued/index.html
                 </fieldset>
                 <div class="drinks__form-output-container">
                     <div class="form-floating dark-label">
-                        <input type="text" class="form-control" id="drinkCombo" name="drinkCombo"
-                            aria-describedby="displayDrinkCombo" readonly>
+                        <textarea class="form-control drink-combo" id="drinkCombo" name="drinkCombo"
+                        aria-describedby="displayDrinkCombo" readonly></textarea>
                         <label for="drinkCombo" class="form-label">Your drink</label>
                         <p id="displayDrinkCombo" class="visually-hidden">
                             Your chosen drink combo
@@ -208,7 +208,7 @@ permalink: /blog/functions-control-flow-continued/index.html
                     <button class="btn btn-info drinks__form-reset" type="button">Reset</button>
                 </div>
             </form>
-
+            
             <p class="mt-4">Again, the application utilizes our drinkOrder function to compute and display the output directly on the page. This serves as another straightforward example of applying JavaScript functions in web development.</p>           
         </div>
     </div>
@@ -262,9 +262,9 @@ permalink: /blog/functions-control-flow-continued/index.html
 
             <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>           
 
-            <p>This efficient approach allows calculator to swiftly determine and execute the required arithmetic operation. The switch statement's clear structure demonstrates the flexibility and utility of JavaScript for mathematical tasks.</p>
+            <p>This efficient approach allows <code>calculator</code> to swiftly determine and execute the required arithmetic operation. The switch statement's clear structure demonstrates the flexibility and utility of JavaScript for mathematical tasks.</p>
 
-            <p>Let's highlight the calculator function through a sleek calculator interface crafted with HTML and CSS. It uses a switch statement to handle user inputs: two numbers and an operation (add, subtract, multiply, divide, or modulus). Upon calculation, the function instantly displays the result, demonstrating JavaScript's ability to dynamically process and present data based on user interactions.</p>
+            <p>Let's highlight the calculator function through a sleek calculator interface crafted with HTML and CSS. It uses the switch statement in our <code>calculator</code> function to handle user inputs: two numbers and an operation (add, subtract, multiply, divide, or modulus). Upon calculation, the function instantly displays the result, demonstrating JavaScript's ability to dynamically process and present data based on user interactions.</p>
 
             <div class="calculator" role="application" aria-label="Calculator" tabindex="0">
                 <form id="calculatorForm">
@@ -313,7 +313,7 @@ permalink: /blog/functions-control-flow-continued/index.html
             </div>           
         </div>
     </div>
-    
+
 </div> 
     
 
