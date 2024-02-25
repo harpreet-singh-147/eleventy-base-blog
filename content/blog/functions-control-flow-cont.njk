@@ -105,6 +105,7 @@ permalink: /blog/functions-control-flow-continued/index.html
     <div class="row">
         <div class="col mt-5">
             <h2 class="h3 mb-3">Task 2 - Switch Statement</h2>
+
             <p>Next we'll tackle a scenario where customers can choose from three different drinks and three sizes. Whether it's a cola, lemonade, or orangeade, in small, medium, or large sizes, we've got a handy function to handle these choices seamlessly.</p>
 
             <p>We introduce a function named <code>drinkOrder</code> that takes two arguments: one for the size of the drink and another for the type of drink (cola, lemon, or orange). The core of this function lies in its use of a switch statement, a powerful tool in JavaScript that steers the code in different directions based on the drink selected.</p>
@@ -209,12 +210,71 @@ permalink: /blog/functions-control-flow-continued/index.html
             </form>
 
             <p class="mt-4">Again, the application utilizes our drinkOrder function to compute and display the output directly on the page. This serves as another straightforward example of applying JavaScript functions in web development.</p>           
-
-
         </div>
-    </div>    
-</div>        
+    </div>
+
+    <div class="row">
+        <div class="col mt-3">
+            <h2 class="h3 mb-3">Task 3 - Calculator</h2>
+
+            <p>Finally, let's explore a versatile function called <code>calculator</code> that performs arithmetic operations on two numbers. This function accepts three arguments: two numbers and an operator (such as +, -, *, /, %). At its core, it utilizes the switch statement to direct the code to the appropriate operation based on the operator argument.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define the calculator function with three parameters: num1, num2, and operator
+                    const calculator = (num1, num2, operator) => {
+                    let value; // Initialize a variable to store the result
+
+                    // Use a switch statement to handle different mathematical operations based on the operator
+                    switch (operator) {
+                        case '+': // If the operator is addition
+                        value = num1 + num2; // Add num1 and num2, then assign this value to the value variable
+                        break; // Exit the switch
+                        case '-': // If the operator is subtraction
+                        value = num1 - num2; // Subtract num2 from num1, then assign this value to the value variable
+                        break; // Exit the switch
+                        case '*': // If the operator is multiplication
+                        value = num1 * num2; // Multiply num1 by num2, then assign this value to the value variable
+                        break; // Exit the switch
+                        case '/': // If the operator is division
+                        if (num2 !== 0) { // Check if num2 is not zero to avoid division by zero
+                            value = num1 / num2; // Divide num1 by num2, then assign this value to the value variable
+                        } else {
+                            return 'Cannot divide by zero'; // Return error message for division by zero
+                        }
+                        break; // Exit the switch
+                        case '%': // If the operator is modulus
+                        value = num1 % num2; // Get the remainder of num1 divided by num2, then assign this value to the value variable
+                        break; // Exit the switch
+                        default: // If the operator doesn't match any case
+                        return 'Invalid operator'; // Return an error message for invalid operator
+                    }
+
+                    return `${num1} ${operator} ${num2} = ${value}`; // Return the formatted result string
+                    };
+
+                    // Example usage of the calculator function
+                    const result = calculator(10, 5, '+'); // Call the calculator function
+                    console.log(result); // Log the result to the console
+                    // Will log 15 to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>           
+
+            <p>This efficient approach allows calculator to swiftly determine and execute the required arithmetic operation. The switch statement's clear structure demonstrates the flexibility and utility of JavaScript for mathematical tasks.</p>
+
+            <p>Let's highlight the calculator function through a sleek calculator interface crafted with HTML and CSS. It uses a switch statement to handle user inputs: two numbers and an operation (add, subtract, multiply, divide, or modulus). Upon calculation, the function instantly displays the result, demonstrating JavaScript's ability to dynamically process and present data based on user interactions.</p>
+        </div>
+    </div>
+
+</div>     
+
+   
                 
+
+
+
 
 
 
