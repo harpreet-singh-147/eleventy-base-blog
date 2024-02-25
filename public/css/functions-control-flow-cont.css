@@ -1,0 +1,312 @@
+.container-bg {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+	margin-top: 2rem;
+	width: 100%;
+}
+/* ***************************************************************************************************************** */
+
+/* Percentage calculator */
+
+.percentage-form {
+	width: 100%;
+	max-width: 40rem;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+	background: hsl(30, 38%, 92%);
+	padding: 1rem;
+	border-radius: 0.5rem;
+	overflow: hidden;
+}
+
+.percentage-form .form-label {
+	color: #000;
+}
+
+.percentage-input-container {
+	flex: 0.9;
+}
+
+.percentage-inc-dec-btns {
+	flex: 0.1;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 0.2rem;
+	height: 58px;
+}
+
+.percentage-custom-btn {
+	padding: 0 !important;
+	background: hsl(158, 36%, 37%) !important;
+	color: #fff;
+	border: none;
+	height: 100%;
+}
+
+.percentage-custom-btn:hover {
+	background: hsl(158, 35%, 25%) !important;
+	color: #fff;
+}
+
+.percentage-reset-btn-custom {
+	padding: 1rem !important;
+	border-radius: 0.25rem !important;
+}
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+	-webkit-appearance: none;
+	height: auto;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: #fff;
+	opacity: 1;
+}
+
+/* ***************************************************************************************************************** */
+
+/* Drinks selector */
+
+.drinks__form {
+	width: 100%;
+	max-width: 400px;
+	margin: 0 auto;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	gap: 1rem;
+	padding: 0.7rem;
+	border: 1px solid #ced4da;
+}
+
+.drinks__form-legend {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.drinks__form-select {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	border: 1px solid #ced4da;
+	border-radius: 0.25rem;
+	padding: 1rem;
+}
+
+.drinks__form-radio-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 0.5rem;
+	width: 100%;
+}
+
+.drinks__form .btn-check + label {
+	width: 100%;
+}
+
+.drinks__form-output-container {
+	display: flex;
+	justify-content: space-between;
+	width: 100%;
+	gap: 0.5rem;
+	margin-top: 0.4rem;
+}
+
+.drinks__form-output-container > div {
+	flex: 1;
+}
+
+.drinks__form-output-container .form-label {
+	color: #000;
+}
+
+.drinks__form-output-container .drink-combo {
+	resize: none;
+}
+
+.form-control:disabled,
+.form-control[readonly] {
+	background-color: #fff;
+	opacity: 1;
+}
+
+.bs-icon-custom {
+	color: #198754;
+	margin-left: 1rem;
+	display: none;
+}
+
+/* ***************************************************************************************************************** */
+
+/* Calculator */
+
+.calculator {
+	width: 100%;
+	max-width: 25rem;
+	margin: 2rem auto;
+	padding: 1.2rem;
+	border: 1px solid #ccc;
+	border-radius: 0.3rem;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+	box-sizing: border-box;
+}
+
+.calculator-display {
+	width: 100%;
+	height: 3.2rem;
+	margin-bottom: 1.2rem;
+	font-size: 1.4rem;
+	text-align: right;
+	padding: 0.6rem;
+	border: 1px solid #ccc;
+	border-radius: 0.3rem;
+	box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+	outline: none;
+	box-sizing: border-box;
+}
+
+.calculator-keys {
+	box-sizing: border-box;
+	border: none;
+	width: 100%;
+	margin: 0;
+	padding: 0;
+}
+
+.structure {
+	width: 100%;
+	display: flex;
+	gap: 0.3rem;
+}
+
+.numbers {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	flex: 0.8;
+}
+
+.seven89,
+.four56,
+.one23,
+.zeroDecEquals {
+	display: flex;
+	width: 100%;
+	gap: 0.3rem;
+}
+
+.operators {
+	display: flex;
+	flex-direction: column;
+	gap: 0.3rem;
+	flex: 0.2;
+}
+
+.clearDel {
+	display: flex;
+	gap: 0.3rem;
+}
+
+.calculator-keys button {
+	width: 100%;
+	height: 3.2rem;
+	font-size: 1.2rem;
+	font-weight: bold;
+	color: #333;
+	background-color: #f7f7f7;
+	border: 1px solid #ccc;
+	border-radius: 0.3rem;
+	cursor: pointer;
+	transition: background-color 0.3s ease;
+}
+
+.calculator-keys button:hover {
+	background-color: #eaeaea;
+}
+
+.calculator-keys .delete,
+.calculator-keys .operator {
+	background-color: #d4d4d2;
+}
+
+.calculator-keys .delete:hover,
+.calculator-keys .operator:hover {
+	background-color: #c1c1bf;
+}
+
+.calculator-keys .equal {
+	background-color: #0f8b8d;
+	color: white;
+}
+
+.calculator-keys .equal:hover {
+	background-color: #0c7a7b;
+}
+
+.calculator-keys .clear {
+	background-color: #f0595f;
+	color: white;
+}
+
+.calculator-keys .clear:hover {
+	background-color: #d94747;
+}
+
+/* ***************************************************************************************************************** */
+
+/* Media queries */
+
+@media only screen and (max-width: 520px) {
+	.drinks__form-output-container {
+		flex-direction: column;
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.drinks__form-output-container .drink-combo {
+		height: 6rem !important;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.percentage-form {
+		padding: 0.8rem;
+	}
+
+	.custom-percentage-result {
+		flex-direction: column;
+	}
+
+	.drinks__form-radio-container {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media only screen and (max-width: 340px) {
+	.calculator {
+		padding: 1rem 0.5rem;
+	}
+}
+
+@media only screen and (max-width: 300px) {
+	.percentage-form .form-label {
+		padding: 0.8rem 0 0 0.4rem;
+	}
+}

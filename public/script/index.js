@@ -6,6 +6,9 @@ import { handleContactMe } from "./handleContactMe.js";
 import { handleLogoutClick } from "./handleLogout.js";
 import { handleTipCalculator } from "./tipCalculator.js";
 import { handleHomePageModalContactForm } from "./homePageContactModal.js";
+import { handlePercentageCalculator } from "./percentageForm.js";
+import { handleDrinksForm } from "./drinkOrder.js";
+import { handleCalculator } from "./calculator.js";
 import { modal } from "./modal.js";
 
 document.addEventListener("DOMContentLoaded", () => {
@@ -26,4 +29,7 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleLogoutClick();
 	handleTipCalculator();
 	handleHomePageModalContactForm();
+	handlePercentageCalculator();
+	handleDrinksForm();
+	handleCalculator();
 });

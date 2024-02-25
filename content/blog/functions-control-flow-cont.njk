@@ -1,0 +1,334 @@
+---
+title: Functions and Control Flow Continued
+order: 8
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/functions-control-flow-continued/index.html
+---
+
+{%- css %}{% include "public/css/functions-control-flow-cont.css" %}{% endcss %}
+<div class="container container-bg">
+
+    <div class="row">
+        <div class="col mt-3">
+            <p class="lead">Ever wondered how much 30% of 135 is? Well, wonder no more.</p>
+
+            <p>Our magical tool to find out is a function named <code>percentageCalculator</code>. Think of it as your personal number-crunching assistant, ready to calculate what any percentage of any number is. It's like asking a friend to do the maths for you, except this friend is super quick and never gets it wrong.</p>
+
+            <h2 class="h3 mb-3">Task 1 - Percentage Calculator</h2>
+
+            <p>Here's how we make it:</p>
+
+            <ol>
+                <li><p class="m-0">We create a function called <code>percentageCalculator</code>.</p></li>
+                <li><p class="m-0">We provide it with two arguments: “number” and “percentage”. These are needed to perform the calculation.</p></li>
+                <li><p class="m-0">Inside the function, we perform a mathematical operation to calculate the percentage of the number.</p></li>
+                <li><p class="m-0">The function then returns the result of the calculation.</p></li>
+                <li><p class="m-0">Finally, we call (invoke) our function with the arguments of 30 and 135. It then gives us our value back through the console.</p></li>
+            </ol>
+
+
+            <pre>
+                <code class="language-javascript">
+                    // Percentage calculator function
+                    // Here we will use the arrow function syntax
+                    // Step 1: Define the function called 'percentageCalculator'.
+                    const percentageCalculator = (number, percentage) => {
+                        // Step 3: Inside the function, calculate the percentage of the number.
+                        const result = (number * percentage) / 100;
+                        // Step 4: Return the result of the calculation.
+                        return `${result} is ${percentage}% of ${number}`;
+                    };
+
+                    // Step 5: Call the 'percentageCalculator' function with arguments 135 and 30, and log the result.
+                    const result = percentageCalculator(135, 30);
+                    console.log(result); // This will output the calculation result to the console.
+                    // "40.5 is 30% of 135" will be logged to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>
+
+            <p>Let's take our percentageCalculator function and see it in action within a web page. A simple interface has been built using HTML, Bootstrap and CSS where users can input a number and a percentage to see the calculation performed live on the web page. This practical demonstration shows how the JavaScript function created above can be integrated into a real-world scenario, allowing for interactive user engagement.</p>
+
+            <p>By entering values into the provided fields, the application utilizes our percentageCalculator to compute and display the result directly on the page. This serves as a straightforward example of applying JavaScript functions in web development, illustrating the seamless interaction between HTML, CSS, and JavaScript in creating dynamic and interactive web applications.</p>
+
+            <form class="percentage-form mt-4">
+                <h2 class="text-center">Percentage Calculator</h2>
+                <div class="d-flex gap-2 justify-content-between">
+                    <div class="form-floating percentage-input-container">
+                        <input type="number" class="form-control percentage-form-inputs" id="numberEntered" name="numberEntered" required
+                            aria-required="true" aria-invalid="false" aria-describedby="numberEnteredAria">
+                        <label for="numberEntered" class="form-label">Enter number</label>
+                        <p id="numberEnteredAria" class="visually-hidden">
+                            Enter number you want the percentage of
+                        </p>
+                    </div>
+                    <div class="percentage-inc-dec-btns">
+                        <button class="btn percentage-custom-btn" data-action="inc" data-target="numberEntered" type='button'>+</button>
+                        <button class="btn percentage-custom-btn" data-action="dec" data-target="numberEntered" type='button'>-</button>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 justify-content-between">
+                    <div class="form-floating percentage-input-container">
+                        <input type="number" class="form-control percentage-form-inputs" id="percentage" name="percentage" required
+                            aria-required="true" aria-invalid="false" aria-describedby="percentageAria">
+                        <label for="percentage" class="form-label">Enter percentage</label>
+                        <p id="percentageAria" class="visually-hidden">
+                            Enter percentage number here
+                        </p>
+                    </div>
+                    <div class="percentage-inc-dec-btns">
+                        <button class="btn percentage-custom-btn" data-action="inc" data-target="percentage" type='button'>+</button>
+                        <button class="btn percentage-custom-btn" data-action="dec" data-target="percentage" type='button'>-</button>
+                    </div>
+                </div>
+
+                <div class="d-flex gap-2 justify-content-between custom-percentage-result">
+                    <div class="form-floating percentage-input-container">
+                        <input type="text" class="form-control percentage-form-inputs" id="result" name="result"
+                            aria-describedby="percentageResultAria" readonly>
+                        <label for="result" class="form-label">Result</label>
+                        <p id="percentageResultAria" class="visually-hidden">
+                            Result of specific percentage of a number
+                        </p>
+                    </div>
+                    <div class="percentage-inc-dec-btns">
+                        <button class="btn percentage-custom-btn percentage-reset-btn-custom" type="button" data-action="reset">Reset</button>
+                    </div>
+                </div>
+            </form>
+
+            <p class="mt-3">See the code <a href="https://codepen.io/Harp007/pen/poYMEYm" target="_blank">on CodePen</a>.</p>
+        </div>
+    </div>
+
+
+    <div class="row">
+        <div class="col mt-2">
+            <h2 class="h3 mb-3">Task 2 - Switch Statement</h2>
+
+            <p>Next we'll tackle a scenario where customers can choose from three different drinks and three sizes. Whether it's a cola, lemonade, or orangeade, in small, medium, or large sizes, we've got a handy function to handle these choices seamlessly.</p>
+
+            <p>We introduce a function named <code>drinkOrder</code> that takes two arguments: one for the size of the drink and another for the type of drink (cola, lemon, or orange). The core of this function lies in its use of a switch statement, a powerful tool in JavaScript that steers the code in different directions based on the drink selected.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define the drinkOrder function with size and drink as parameters
+                    const drinkOrder = (size, drink) => {
+                    let requestedDrink = '';
+
+                    // Use a switch statement to handle different drink types
+                    switch (drink) {
+                        case 'cola': // If the drink type is 'cola'
+                        requestedDrink = 'Cola'; // Set the requestedDrink variable to 'Cola'
+                        break; // Exit the switch statement
+                        case 'lemon': // If the drink type is 'lemon'
+                        requestedDrink = 'Lemonade'; // Set the requestedDrink variable to 'Lemonade'
+                        break; // Exit the switch statement
+                        case 'orange': // If the drink type is 'orange'
+                        requestedDrink = 'Orangeade'; // Set the requestedDrink variable to 'Orangeade'
+                        break; // Exit the switch statement
+                        default: // If none of the cases match the drink type
+                        return 'Drink not found'; // Return a 'Drink not found' message
+                    }
+
+                    // Return a message indicating the ordered drink size and type
+                    return `You ordered a ${size} ${requestedDrink}`;
+                    };
+
+                    // Call the drinkOrder function with 'small' size and 'orange' drink type
+                    const orderedDrink = drinkOrder('small', 'orange');
+                    console.log(orderedDrink); // Log the result to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>
+
+            <p class="mt-3">Here's how it works: You start with the switch keyword, followed by the expression you want to evaluate (like a variable containing a drink type in our example). Inside the curly braces, you have multiple case statements, each representing a potential match for the expression's value. If the expression matches a case, the code block under that case runs. If none of the cases match, an optional default case can catch and handle these situations.</p>
+
+
+            <p>Let's take our drinkOrder function and see it in action within a web page. A simple interface has been built using HTML, Bootstrap and CSS where users can select a drink size and a drink and see the output live on the web page.</p>
+
+            <form class="drinks__form">
+                <fieldset class="drinks__form-select">
+                    <legend class="drinks__form-legend"><span>Select drink size</span> <i
+                            class="bi bi-check-circle-fill drink-size-icon bs-icon-custom"></i></legend>
+                    <div class="drinks__form-radio-container" aria-describedby="drinkSizeHelp">
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="size" id="small" autocomplete="off"
+                                value="small" required aria-required="true">
+                            <label class="btn btn-info" for="small">Small</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="size" id="medium" autocomplete="off"
+                                value="medium" aria-required="true">
+                            <label class="btn btn-info" for="medium">Medium</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="size" id="large" autocomplete="off"
+                                value="large" aria-required="true">
+                            <label class="btn btn-info" for="large">Large</label>
+                        </div>
+                    </div>
+                    <p id="drinkSizeHelp" class="visually-hidden">Choose your preferred sized drink</p>
+                    <div class="valid-feedback"></div>
+                </fieldset>
+                <fieldset class="drinks__form-select">
+                    <legend class="drinks__form-legend"><span>Select drink</span> <i
+                            class="bi bi-check-circle-fill drink-icon bs-icon-custom"></i>
+                    </legend>
+                    <div class="drinks__form-radio-container" aria-describedby="drinkHelp">
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="drink" id="cola" autocomplete="off"
+                                value="cola" required aria-required="true">
+                            <label class="btn btn-info" for="cola">Cola</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="drink" id="lemon" autocomplete="off"
+                                value="lemon" aria-required="true">
+                            <label class="btn btn-info" for="lemon">Lemon</label>
+                        </div>
+                        <div>
+                            <input type="radio" class="btn-check drinks-radio-btn" name="drink" id="orange" autocomplete="off"
+                                value="orange" aria-required="true">
+                            <label class="btn btn-info" for="orange">Orange</label>
+                        </div>
+                    </div>
+                    <p id="drinkHelp" class="visually-hidden">Choose your preferred drink</p>
+                    <div class="valid-feedback"></div>
+                </fieldset>
+                <div class="drinks__form-output-container">
+                    <div class="form-floating dark-label">
+                        <textarea class="form-control drink-combo" id="drinkCombo" name="drinkCombo"
+                        aria-describedby="displayDrinkCombo" readonly></textarea>
+                        <label for="drinkCombo" class="form-label">Your drink</label>
+                        <p id="displayDrinkCombo" class="visually-hidden">
+                            Your chosen drink combo
+                        </p>
+                    </div>
+                    <button class="btn btn-info drinks__form-reset" type="button">Reset</button>
+                </div>
+            </form>
+
+            <p class="mt-3">See the code <a href="https://codepen.io/Harp007/pen/ZEPgBzE" target="_blank">on CodePen</a>.</p>
+            
+            <p class="mt-2">Again, the application utilizes our drinkOrder function to compute and display the output directly on the page. This serves as another straightforward example of applying JavaScript functions in web development.</p>           
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col mt-3">
+            <h2 class="h3 mb-3">Task 3 - Calculator</h2>
+
+            <p>Finally, let's explore a versatile function called <code>calculator</code> that performs arithmetic operations on two numbers. This function accepts three arguments: two numbers and an operator (such as +, -, *, /, %). At its core, it utilizes the switch statement to direct the code to the appropriate operation based on the operator argument.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define the calculator function with three parameters: num1, num2, and operator
+                    const calculator = (num1, num2, operator) => {
+                    let value; // Initialize a variable to store the result
+
+                    // Use a switch statement to handle different mathematical operations based on the operator
+                    switch (operator) {
+                        case '+': // If the operator is addition
+                        value = num1 + num2; // Add num1 and num2, then assign this value to the value variable
+                        break; // Exit the switch
+                        case '-': // If the operator is subtraction
+                        value = num1 - num2; // Subtract num2 from num1, then assign this value to the value variable
+                        break; // Exit the switch
+                        case '*': // If the operator is multiplication
+                        value = num1 * num2; // Multiply num1 by num2, then assign this value to the value variable
+                        break; // Exit the switch
+                        case '/': // If the operator is division
+                        if (num2 !== 0) { // Check if num2 is not zero to avoid division by zero
+                            value = num1 / num2; // Divide num1 by num2, then assign this value to the value variable
+                        } else {
+                            return 'Cannot divide by zero'; // Return error message for division by zero
+                        }
+                        break; // Exit the switch
+                        case '%': // If the operator is modulus
+                        value = num1 % num2; // Get the remainder of num1 divided by num2, then assign this value to the value variable
+                        break; // Exit the switch
+                        default: // If the operator doesn't match any case
+                        return 'Invalid operator'; // Return an error message for invalid operator
+                    }
+
+                    return `${num1} ${operator} ${num2} = ${value}`; // Return the formatted result string
+                    };
+
+                    // Example usage of the calculator function
+                    const result = calculator(10, 5, '+'); // Call the calculator function
+                    console.log(result); // Log the result to the console
+                    // Will log 15 to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/vYPwbmv" target="_blank">live example on CodePen</a>.</p>           
+
+            <p>This efficient approach allows <code>calculator</code> to swiftly determine and execute the required arithmetic operation. The switch statement's clear structure demonstrates the flexibility and utility of JavaScript for mathematical tasks.</p>
+
+            <p>Let's highlight the calculator function through a sleek calculator interface crafted with HTML and CSS. It uses the switch statement in our <code>calculator</code> function to handle user inputs: two numbers and an operation (add, subtract, multiply, divide, or modulus). Upon calculation, the function instantly displays the result, demonstrating JavaScript's ability to dynamically process and present data based on user interactions.</p>
+
+            <div class="calculator" role="application" aria-label="Calculator" tabindex="0">
+                <form id="calculatorForm">
+                    <input type="text" id="calculatorDisplay" aria-label="Calculator display" class="calculator-display"
+                        readonly>
+                    <p id="calculatorErrorMessage" aria-live="polite"></p>
+                    <fieldset class="calculator-keys">
+                        <div class="structure">
+                            <div class="numbers">
+                                <div class="clearDel">
+                                    <button type="button" class="clear" data-clear="all" aria-label="clear all">C</button>
+                                    <button type="button" class="delete" data-delete="last"
+                                        aria-label="backspace">&#x232B;</button>
+                                </div>
+                                <div class="seven89">
+                                    <button type="button" class="number" data-number="7" aria-label="7">7</button>
+                                    <button type="button" class="number" data-number="8" aria-label="8">8</button>
+                                    <button type="button" class="number" data-number="9" aria-label="9">9</button>
+                                </div>
+                                <div class="four56">
+                                    <button type="button" class="number" data-number="4" aria-label="4">4</button>
+                                    <button type="button" class="number" data-number="5" aria-label="5">5</button>
+                                    <button type="button" class="number" data-number="6" aria-label="6">6</button>
+                                </div>
+                                <div class="one23">
+                                    <button type="button" class="number" data-number="1" aria-label="1">1</button>
+                                    <button type="button" class="number" data-number="2" aria-label="2">2</button>
+                                    <button type="button" class="number" data-number="3" aria-label="3">3</button>
+                                </div>
+                                <div class="zeroDecEquals">
+                                    <button type="button" class="number" data-number="0" aria-label="0">0</button>
+                                    <button type="button" class="decimal" data-decimal="." aria-label="decimal point">.</button>
+                                    <button type="button" class="equal" data-equal="=" aria-label="calculate">=</button>
+                                </div>
+                            </div>
+                            <div class="operators">
+                                <button type="button" class="operator" data-operator="-" aria-label="subtract">-</button>
+                                <button type="button" class="operator" data-operator="/" aria-label="divide">/</button>
+                                <button type="button" class="operator" data-operator="*" aria-label="multiply">*</button>
+                                <button type="button" class="operator" data-operator="+" aria-label="add">+</button>
+                                <button type="button" class="operator" data-operator="%" aria-label="modulus">%</button>
+                            </div>
+                        </div>
+                    </fieldset>
+                </form>
+            </div>
+
+            <p class="mt-3">See the code <a href="https://codepen.io/Harp007/pen/XWGvNmd" target="_blank">on CodePen</a>.</p>
+        </div>
+    </div>
+
+</div> 
+    
+
+   
+                
+
+
+
+
+
+

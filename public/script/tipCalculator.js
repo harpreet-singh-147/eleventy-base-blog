@@ -1,10 +1,10 @@
 const tipCalculator = document.querySelector(".tip-calculator");
-const numberInputs = document.querySelectorAll('input[type="number"]');
+const numberInputs = document.querySelectorAll(".tip-input");
 const displayInputs = document.querySelectorAll("#tipAmount, #total");
 const preTipTotalInput = document.querySelector("#preTipTotal");
 const customPercentageInput = document.querySelector("#customPercentage");
-const radioInputs = document.querySelectorAll('input[type="radio"]');
-const buttons = document.querySelectorAll("button[data-action]");
+const radioInputs = document.querySelectorAll(".tip-input-radio");
+const buttons = document.querySelectorAll(".tip-btn");
 const tipAmount = document.querySelector("#tipAmount");
 const totalInput = document.querySelector("#total");
 
