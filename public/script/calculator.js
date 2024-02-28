@@ -107,6 +107,14 @@ const handleClick = (button) => {
 	}
 
 	if (operator === "-" && firstOperand && currentOperator) {
+		const matches = display.value.match(/-/g);
+		const count = matches ? matches.length : 0;
+		if (count === 3) {
+			return;
+		}
+	}
+
+	if (operator === "-" && firstOperand && currentOperator) {
 		display.value += operator;
 		return;
 	}
@@ -139,6 +147,14 @@ const handleKeyDown = (e) => {
 	if (e.key === "-" && !display.value) {
 		display.value += e.key;
 		return;
+	}
+
+	if (e.key === "-" && firstOperand && currentOperator) {
+		const matches = display.value.match(/-/g);
+		const count = matches ? matches.length : 0;
+		if (count === 3) {
+			return;
+		}
 	}
 
 	if (e.key === "-" && firstOperand && currentOperator) {
