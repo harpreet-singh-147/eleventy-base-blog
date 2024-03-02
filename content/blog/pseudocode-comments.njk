@@ -1,0 +1,452 @@
+---
+title: Pseudocode & Comments
+order: 9
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/pseudocode-comments/index.html
+---
+
+{%- css %}{% include "public/css/pseudocode-comments.css" %}{% endcss %}
+
+<div class="container container-bg">
+    <div class="row">
+        <div class="col mt-3">
+            <h2 class="h3 mb-2">What is pseudocode?</h2>
+
+            <p>Pseudocode is a draft for coding, written in plain language to outline how a program should work. It's a tool that transcends specific programming languages, allowing developers to focus on the logic of their solution rather than syntax details. This approach not only aids in understanding and solving problems more effectively but also serves as a communication bridge among developers with different coding backgrounds.</p>
+
+            <p>In essence, it's a simpler version of programming code - in plain English.</p>
+
+            <h2 class="h3 mb-2">Why use pseudocode?</h2>
+
+            <p> It lets us focus on solving the problem instead of getting stuck on details like coding rules, the way we write code, or the programming language and tools we're using.</p>
+
+            <p>Using pseudocode helps us think through problems logically, keeping our attention on the issue at hand. It's great for talking things out and sharing ideas. By planning with pseudocode, we can spot potential hiccups or questions early on. Plus, there's no downside to using it, even if you've already got the solution figured out in your mind.</p>
+
+
+            <p>We use pseudocode when we want to:</p>
+
+            <ul>
+                <li><p class="m-0">Break down problems into smaller parts.</p></li>
+                <li><p class="m-0">Sketch out solution ideas.</p></li>
+                <li><p class="m-0">Discuss different approaches.</p></li>
+                <li><p class="m-0">Test our initial thoughts and assumptions.</p></li>
+            </ul>   
+
+            <p>When writing pseudocode, you don't need to worry about strict coding rules. But, having a few easy guidelines can really help.</p>
+
+            <ul>
+                <li><p class="m-0">CAPITALISE key commands - (IF number >100 THEN do this).</p></li>
+                <li><p class="m-0">Write one statement per line.</p></li>
+                <li><p class="m-0">Use indentation and spacing.</p></li>
+                <li><p class="m-0">Be specific.</p></li>
+                <li><p class="m-0">Keep it simple - non techy.</p></li>
+            </ul> 
+
+            <h2 class="h3 mb-2">FizzBuzz</h2>
+
+            <p>FizzBuzz is a simple test used in interviews to check if someone understands basic coding. The goal is to write a program that counts from 1 to a number you choose. But, when a number is a multiple of 3, print "Fizz"; for multiples of 5, print "Buzz"; and for numbers that are both, print "FizzBuzz". It checks your ability to use loops, conditions, and simple maths in coding.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    /* 
+                    For example, up to 15, it goes: 
+                    1
+                    2
+                    Fizz
+                    4
+                    Buzz
+                    Fizz
+                    7
+                    8
+                    Fizz
+                    Buzz
+                    11
+                    Fizz
+                    13
+                    14
+                    FizzBuzz
+                    */
+                </code>
+            </pre>
+
+            <h2 class="h3 my-3">Using pseudocode to write a FizzBuzz program</h2>
+
+            <p>Let's write the FizzBuzz program in pseudocode</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // FizzBuzz Pseudocode
+                    START
+                        loop each number from 1 to 15
+                            IF the number is a multiple of both 3 and 5
+                                show "FizzBuzz"
+                            otherwise IF the number is a multiple of 3
+                                show "Fizz"
+                            otherwise IF the number is a multiple of 5
+                                show "Buzz"
+                            otherwise
+                                show the number
+                        finish the loop
+                    END
+
+                    /* 
+                    This pseudocode counts from 1 to 15 and prints:                    
+                    "FizzBuzz" for numbers that are multiples of both 3 and 5.
+                    "Fizz" for multiples of 3.
+                    "Buzz" for multiples of 5.
+                    The number itself if it's not a multiple of 3 or 5.
+                    */
+
+                    // FizzBuzz implementation                    
+                    for (let i = 1; i <= 15; i++) {
+                      if (i % 3 === 0 && i % 5 === 0) {
+                        console.log('FizzBuzz');
+                      } else if (i % 3 === 0) {
+                        console.log('Fizz');
+                      } else if (i % 5 === 0) {
+                        console.log('Buzz');
+                      } else {
+                        console.log(i);
+                      }
+                    }
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/NWmPNLL" target="_blank" aria-label="Live example on CodePen showcasing the fizzBuzz pseudocode and implementation">live example on CodePen</a>.</p>
+
+
+            <p class="mt-3">Let's explore more pseudocode and turn those ideas into real code. This approach helps us understand how to plan solutions and implement them effectively, improving both our coding and problem-solving skills.</p>
+
+            <h2 class="h3 my-2">Reading List</h2>
+
+            <p>Keep track of which books you read and which books you want to read!</p>
+
+            <p>Steps:</p>
+
+            <ol>
+                <li>Create a list of objects, where each object describes a book and has properties for the title (a string), author (a string), and already read (a boolean (true/false) indicating if you read it yet).</li>
+
+                <li>Iterate (go through) through the array of books. For each book, log the book title and book author like so: “The Hobbit by J.R.R. Tolkien”.</li>
+
+                <li>Modify the output based on whether the book’s been read: if so, log a string like ‘You already read “The Hobbit” by J.R.R. Tolkien’, and if not, log a string like ‘You still need to read “The Hobbit” by J.R.R. Tolkien.’</li>
+            </ol>
+
+            <pre>
+                <code class="language-javascript">
+                // Reading List pseudocode
+                // Step 1:
+                START
+                    CREATE bookList as an empty array
+                        ADD book object to bookList with TITLE "Book Title 1", AUTHOR "Author Name 1", ALREADY_READ True
+                        ADD book object to bookList with TITLE "Book Title 2", AUTHOR "Author Name 2", ALREADY_READ False
+                        ADD book object to bookList with TITLE "Book Title 3", AUTHOR "Author Name 3", ALREADY_READ True
+                        ... (add more books as needed)
+                END
+
+                // Step 2:
+                START
+                    loop through each book in the bookList from start to end
+                    Show each book's TITLE and AUTHOR like "TITLE by AUTHOR"
+                END
+
+                // Step 3:
+                START
+                    loop through each book in the bookList from start to end
+                        IF book's ALREADY_READ property is TRUE THEN
+                            show "You already read TITLE by AUTHOR"
+                        otherwise
+                            show "You still need to read TITLE by AUTHOR"
+                END
+
+                // Reading List implementation
+                // Step 1:
+                const bookList = []
+                // Add book objects
+                const bookList = [
+                    {
+                        title: 'To Kill a Mockingbird',
+                        author: 'Harper Lee',
+                        alreadyRead: true,
+                    },
+                    {
+                        title: '1984',
+                        author: 'George Orwell',
+                        alreadyRead: false,
+                    },
+                    {
+                        title: 'The Great Gatsby',
+                        author: 'F. Scott Fitzgerald',
+                        alreadyRead: true,
+                    },
+                    {
+                        title: 'One Hundred Years of Solitude',
+                        author: 'Gabriel García Márquez',
+                        alreadyRead: false,
+                    },
+                    {
+                        title: 'The Catcher in the Rye',
+                        author: 'J.D. Salinger',
+                        alreadyRead: true,
+                    },
+                ];
+
+                // Step 2:
+                for (let i = 0; i < bookList.length; i++) {
+                    console.log(`${bookList[i].title} by ${bookList[i].author}`);
+                }
+
+                // Step 3:
+                for (const book of bookList) {
+                    if (book.alreadyRead) {
+                    console.log(`You already read ${book.title} by ${book.author}`);
+                    } else {
+                    console.log(`You still need to read ${book.title} by ${book.author}`);
+                    }
+                }   
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/ExJaKej" target="_blank" aria-label="Live example on CodePen showcasing the reading list pseudocode and implementation">live example on CodePen</a>.</p>
+
+            <h2 class="h3 mt-3">Recipe</h2>
+
+            <p class="mt-1">Steps:</p>
+
+            <ol>
+                <li>Create a list of objects to hold information on your favourite recipes. It should have properties for:
+                    <ul>
+                        <li>recipeTitle (a string)</li>
+                        <li>servings (a number)</li>
+                        <li>ingredients (an array/list of strings)</li>
+                        <li>directions (a string)</li>                    
+                    </ul>
+                </li>
+
+                <li>List all recipes.</li>
+
+                <li>Create a loop to list all the ingredients.</li>
+            </ol>
+
+            <pre>
+                <code class="language-javascript">
+                // Recipe pseudocode
+                // Step 1:
+                START
+                    CREATE recipeList as an empty array
+                        ADD recipe object to recipeList with: 
+                            RECIPE_TITLE "Recipe Title 1" as a string, 
+                            SERVINGS as a number, 
+                            INGREDIENTS ["Ingredient 1", "Ingredient 2", ...] as an array/list of strings, 
+                            DIRECTIONS "Step-by-step directions" as a string,
+                            ... (add more recipes as needed)
+                END
+
+                // Step 2:
+                START
+                    loop through each recipe in the recipeList from start to end
+                    Show each recipe
+                END
+
+                // Step 3:
+                START
+                    loop through each recipe in the recipeList from start to end
+                    for each recipe, show a list of all the ingredients
+                END
+
+                // Recipe implementation
+                // Step 1:
+                const recipeList = []
+                // Add recipe objects
+                const recipeList = [
+                    {
+                        recipeTitle: 'Scrambled Eggs',
+                        servings: 2,
+                        ingredients: ['4 eggs', '2 tbsp milk', 'Butter', 'Salt', 'Pepper'],
+                        directions:
+                        'Melt butter in pan, beat eggs and milk, add to pan, stir until cooked.',
+                    },
+                    {
+                        recipeTitle: 'Simple Pasta',
+                        servings: 4,
+                        ingredients: [
+                        '400g pasta',
+                        '2 cloves garlic',
+                        'Olive oil',
+                        'Salt',
+                        'Parmesan cheese',
+                        ],
+                        directions:
+                        'Cook pasta, saute garlic in olive oil, mix with pasta, season, serve with cheese.',
+                    },
+                    {
+                        recipeTitle: 'Grilled Cheese Sandwich',
+                        servings: 1,
+                        ingredients: ['2 slices bread', '1 slice cheese', 'Butter'],
+                        directions:
+                        'Butter bread, place cheese between slices, grill until golden.',
+                    },
+                    {
+                        recipeTitle: 'Classic Pancakes',
+                        servings: 4,
+                        ingredients: [
+                        '1 cup flour',
+                        '1 cup milk',
+                        '1 egg',
+                        '2 tbsp sugar',
+                        'Butter',
+                        'Salt',
+                        ],
+                        directions:
+                        'Mix ingredients, pour batter in buttered pan, flip when bubbles form.',
+                    },
+                    {
+                        recipeTitle: 'Simple Salad',
+                        servings: 2,
+                        ingredients: [
+                        'Lettuce',
+                        'Tomato',
+                        'Cucumber',
+                        'Olive oil',
+                        'Lemon juice',
+                        'Salt',
+                        ],
+                        directions:
+                        'Chop veggies, mix with olive oil and lemon juice, season with salt.',
+                    },
+                ];
+
+                // Step 2:
+                for (const recipe of recipeList) {
+                    console.log(recipe);
+                }
+
+                // Step 3:
+                for (const recipe of recipeList) {
+                    console.log(recipe.ingredients);
+                }
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/poBvyZY" target="_blank" aria-label="Live example on CodePen showcasing the recipe list pseudocode and implementation">live example on CodePen</a>.</p>
+
+            <h2 class="h3 mt-3">FixStart</h2>
+
+            <h3 class="h5 my-2">Instructions:</h3>
+
+            <p class="mt-2">Create a function called fixStart. It should take a single argument, a string, and return a version where all occurrences of its first character have been replaced with ‘*’, except for the first character itself. You can assume that the string is at least one character long.</p>
+
+            <pre>
+                <code class="language-javascript">
+                // fixStart pseudocode
+                FUNCTION Called fixStart that accepts a string as a parameter
+                    Store first char of str in a variable
+                        FOR LOOP from 1 to LESS THAN OR EQUAL TO LENGTH OF str
+                            IF char at current index is equal to char at index zero
+                                THEN APPEND '*' TO variable
+                            ELSE
+                                APPEND current char TO variable         
+                            END IF
+                        END FOR
+                    RETURN variable
+                END FUNCTION
+
+                // fixStart implementation
+                function fixStart(str) {
+                    let result = str[0];
+                        for (let i = 1; i < str.length; i++) {
+                            if (str[i] === str[0]) {
+                                result += '*';
+                            } else {
+                                result += str[i];
+                            }
+                        }
+                    return result;
+                }
+
+                console.log(fixStart('babble')) // will log 'ba**le' to the console
+                console.log(fixStart('turtle')) // will log 'tur*le' to the console
+                console.log(fixStart('and')) // will log 'and' to the console
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/xxexjrm" target="_blank" aria-label="Live example on CodePen showcasing the fixStart pseudocode and implementation">live example on CodePen</a>.</p>
+
+            <h2 class="h3 mt-3">Comments</h2>
+
+            <p class="mt-2">Pseudocode is usually added as comments in existing files on websites. The way you write comments can vary between programming languages. So, while pseudocode itself doesn't follow a strict syntax, knowing how to comment in the specific language you're working with is important. Let's look at examples of how to add comments in HTML and JavaScript.</p>
+
+            <div class="code-custom-container">
+                <div class="code-custom">
+                    <p>&lt;!-- This is a single-line comment in HTML --&gt;</p>
+
+                    <p class="multi-line-comment">
+                        <span>&lt;!--</span>
+                        <span>This is a multi-line comment in HTML</span>
+                        <span>It can span multiple lines</span>
+                        <span>--&gt;</span>
+                    </p>
+
+
+                    <p>// This is a single-line comment in JavaScript</p>
+                    <p class="multi-line-comment">
+                        <span>/*</span>
+                        <span>This is a multi-line comment in JavaScript</span>
+                        <span>It can span multiple lines</span>
+                        <span>*/</span>
+                    </p>
+                </div>
+            </div>
+
+            <p class="mt-3">In JavaScript (as well as in many other programming languages), developers often use certain conventions in comments to highlight different types of notes for themselves and others who may work with the code. These conventions include marking comments with specific prefixes to denote their purpose, such as indicating something important, a warning, a question, or a task that needs to be completed (TODO). Here's how these might look:</p>
+
+            <pre>
+                <code class="language-javascript">
+                // IMPORTANT: This function handles user authentication and must be secure
+                // * This function handles user authentication and must be secure
+                function authenticateUser() {
+                    // ...
+                }
+
+                // WARNING: This feature is deprecated and will be removed in future versions
+                // ! This feature is deprecated and will be removed in future versions
+                function oldFeature() {
+                    // ...
+                }
+
+                // QUESTION: Is there a more efficient way to write this function?
+                // ? Is there a more efficient way to write this function?
+                function myFunction() {
+                    // ...
+                }
+
+                // TODO: Refactor this code to improve readability
+                function refactorMe() {
+                    // ...
+                }
+                </code>
+            </pre>
+        </div>
+    </div>
+                  
+</div>  
+
+
+       
+
+           
+
+
+
+
+                
+
+                    
+
+
+
+
+
+
+
+
