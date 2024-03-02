@@ -38,3 +38,11 @@
 .multi-line-comment span {
 	display: block;
 }
+
+.token.constant,
+.token.deleted,
+.token.property,
+.token.symbol,
+.token.tag {
+	color: #fff !important;
+}
