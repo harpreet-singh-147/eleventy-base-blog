@@ -46,6 +46,7 @@ class ItemList {
 			const removeBtn = document.createElement("button");
 			removeBtn.textContent = "Delete";
 			removeBtn.className = "delete-btn";
+			removeBtn.setAttribute("aria-label", `Delete ${item}`);
 			removeBtn.onclick = () => this.removeItem(i);
 
 			li.appendChild(removeBtn);
