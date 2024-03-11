@@ -1,0 +1,258 @@
+---
+title: Loops, Arrays and Objects
+order: 10
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/loops-arrays-objects/index.html
+---
+
+{%- css %}{% include "public/css/loops-arrays-objects.css" %}{% endcss %}
+
+<div class="container container-bg">
+    <div class="row">
+        <div class="col mt-3">
+
+            <p class="lead">Loops, arrays, and objects in JavaScript are like handy tools in a toolbox.</p>
+
+            <ul>
+                <li><p class="m-0"><strong>Loops</strong> allow us to repeat tasks without duplicating code, saving time and effort. </p></li>
+                <li><p class="m-0"><strong>Arrays</strong> enable us to store and manipulate collections of data, making it easier to organize and access information. </p></li>
+                <li><p class="m-0"><strong>Objects</strong> provide a way to structure data with key-value pairs, like a name and its corresponding value.</p></li>
+            </ul>          
+        
+            <p>Incorporating these features in JavaScript enhances code readability, scalability, and maintainability - ultimately leading to more effective and robust software development.</p>
+
+            <h2 class="h3 mb-2">Loops</h2>
+
+            <h3 class="h5 mb-2">The While Loop</h3>
+
+            <p>A while loop is like a repeating command. It keeps doing something as long as a condition is true. Once the condition becomes false, it stops.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    let count = 0;  // Start counting from 0
+
+                    // Keep looping as long as count is less than 5
+                    while (count < 5) {
+                        console.log("Count is: " + count);  // Print the current count to the console
+                        count++;  // Increase count by 1 for the next iteration
+                    }
+                </code>
+            </pre>
+
+            <p>This loop counts from 0 to 4. It starts with count set to 0. Then, as long as count is less than 5, it prints the current value of count to the console and increases count by 1. It stops when count reaches 5 because then the condition count < 5 becomes false.</p>
+
+            <p>A while loop keeps going forever if nothing stops it. That's why we need to make sure there's a condition that eventually becomes false, or else it never stops!</p>
+
+            <h3 class="h5 mb-2">The For Loop</h3>
+
+            <p>A for loop is like a countdown. You tell it where to start, where to end, and how to move each step. It keeps doing something until it reaches the end.</p>
+
+            <p>Here's a simple JavaScript loop that outputs the numbers from 1 to 12:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Start incrementing from 1, keep going as long as i is less than or equal to 12, increase i by 1 each time
+                    for (let i = 1; i <= 12; i++) {
+                        console.log("i is: " + i);  // Print the current value of i to the console
+                    }
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/KKYzwyP" target="_blank" aria-label="Live example on CodePen showcasing for loop examples">live example on CodePen</a>.</p>
+
+
+            <p>Here's a simple JavaScript loop that outputs the 7 times table from <strong>7 × 1 = 7</strong> to <strong>7 × 12 = 84</strong>:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Start incrementing from 1, keep going as long as i is less than or equal to 12, increase i by 1 each time
+                    for (let i = 1; i <= 12; i++) {
+                        // Calculate the product of 7 and i, then construct the string to display the equation
+                        // Print the current times table entry to the console
+                        console.log(`7 x ${i} = ${7 * i}`);
+                    }
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/KKYzwyP" target="_blank" aria-label="Live example on CodePen showcasing for loop examples">live example on CodePen</a>.</p>
+
+            <p>This code will print the multiplication tables for the numbers 1 through 12. Each table will be headed by a line saying, "1 times table:", followed by the results of multiplying 1 through 12. To achieve this, we will use a nested for loop.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // This outer loop starts at 1 and increments the variable 'i' up to and including 12
+                    for(let i = 1; i <= 12; i++){
+                        // For each iteration of the outer loop, print the heading for the times table of the current 'i' value
+                        console.log(`${i} times table:`);
+                        
+                        // This inner loop also starts at 1 and increments the variable 'j' up to and including 12
+                        for(let j = 1; j <= 12; j++){
+                            // For each iteration of the inner loop, calculate and print the product of 'i' and 'j'
+                            console.log(`${j} * ${i} = ${j * i}`);
+                        }
+                        // After the inner loop completes, it moves on to the next iteration of the outer loop
+                    }
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/KKYzwyP" target="_blank" aria-label="Live example on CodePen showcasing for loop examples">live example on CodePen</a>.</p>
+
+            <h2 class="h3 mb-2">Arrays</h2>
+
+            <p>Arrays are ordered lists of values. In JavaScript, an array is a single variable that stores multiple elements. Each element in an array can be accessed by its numerical index, with indexing starting at 0. Here's a simple example:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    const favouriteFoods = ['Fish and Chips', 'Pizza', 'Bangers and Mash'];
+                </code>
+            </pre>
+
+            <p>In this example, favouriteFoods is an array that stores three strings. You can access the elements like this:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    console.log(favouriteFoods[0]); // Outputs: Fish and Chips
+                    console.log(favouriteFoods[1]); // Outputs: Pizza
+                    console.log(favouriteFoods[2]); // Outputs: Bangers and Mash
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/qBwZmJL" target="_blank" aria-label="Live example on CodePen showcasing array example">live example on CodePen</a>.</p>
+
+            <h3 class="h5 mt-3">Arrays + Loops = BFFs</h3>
+
+            <p>Arrays and loops are "Best Friends Forever" in programming. This is because combining arrays with loops is a powerful and common practice in many programming tasks. Here's a simple example in JavaScript to demonstrate how they work together:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    const favouriteFoods = ['Fish and Chips', 'Pizza', 'Bangers and Mash'];
+
+                    // Use a loop to iterate over the array and print each element
+                    for (let i = 0; i < favouriteFoods.length; i++) {
+                        console.log(favouriteFoods[i]);
+                    }
+
+                    // Outputs: Fish and Chips
+                    // Outputs: Pizza
+                    // Outputs: Bangers and Mash
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/qBwZmJL" target="_blank" aria-label="Live example on CodePen showcasing array and for loop example">live example on CodePen</a>.</p>
+
+            <p>In this example, the loop goes through the favouriteFoods array and prints each element to the console. This illustrates the basic idea behind "Arrays + Loops = BFFs": loops enable you to efficiently work through each element of an array, making them an indispensable pairing in programming.</p>
+
+            <h2 class="h3 mb-2">Objects</h2>
+
+            <p>Objects in JavaScript are collections of key-value pairs where each key (also known as a property) maps to a value. This structure makes objects ideal for storing more complex data, as each property can hold values of various types, including numbers, strings, arrays, and even other objects. Here's how you can define and use an object that represents a simple pizza recipe:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    const pizzaRecipe = {
+                        title: 'Pizza',
+                        servings: 2,
+                        ingredients: ['pizza dough', 'tomato sauce', 'mozzarella cheese', 'basil'],
+                        directions: [
+                            'Preheat the oven to 475°F (245°C).',
+                            'Spread tomato sauce over the pizza dough.',
+                            'Sprinkle mozzarella cheese on top.',
+                            'Bake for 12-15 minutes.',
+                            'Garnish with basil leaves before serving.'
+                        ]
+                    };
+                </code>
+            </pre>
+
+            <p>In this example, pizzaRecipe is an object that stores information about a pizza recipe. You can access its properties using either dot notation or bracket notation:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Dot notation
+                    console.log(pizzaRecipe.title); // Outputs: Pizza
+                    // Bracket notation
+                    console.log(pizzaRecipe['servings']); // Outputs: 2
+
+                    // A loop to print the list of ingredients
+                    console.log('Ingredients:');
+                    for (let ingredient of pizzaRecipe.ingredients) {
+                        console.log(ingredient);
+                    }
+
+                    // A loop to print the directions
+                    console.log('Directions:');
+                    for (let step of pizzaRecipe.directions) {
+                        console.log(step);
+                    }
+                </code>
+            </pre>
+
+            <h3 class="h5 mt-3">Object Functions/Methods</h3>
+
+            <p>A method on an object is essentially a function that's attached to the object. It can perform actions using the object's data or modify that data. To add a function called letsCook to the pizzaRecipe object that outputs a message including the recipe title, you can define the function within the object itself. Then, you can call this new method to see the message. Here's how you would do it:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    const pizzaRecipe = {
+                        title: 'Pizza',
+                        servings: 2,
+                        ingredients: ['pizza dough', 'tomato sauce', 'mozzarella cheese', 'basil'],
+                        directions: [
+                            'Preheat the oven to 475°F (245°C).',
+                            'Spread tomato sauce over the pizza dough.',
+                            'Sprinkle mozzarella cheese on top.',
+                            'Bake for 12-15 minutes.',
+                            'Garnish with basil leaves before serving.'
+                        ],
+                        letsCook () {
+                            console.log(`I'm hungry! Let's cook ${this.title}.`);
+                        }
+                    };
+
+                    // Call the letsCook method
+                    pizzaRecipe.letsCook();
+
+                    // Outputs: "I'm hungry! Let's cook Pizza."
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/MWRyomq" target="_blank" aria-label="Live example on CodePen showcasing array and for loop example">live example on CodePen</a>.</p>
+
+            <p>When you call pizzaRecipe.letsCook();, it will output: "I'm hungry! Let's cook Pizza." The this keyword in the letsCook function refers to the pizzaRecipe object itself, allowing you to access its title property.</p>
+
+            <p>Let's integrate all the components we've discussed into a simple front-end application. This application will allow us to manage our list of favorite foods - "Fish and Chips", "Pizza", and "Bangers and Mash". The application will feature two main functionalities:</p>
+
+            <ul>
+                <li>
+                    Add New Foods: Add a new favorite to the list.
+                </li>
+                
+                <li>
+                    Remove Foods: Remove food that's no longer a favorite.
+                </li>
+            </ul>
+
+            <div class="item-form-container">
+                <form id="itemForm" aria-label="Item addition form" class="form-container">
+                    <label for="itemInput" class="item-input-label">Add new favourite food:</label>
+                    <input type="text" id="itemInput" class="item-input" placeholder="Add new favourite food" aria-required="true" aria-label="Add new favourite food" required>
+                    <button type="submit" class="item-submit-btn" aria-label="Add new favourite food to the list">Add Favourite Food</button>
+                </form>
+
+                <ul id="itemList" aria-label="Favourite food list" class="food-list"></ul>
+            </div> 
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/zYXqEgJ" target="_blank" aria-label="Live example on CodePen showcasing simple frontend implementation of discussed components in this blog post">live example on CodePen</a>.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

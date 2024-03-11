@@ -10,6 +10,7 @@ import { handlePercentageCalculator } from "./percentageForm.js";
 import { handleDrinksForm } from "./drinkOrder.js";
 import { handleCalculator } from "./calculator.js";
 import { modal } from "./modal.js";
+import { handleItemListForm } from "./foodList.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 	window.addEventListener("scroll", () => {
@@ -32,4 +33,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	handlePercentageCalculator();
 	handleDrinksForm();
 	handleCalculator();
+	handleItemListForm();
 });

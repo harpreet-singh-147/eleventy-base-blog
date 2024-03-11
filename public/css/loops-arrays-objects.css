@@ -1,0 +1,127 @@
+.container-bg {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+	margin-top: 2rem;
+	width: 100%;
+}
+
+.item-form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+	width: 80%;
+	margin: 0 auto 1rem auto;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	padding: 1rem;
+}
+
+.form-container {
+	display: flex;
+	flex-direction: column;
+	gap: 0.5rem;
+}
+
+.item-input {
+	padding: 0.7rem;
+	width: 100%;
+	border-radius: 0.25rem;
+	border: 1px solid #ccc;
+}
+
+.item-submit-btn {
+	padding: 0.6rem 1.2rem;
+	background: #0d6efd;
+	color: white;
+	border: none;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	transition: background 0.3s ease;
+}
+
+.item-submit-btn:hover {
+	background: #0056b3;
+}
+
+.food-list {
+	list-style: none;
+	padding: 0;
+	max-width: 100%;
+	word-break: break-all;
+}
+
+.food-item {
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	margin-top: 5px;
+	padding: 0.8rem;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.delete-btn {
+	padding: 0.3rem 0.6rem;
+	background: #dc3545;
+	color: #fff;
+	border: none;
+	border-radius: 0.25rem;
+	cursor: pointer;
+}
+
+.delete-btn:hover {
+	background: #c82333;
+}
+
+.token.constant,
+.token.deleted,
+.token.property,
+.token.symbol,
+.token.tag {
+	color: #fff !important;
+}
+
+@media only screen and (max-width: 1400px) {
+	.item-form-container {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 500px) {
+	.food-item {
+		flex-direction: column;
+		gap: 0.5rem;
+	}
+}
+
+@media only screen and (max-width: 375px) {
+	.item-form-container {
+		padding: 0.3rem;
+	}
+
+	.form-container {
+		align-items: center;
+	}
+
+	.item-input::placeholder {
+		text-align: center;
+	}
+
+	.item-submit-btn {
+		width: 100%;
+	}
+}
+
+@media only screen and (max-width: 300px) {
+	.item-input-label,
+	.item-input::placeholder,
+	.item-submit-btn {
+		font-size: 0.9rem;
+	}
+}
