@@ -1,0 +1,434 @@
+---
+title: Loops, Arrays and Objects continued
+order: 11
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/loops-arrays-objects-cont/index.html
+---
+
+{%- css %}{% include "public/css/loops-arrays-objects-cont.css" %}{% endcss %}
+
+<div class="container container-bg">
+    <div class="row">
+        <div class="col mt-3">
+            <h2 class="h3 mb-2">Shopping Carts</h2>
+
+
+            <p>Often when shopping at online stores you are able to see a shopping cart in the top corner of the screen. The products contained in shopping carts are often represented by javascript objects. We are going to take a look at some of the functions that could be run on a shopping cart to show total price and work out discounts.</p>
+
+            <p>We are going to be using this array of objects as a simple shopping cart example:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    const cart = [
+                        { name: 'loaf of bread', type: 'food', quantity: 1, price: 0.85 },
+                        { name: 'multipack beans', type: 'food', quantity: 1, price: 1 },
+                        { name: 'mushrooms', type: 'food', quantity: 10, price: 0.1 },
+                        { name: 'can of beer', type: 'alcohol', quantity: 4, price: 1.1 },
+                        { name: 'prosecco', type: 'alcohol', quantity: 1, price: 8.99 },
+                        { name: 'steak', type: 'food', quantity: 2, price: 3.99 },
+                        { name: 'blue cheese', type: 'food', quantity: 1, price: 2.99 },
+                        { name: 'candles', type: 'home', quantity: 3, price: 1.99 },
+                        { name: 'cheesecake', type: 'food', quantity: 1, price: 4.99 },
+                        { name: 'onions', type: 'food', quantity: 3, price: 0.4 },
+                    ];
+                </code>
+            </pre>  
+
+            <p>We need to work out the total cost of the items in the shopping cart. To do this, we will:</p>
+
+            <ol>
+                <li>Create a function that takes 1 argument (the cart array).</li>
+                <li>Create a variable inside the function called totalPrice.</li>
+                <li>Loop through each item in the array and add the value of the item to the total price, remembering to account for the quantity.</li>
+                <li>Return totalPrice.</li>
+                <li>console.log() the returned value.</li>
+            </ol>
+
+            <pre>
+                <code class="language-javascript">
+                    // Function to calculate the total price of items in the cart
+                    function getCartTotal(cart) {
+                        // Initialize totalPrice to accumulate the total cost of items
+                        let totalPrice = 0;
+
+                        // Loop through each item in the cart array
+                        for (const item of cart) {
+                            // Add the product of the item's price and quantity to totalPrice
+                            totalPrice += item.price * item.quantity;
+                        }
+
+                        // Return the calculated totalPrice
+                        return totalPrice;
+                    }
+
+                    // Call the function with the cart array and store the result in 'total'
+                    const total = getCartTotal(cart);
+                    // Output the total price to the console
+                    console.log(total);
+                </code>
+            </pre> 
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/rNbWGwO" target="_blank" aria-label="Live example on CodePen showcasing implementation of cart functions">live example on CodePen</a>.</p>
+
+           <p>We now need to work out the total price being applied when 'food' items have a 20% discount.</p> 
+
+            <ol>
+                <li>Create a function that takes 1 argument (the cart array).</li>
+                <li>Create a variable inside the function called totalPrice.</li>
+                <li>Loop through each item in the array and add the value of the item to the total price, remembering to account for the quantity.</li>
+                <li>If the item has a type of food the total item price is 20% less.</li>
+                <li>Return totalPrice.</li>
+            </ol>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define a function to calculate the total price of items in a shopping cart, including a discount for food items
+                    function getCartTotalWithDiscount(cart) {
+                        // Initialize a variable to keep track of the total price
+                        let totalPrice = 0;
+
+                        // Loop through each item in the cart array
+                        for (const item of cart) {
+                            // Check if the item is of type 'food'
+                            if (item.type === 'food') {
+                                // Calculate the total price for this item, considering its quantity
+                                const foodTotal = item.price * item.quantity;
+                                // Calculate the discount amount (20% of the food total)
+                                const discount = foodTotal * (20 / 100);
+                                // Apply the discount by subtracting it from the food total, then add the result to the running total
+                                totalPrice += foodTotal - discount;
+                            } else {
+                                // For items not of type 'food', simply add the item's price times its quantity to the running total
+                                totalPrice += item.price * item.quantity;
+                            }
+                        }
+
+                        // Return the calculated total price of all items in the cart
+                        return totalPrice;
+                    }
+
+                    // Call the function with a cart array and store the result in 'totalWithDiscount'
+                    const totalWithDiscount = getCartTotalWithDiscount(cart);
+                    // Output the calculated total price with discounts applied to the console
+                    console.log(totalWithDiscount);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/rNbWGwO" target="_blank" aria-label="Live example on CodePen showcasing implementation of cart functions">live example on CodePen</a>.</p>
+
+            <p>We will now enhance the above function by adding two additional arguments: discountAmount, which is a number representing the percentage discount to apply, and type, which is a string specifying the type of items that the discount should apply to. Instead of exclusively applying a 20% discount to items of type "food", the function will apply the specified discountAmount to items of the specified type. Furthermore, if the type argument is set to "any", the discount will be applied to all products in the cart, regardless of their type.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define a function that calculates the total price of items in a shopping cart,
+                    // applying a discount based on the type of the item and the specified discount amount.
+                    // If the type is 'any', the discount is applied to all items.
+                    function getCartTotalWithDiscountType(cart, discountAmount, type) {
+                        // Initialize a variable to keep track of the total price of all items.
+                        let totalPrice = 0;
+
+                        // Loop through each item in the list (shopping cart).
+                        for (const item of cart) {
+                            // Calculate the total price for this item, considering its quantity.
+                            let itemTotal = item.price * item.quantity;
+
+                            // Check if the current item's type matches the specified type for discount
+                            // or if the discount should be applied to all items ('any').
+                            if (item.type === type || type === 'any') {
+                                // Calculate the discount amount for this item.
+                                const discount = (itemTotal * discountAmount) / 100;
+                                // Apply the discount by subtracting it from the item's total price.
+                                itemTotal -= discount;
+                            }
+                            // Add the (discounted) total price of the current item to the running total price.
+                            totalPrice += itemTotal;
+                        }
+
+                        // Return the calculated total price of all items in the cart after discounts.
+                        return totalPrice;
+                    }
+
+                    // Example usage of the function with a shoppingList array, a 20% discount, and applying the discount to all items.
+                    const totalWithDiscountAndType = getCartTotalWithDiscountType(cart, 20, 'any');
+                    // Output the total price with discounts applied to the console.
+                    console.log(totalWithDiscountAndType);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/rNbWGwO" target="_blank" aria-label="Live example on CodePen showcasing implementation of cart functions">live example on CodePen</a>.</p>
+
+           
+            <p>We will now create a function to filter shopping cart items, selecting only those priced over £2 and under £5. The function will return a list of these items.</p> 
+
+            <ol>
+                <li>Create a function that has 3 arguments: cart, lowPrice and highPrice.</li>
+                <li>Create an empty array called items at the start of the function.</li>
+                <li>Loop through each item of the cart.</li>
+                <li>If the unit price value is higher than or equal to lowPrice and lower than or equal to highPrice, push to items.</li>
+            </ol>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define a function to filter cart items based on a price range
+                    function getitemsBetween(cart, lowPrice, highPrice) {
+                        // Create an empty array to hold items that fall within the specified price range
+                        const items = [];
+                            // Loop through each item in the provided cart array
+                            for (const item of cart) {
+                                // Check if the item's price is within the specified range
+                                if (item.price >= lowPrice && item.price <= highPrice) {
+                                // If the item's price is within the range, add it to the items array
+                                items.push(item);
+                                }
+                            }
+                        // Return the array of items that are within the price range
+                        return items;
+                    }
+                    // Use the function to get items priced between £2 and £5 from the shoppingList
+                    const getItems = getitemsBetween(cart, 2, 5);
+                    // Output the filtered list of items to the console
+                    console.log(getItems);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/rNbWGwO" target="_blank" aria-label="Live example on CodePen showcasing implementation of cart functions">live example on CodePen</a>.</p>
+
+            <p class="mt-3">We will now enhance our function by introducing an additional boolean argument named quantity. When quantity is set to true, the function will adjust its filtering criteria to consider the total price (unit price multiplied by quantity) of each item, ensuring it falls within the specified range between lowPrice and highPrice.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define a function that filters items in a shopping cart based on a price range.
+                    // The function now includes an additional 'quantity' boolean argument.
+                    function getItemsWithinPriceRange(cart, lowPrice, highPrice, quantity = false) {
+                        // Initialize an empty array to hold the items that meet the criteria.
+                        const items = [];
+                        // Loop through each item in the provided cart array.
+                        for (const item of cart) {
+                            // Determine the item's price to consider, based on the 'quantity' argument.
+                            // If 'quantity' is true, use the total price (item's price * quantity),
+                            // otherwise, use the item's unit price.
+                            const itemPrice = quantity ? item.price * item.quantity : item.price;
+
+                            // Check if the calculated item price falls within the specified price range.
+                            if (itemPrice >= lowPrice && itemPrice <= highPrice) {
+                                // If it does, add the item to the 'items' array.
+                                items.push(item);
+                            }
+                        }
+                        // Return the array of items that are within the specified price range.
+                        return items;
+                    }
+                    // Use the function to get items within a specified price range from 'shoppingList',
+                    // considering the total price based on quantity when 'quantity' is true.
+                    const getItemsWithQty = getItemsWithinPriceRange(shoppingList, 2, 5, true);
+                    // Output the filtered list of items to the console.
+                    console.log(getItemsWithQty);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/rNbWGwO" target="_blank" aria-label="Live example on CodePen showcasing implementation of cart functions">live example on CodePen</a>.</p>
+
+            <h2 class="h3 mt-4">The Basics of Mean, Median, and Mode</h2>
+
+            <ul class="my-2">
+                <li>
+                    <strong>Mean:</strong> This is the average of a set of numbers. You get it by adding all the numbers together and then dividing by the total count of those numbers. It gives you a central value that represents the entire dataset.
+                </li>         
+                <li>
+                    <strong>Median:</strong> Think of the median as the middle point of a set of numbers. To find it, you first sort the numbers from smallest to largest. If there's an odd number of values, the median is the one right in the center. If there's an even number of values, the median is the average of the two middle numbers.
+                </li>         
+                <li>
+                    <strong>Mode:</strong> The mode is the number that appears most frequently in your set of numbers. It's the value that shows up more times than any other. If no number repeats, then there's no mode for that dataset.
+                </li>         
+            </ul>
+
+            <p>We are going to be creating functions that are able to return the mode, median or mean of an array of numbers.</p>
+
+            <ol>
+                <li>Create a function that takes 1 argument (the array) which can work out the mean of the numbers provided.</li>
+                <li>Create another function which can work out the mode of the numbers provided.</li>
+                <li>Create another function which can work out the median of the numbers provided</li>
+            </ol>
+
+            <pre>
+                <code class="language-javascript">
+                    // 1. Calculate Mean
+                    // Define an array of random numbers
+                    const randomNumbers = [1, 5, 1, 2, 5, 2, 5, 2];
+
+                    // Define a function to calculate the mean (average) of an array of numbers
+                    function calculateMean(numbers) {
+                        // Use the reduce method to sum up all numbers in the array.
+                        // The reduce method iterates over each number, adding it to an accumulator.
+                        // It starts with an initial value of 0 for the accumulator.
+                        // After summing all numbers, divide the total by the length of the array to get the average.
+                        return numbers.reduce((acc, num) => acc + num, 0) / numbers.length;
+                    }
+
+                    // Call the calculateMean function with the array of random numbers and store the result in 'mean'
+                    const mean = calculateMean(randomNumbers);
+                    // Output the calculated mean to the console
+                    console.log(mean);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/eYoBeKe" target="_blank" aria-label="Live example on CodePen showcasing implementation of mean, mode and median functions">live example on CodePen</a>.</p>
+
+            <p>This code block calculates the mean, or average, of a set of numbers stored in an array called randomNumbers by summing all the numbers and then dividing by the count of numbers in the array. The calculateMean function demonstrates a practical use of the reduce method for summing values, followed by an arithmetic operation to find the average. The result is then printed to the console.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // 2. Median: Arrange the numbers in order, find the middle number.
+                    // (The middle value when the values are sorted).
+
+                    // Define an array of random numbers
+                    const randomNumbers = [1, 5, 1, 2, 5, 2, 5, 2];
+
+                    // Define a function to calculate the median of an array of numbers
+                    function calculateMedian(numbers) {
+                        // First, create a copy of the array and sort it in ascending order
+                        const sortedNumbers = [...numbers].sort((a, b) => a - b);
+                        // Calculate the middle index of the sorted array
+                        const midIndex = Math.floor(sortedNumbers.length / 2);
+
+                        // Check if the number of elements in the array is even
+                        if (sortedNumbers.length % 2 === 0) {
+                            // For an even number of elements, the median is the average of the two middle numbers.
+                            // Use the calculateMean function to find the average of the two middle numbers.
+                            return calculateMean([sortedNumbers[midIndex - 1], sortedNumbers[midIndex]]);
+                        } else {
+                            // For an odd number of elements, the median is the middle number.
+                            return sortedNumbers[midIndex];
+                        }
+                    }
+
+                    // Call the calculateMedian function with the array of random numbers and store the result in 'median'
+                    const median = calculateMedian(randomNumbers);
+                    // Output the calculated median to the console
+                    console.log(median);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/eYoBeKe" target="_blank" aria-label="Live example on CodePen showcasing implementation of mean, mode and median functions">live example on CodePen</a>.</p>
+
+            <p>This code block defines a function to calculate the median value from an array of numbers. It handles both scenarios where the array's length is even (by averaging the two middle numbers) and odd (by selecting the middle number directly). The sorting of the array is crucial to accurately determining the median, and the function cleverly reuses the calculateMean function for cases of even-numbered arrays, showcasing efficient code reuse.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // 3. Mode
+                    // Define an array of random numbers
+                    const randomNumbers = [1, 5, 1, 2, 5, 2, 5, 2];
+
+                    // Define a function to calculate the mode(s) of an array of numbers
+                    function calculateMode(numbers) {
+                        // Initialize an object to count the occurrences of each number
+                        const occurrences = {};
+                        // Initialize an array to store the mode(s)
+                        const modes = [];
+                        // Variable to track the highest number of occurrences found
+                        let maxOccurrences = 0;
+
+                        // First loop: Count the occurrences of each number
+                        for (const num of numbers) {
+                            // If the number has been seen, increment its count, otherwise set it to 1
+                            occurrences[num] = (occurrences[num] || 0) + 1;
+                        }
+
+                        // Second loop: Determine the highest number of occurrences
+                        for (const num in occurrences) {
+                            if (occurrences[num] > maxOccurrences) {
+                            // Update maxOccurrences with the new highest count
+                                maxOccurrences = occurrences[num];
+                            }
+                        }
+
+                        // Third loop: Collect all numbers that have the highest number of occurrences
+                        for (const num in occurrences) {
+                            // If the count of occurrences matches maxOccurrences, add the number to modes
+                            if (occurrences[num] === maxOccurrences) {
+                                modes.push(num);
+                            }
+                        }
+
+                        // Return a message if no modes are found or join the modes into a string
+                        return modes.length === 0 ? 'No modes found' : modes.join(', ');
+                    }
+
+                    // Call the calculateMode function with an array of numbers and store the result
+                    const mode = calculateMode(randomNumbers);
+                    // Output the mode(s) to the console
+                    console.log(mode);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/eYoBeKe" target="_blank" aria-label="Live example on CodePen showcasing implementation of mean, mode and median functions">live example on CodePen</a>.</p>
+
+            <p>This code calculates the mode(s) of an array of numbers, which are the number(s) that appear most frequently in the set. It first counts the occurrences of each number using an object, then determines the highest occurrence count. Finally, the return statement checks if the modes array is empty. If it is, the function returns a message saying "No modes found". Otherwise, it joins the modes into a string separated by commas.</p>
+
+            <p>Now, we'll create a new function that uses our existing functions to calculate either the mean, median, or mode of an array. This function takes two arguments: the array and a type specifying the calculation ('mean', 'median', 'mode'). Inside, a switch statement decides which calculation to perform based on the type. The function returns the result, checking if the input is an array and guiding the user to pick a correct calculation type.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define an array of random numbers
+                    const randomNumbers = [1, 5, 1, 2, 5, 2, 5, 2];
+
+                    // Define a function to calculate the mean, median, or mode of an array
+                    function calculateM(arr, type) {
+                        // Check if the input is an array, throw an error if not
+                        if (!Array.isArray(arr)) {
+                            throw new Error('Invalid input: Expected an array');
+                        }
+
+                        // Use a switch statement to handle different types of calculations
+                        switch (type) {
+                            case 'mean':
+                                // If the type is 'mean', call the calculateMean function with the array
+                                return calculateMean(arr);
+                            case 'median':
+                                // If the type is 'median', call the calculateMedian function with the array
+                                return calculateMedian(arr);
+                            case 'mode':
+                                // If the type is 'mode', call the calculateMode function with the array
+                                return calculateMode(arr);
+                            default:
+                                // If the type does not match 'mean', 'median', or 'mode', return a prompt message
+                                return 'Please choose type mean, median or mode';
+                        }
+                    }
+
+                    // Example calls to the calculateM function with different types and an error case
+                    console.log(calculateM(randomNumbers, 'mean')); // Calls calculateM with 'mean' to compute the average
+                    console.log(calculateM(randomNumbers, 'median')); // Calls calculateM with 'median' to find the middle value
+                    console.log(calculateM(randomNumbers, 'mode')); // Calls calculateM with 'mode' to find the most frequent number
+                    console.log(calculateM({ age: 27 }, 'mode')); // Attempts to call calculateM with a non-array input, triggers an error
+                    console.log(calculateM(randomNumbers, 'ode')); // Calls calculateM with an invalid type, triggers the default case
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/eYoBeKe" target="_blank" aria-label="Live example on CodePen showcasing implementation of mean, mode and median functions">live example on CodePen</a>.</p>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                     
+   
+
+
+
+
