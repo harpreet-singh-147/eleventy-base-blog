@@ -1,0 +1,186 @@
+---
+title: The DOM
+order: 12
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/the-dom/index.html
+---
+
+{%- css %}{% include "public/css/the-dom.css" %}{% endcss %}
+
+<div class="container container-bg">
+    <div class="row">
+        <div class="col mt-3">
+            <p>The Document Object Model (DOM) is a programming interface for web documents. It represents the page so that programs can change the document structure, style, and content. The DOM represents the document as nodes and objects; this way, programming languages can interact with the page. It acts as a bridge between the web content and the programming language, enabling dynamic content manipulation.</p>
+
+            <p>Let's explore the DOM's capabilities using this form:</p>
+
+            <pre>
+                <code class="language-markup">
+                    &lt;form id="todo"&gt;
+                        &lt;label for="title"&gt;Title&lt;/label&gt;
+                        &lt;input type="text" name="title" id="title" required&gt;
+                        &lt;label for="priority"&gt;Priority&lt;/label&gt;
+                        &lt;select name="priority" id="priority"&gt;
+                            &lt;option value="low"&gt;Low&lt;/option&gt;
+                            &lt;option value="medium" selected&gt;Medium&lt;/option&gt;
+                            &lt;option value="high"&gt;High&lt;/option&gt;
+                        &lt;/select&gt;
+                        &lt;button&gt;Add&lt;/button&gt;
+                    &lt;/form&gt;
+
+                    &lt;!-- This is an empty container for use by javascript. --&gt;
+                    &lt;ul id="todo-pane"&gt;&lt;/ul&gt;
+                </code>
+            </pre>
+
+            <p class="mt-3">We can grab hold of each part of the form and save it in variables. This lets us manipulate them dynamically, whether it's changing the title text, selecting a different priority level, or adding extra features triggered by clicking the "Add" button.</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Get the form by ID from the forms collection.
+                    const form = document.getElementById('todo');
+                    // Get the todo pane (the 'ul' element).
+                    const todoPane = document.getElementById('todo-pane');
+                    // Get the text input for the title.
+                    const titleInput = document.getElementById('title');
+                    // Get the priority select element.
+                    const prioritySelect = document.getElementById('priority');
+
+                    console.log('form:', form);
+                    console.log('todoPane:', todoPane);
+                    console.log('titleInput:', titleInput);
+                    console.log('prioritySelect:', prioritySelect);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/yLroove" target="_blank" aria-label="Live example on CodePen showcasing get form elements example">live example on CodePen</a>.</p>
+
+            <p>We can now manipulate the DOM using the above variables:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define a function to create a new element with a given title.
+                    function createElement(title) {
+                        // Create a text node containing the provided title.
+                        const newText = document.createTextNode(title);
+                        
+                        // Create a new list item element to hold the text.
+                        const li = document.createElement('li');
+                        
+                        // Add the text node to the list item.
+                        li.appendChild(newText);
+                        
+                        // Return the newly created element.
+                        return li;
+                    }
+
+                    // Call the createElement function with a title and store the result.
+                    const newElement = createElement('This is the title');
+
+                    // Insert the new element into the unordered list with the id 'todo-pane'.
+                    todoPane.appendChild(newElement);
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/JjVyyxp" target="_blank" aria-label="Live example on CodePen showcasing DOM manipulation">live example on CodePen</a>.</p>
+
+            <p class="mt-3">With this JavaScript code, we're dynamically creating an element (a list item) containing a title text. Then, we're inserting this element into a specific part of the HTML document, represented by the unordered list with the id 'todo-pane'. This way, we're using the power of JavaScript to manipulate the DOM and add content dynamically to our web page.</p>
+
+            <p>We can also utilize DOM manipulation to remove elements:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    const removeItem = document.querySelector('.todo').remove();
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/oNOeGvP" target="_blank" aria-label="Live example on CodePen showcasing element removal">live example on CodePen</a>.</p>
+
+            <p>With this snippet, we're targeting an element with the class 'todo', and swiftly removing it from the DOM. It's a concise way to dynamically eliminate specific elements from our web page.</p>
+
+            <p>Here, let's explore enhancing form functionality through event handling:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    const form = document.getElementById('todo');
+
+                    // We're adding an event listener to the form for the 'submit' event.
+                    // When the form is submitted, it triggers an anonymous function that displays an alert.
+                    form.addEventListener('submit', () =>  alert('Form submitted'));
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/yLrozXo" target="_blank" aria-label="Live example on CodePen showcasing event handling">live example on CodePen</a>.</p>
+
+            <p>Let's explore some advanced DOM manipulation techniques:</p>
+
+            <pre>
+                <code class="language-javascript">
+                    // Get the form element by its ID.
+                    const form = document.getElementById('todo');
+
+                    // 1. Prevent the default form submission behavior.
+                    form.addEventListener('submit', (e) => {
+                    // By calling preventDefault(), we prevent the form from reloading the page.
+                        e.preventDefault();
+                    });
+
+                    // 4. Add a click listener to each list item.
+                    // When clicked, it removes the clicked todo item from the DOM.
+                    const todos = document.querySelectorAll('.todo');
+
+                    todos.forEach(todo => {
+                        todo.addEventListener('click', (e) => {
+                            // We access the clicked todo item using event.currentTarget,
+                            // then remove it from the DOM using remove().
+                            e.currentTarget.remove();
+                        });
+                    });
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/NWmvaVv" target="_blank" aria-label="Live example on CodePen showcasing event prevent default and click events">live example on CodePen</a>.</p>
+
+            <p>In this JavaScript snippet, we're employing event listeners to refine our form behavior and interaction with todo list items.</p>
+
+            <p>Firstly, we prevent the default form submission behavior using preventDefault(). This ensures that when the form is submitted, the page won't reload.</p>
+
+            <p>Then, we iterate through each todo list item using querySelectorAll('.todo'), attaching a click listener to each one. When a todo item is clicked, the listener removes it from the DOM using remove(). This way, users can interact with the todo list dynamically, removing items as needed, resulting in a more engaging and efficient user experience.</p>
+
+            <p>Now, let's put it all together!</p>
+
+            <div class="todos-container">
+                <h1>Todo</h1>
+                
+                <form id="todo">
+                    <label for="title">Title</label>
+                    <input type="text" name="title" id="title" required>
+                    <label for="priority">Priority</label>
+                    <select name="priority" id="priority">
+                        <option value="low">Low</option>
+                        <option value="medium" selected>Medium</option>
+                        <option value="high">High</option>
+                    </select>
+                    <button aria-label="Add new todo item">Add</button>
+                </form>
+
+                <ul id="todo-pane"></ul>
+            </div>
+
+            <p>See the <a href="https://codepen.io/Harp007/pen/NWmvaVv" target="_blank" aria-label="Live example on CodePen showcasing all examples working together">code on CodePen</a>.</p>
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
