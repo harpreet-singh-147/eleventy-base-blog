@@ -1,0 +1,70 @@
+.todos-container {
+	width: 100%;
+	max-width: 40rem;
+	margin: auto;
+}
+
+#todo {
+	border: solid thin darkgray;
+	padding: 1.5em;
+	border-radius: 0.25em;
+	display: flex;
+	flex-direction: column;
+	gap: 1rem;
+}
+
+#todo-pane {
+	padding: 0;
+}
+
+#todo-pane li {
+	display: flex;
+	max-width: 20em;
+	align-items: center;
+	justify-content: space-between;
+	background-color: lightyellow;
+	border: thin orange solid;
+	border-radius: 0.25em;
+	padding: 0.5em;
+	margin: 1em 0;
+	cursor: pointer;
+}
+
+#todo input[type="text"],
+#todo select {
+	border: 1px solid #ccc;
+	border-radius: 0.25rem;
+	padding: 0.6rem;
+	margin-bottom: 1rem;
+	font-size: 1rem;
+}
+
+.just-created {
+	box-shadow: 0 0 20px 1px orange;
+}
+
+#todo-pane li img {
+	width: 1em;
+}
+
+#todo button {
+	background-color: #0d6efd;
+	color: white;
+	padding: 0.6rem;
+	border: none;
+	border-radius: 0.25rem;
+	cursor: pointer;
+	font-size: 1rem;
+}
+
+#todo button:hover {
+	background-color: #0056b3;
+}
+
+.token.constant,
+.token.deleted,
+.token.property,
+.token.symbol,
+.token.tag {
+	color: #fff !important;
+}
