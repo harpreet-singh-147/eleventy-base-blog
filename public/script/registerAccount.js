@@ -9,6 +9,7 @@ import {
 	displayResponseError,
 } from "./handleFormErrors.js";
 import { loadingSpinner } from "./selectors.js";
+import { displayMessageCb } from "./utils.js";
 
 const registerForm = document.querySelector("#register");
 export const inputs = document.querySelectorAll(".register__form-input");
@@ -86,41 +87,29 @@ const handleSubmit = (e) => {
 	}
 
 	if (isFormValid) {
-		loadingSpinner.style.display = "flex";
-		fetch("/.netlify/functions/register", {
-			method: "POST",
-			headers: {
-				"Content-Type": "application/json",
-			},
-			body: JSON.stringify(formData),
-		})
-			.then(async (response) => {
-				if (!response.ok) {
-					const data = await response.json();
-					throw new Error(data.message || "An unknown error occurred");
-				}
-				return response.json();
-			})
-			.then((data) => {
-				allValidInputs.length = 0;
-				inputs.forEach((input, i) => {
-					input.value = "";
-					input.classList.remove("has-content");
-					input.setAttribute("aria-invalid", "false");
-					successIcons[i].classList.remove("show-success-icon");
-				});
-				termsCheckBox.checked = false;
-				registerFormBtn.classList.remove("register-success");
-				termsCheckBoxSuccessIcon.classList.remove("show-success-icon-cb");
-				termsCheckBox.setAttribute("aria-invalid", "false");
-				window.location.href = "/";
-				loadingSpinner.style.display = "";
-			})
-			.catch((error) => {
-				loadingSpinner.style.display = "";
-				displayResponseError(error.message);
-				console.error("Error:", error);
+		displayMessageCb(
+			`This is data is not going anywhere! ${JSON.stringify(formData)}`,
+			(closeFn) => {
+				setTimeout(() => {
+					closeFn();
+				}, 2000);
+			}
+		);
+
+		setTimeout(() => {
+			allValidInputs.length = 0;
+			inputs.forEach((input, i) => {
+				input.value = "";
+				input.classList.remove("has-content");
+				input.setAttribute("aria-invalid", "false");
+				successIcons[i].classList.remove("show-success-icon");
 			});
+			termsCheckBox.checked = false;
+			registerFormBtn.classList.remove("register-success");
+			termsCheckBoxSuccessIcon.classList.remove("show-success-icon-cb");
+			termsCheckBox.setAttribute("aria-invalid", "false");
+			window.location.href = "/";
+		}, 2000);
 	}
 };
 
