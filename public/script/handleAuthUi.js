@@ -80,7 +80,7 @@ export const handleAuthUi = () => {
 				}
 			}
 		})
-		.catch((error) => {
-			displayResponseError(error.message);
+		.catch((e) => {
+			displayResponseError(e.message);
 		});
 };

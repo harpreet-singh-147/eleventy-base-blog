@@ -60,20 +60,6 @@ const filterAnimals = () => {
 	showNoResultText(imagesCount);
 };
 
-searchInput.addEventListener("keyup", () => {
-	if (!searchInput.value.trim()) {
-		return;
-	}
-	filterAnimals();
-});
-
-searchInput.addEventListener("input", () => {
-	if (!searchInput.value) {
-		filterAnimals();
-		return;
-	}
-});
-
 animalRadios.forEach((radio) =>
 	radio.addEventListener("change", filterAnimals)
 );
@@ -82,5 +68,18 @@ animalForm.addEventListener("submit", (e) => e.preventDefault());
 export const handleAnimalFilter = () => {
 	if (animalForm) {
 		animalForm.addEventListener("submit", (e) => e.preventDefault());
+		searchInput.addEventListener("keyup", () => {
+			if (!searchInput.value.trim()) {
+				return;
+			}
+			filterAnimals();
+		});
+
+		searchInput.addEventListener("input", () => {
+			if (!searchInput.value) {
+				filterAnimals();
+				return;
+			}
+		});
 	}
 };
