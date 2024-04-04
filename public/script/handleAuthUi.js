@@ -60,28 +60,27 @@ const handleLogout = () => {
 };
 
 export const handleAuthUi = () => {
-	fetch("/.netlify/functions/authStatus", {
-		credentials: "include",
-	})
-		.then((response) => {
-			if (!response.ok) {
-				throw new Error("An unknown error occurred");
-			}
-			return response.json();
-		})
-		.then((data) => {
-			if (data.authenticated) {
-				adjustUiForAuthenticatedUser(data.user.firstName);
-
-				return;
-			} else {
-				adjustUiForGuestUser();
-				if (sessionStorage.getItem("isLoggedIn") === "true") {
-					handleLogout();
-				}
-			}
-		})
-		.catch((error) => {
-			displayResponseError(error.message);
-		});
+	// fetch("/.netlify/functions/authStatus", {
+	// 	credentials: "include",
+	// })
+	// 	.then((response) => {
+	// 		if (!response.ok) {
+	// 			throw new Error("An unknown error occurred");
+	// 		}
+	// 		return response.json();
+	// 	})
+	// 	.then((data) => {
+	// 		if (data.authenticated) {
+	// 			adjustUiForAuthenticatedUser(data.user.firstName);
+	// 			return;
+	// 		} else {
+	// 			adjustUiForGuestUser();
+	// 			if (sessionStorage.getItem("isLoggedIn") === "true") {
+	// 				handleLogout();
+	// 			}
+	// 		}
+	// 	})
+	// 	.catch((error) => {
+	// 		displayResponseError(error.message);
+	// 	});
 };

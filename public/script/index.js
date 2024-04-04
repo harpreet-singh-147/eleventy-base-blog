@@ -12,6 +12,7 @@ import { handleCalculator } from "./calculator.js";
 import { modal } from "./modal.js";
 import { handleItemListForm } from "./foodList.js";
 import { handleTodoForm } from "./theDom.js";
+import { handleAnimalFilter } from "./the-dom-part-3.js";
 
 document.addEventListener("DOMContentLoaded", () => {
 	window.addEventListener("scroll", () => {
@@ -36,4 +37,5 @@ document.addEventListener("DOMContentLoaded", () => {
 	handleCalculator();
 	handleItemListForm();
 	handleTodoForm();
+	handleAnimalFilter();
 });

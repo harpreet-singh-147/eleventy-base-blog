@@ -1,0 +1,144 @@
+.container-bg {
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	min-width: 0;
+	word-wrap: break-word;
+	background-color: #fff;
+	background-clip: border-box;
+	border: 1px solid rgba(0, 0, 0, 0.125);
+	border-radius: 0.25rem;
+	margin-top: 2rem;
+	width: 100%;
+}
+
+.animal__filter-container {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.animal-form {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.animal-form__fieldset {
+	border: 1px solid #e2e8f0;
+	padding: 0.5rem 1.5rem;
+	border-radius: 0.25rem;
+}
+
+.animal-form__legend {
+	font-weight: 600;
+	font-size: 1rem;
+	color: #1f2937;
+	text-align: center;
+	font-size: initial;
+	float: initial;
+	width: initial;
+	padding: initial;
+	margin-bottom: initial;
+	line-height: initial;
+}
+
+.animal-form__radio-group {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: 0.8rem;
+}
+
+.animal-form__radio-container {
+	display: flex;
+	align-items: center;
+	gap: 0.2rem;
+}
+
+.animal-form__radio-input {
+	cursor: pointer;
+	margin: 0;
+	padding: 0;
+}
+
+.animal-form__label,
+.animal-form__label--search {
+	color: #4b5563;
+	cursor: pointer;
+}
+
+.animal-form__search-container {
+	margin-top: 1rem;
+	margin-bottom: 1.25rem;
+}
+
+.animal-form__search-input {
+	box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+	border: 1px solid #e5e7eb;
+	border-radius: 0.25rem;
+	width: 100%;
+	padding: 0.5rem 0.75rem;
+	color: #374151;
+	margin-top: 0.25rem;
+	outline: none;
+	transition: all 0.1s ease;
+}
+
+.animal-form__search-input:focus {
+	border-color: #6b7280;
+	box-shadow: 0 0 0 1px #6b7280;
+}
+
+.animal__filter-text {
+	text-align: center;
+}
+
+.animal__no-result {
+	text-align: center;
+	display: none;
+}
+
+.animals-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	gap: 1rem;
+	width: 100%;
+	margin-bottom: 1rem;
+}
+
+.animals-container img {
+	width: 100%;
+	aspect-ratio: 16/ 9;
+	object-fit: cover;
+}
+
+.hidden {
+	display: none;
+}
+
+/* @media only screen and (max-width: 1200px) {
+	.animals-container {
+		width: 95%;
+	}
+} */
+
+@media only screen and (max-width: 970px) {
+	.animals-container {
+		grid-template-columns: repeat(2, 1fr);
+	}
+}
+
+@media only screen and (max-width: 550px) {
+	.animals-container {
+		grid-template-columns: repeat(1, 1fr);
+	}
+}
+
+@media only screen and (max-width: 450px) {
+	.animal-form__radio-group {
+		flex-wrap: wrap;
+	}
+}
