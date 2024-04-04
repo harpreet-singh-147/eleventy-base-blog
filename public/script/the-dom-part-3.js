@@ -60,14 +60,12 @@ const filterAnimals = () => {
 	showNoResultText(imagesCount);
 };
 
-animalRadios.forEach((radio) =>
-	radio.addEventListener("change", filterAnimals)
-);
-animalForm.addEventListener("submit", (e) => e.preventDefault());
-
 export const handleAnimalFilter = () => {
 	if (animalForm) {
 		animalForm.addEventListener("submit", (e) => e.preventDefault());
+		animalRadios.forEach((radio) =>
+			radio.addEventListener("change", filterAnimals)
+		);
 		searchInput.addEventListener("keyup", () => {
 			if (!searchInput.value.trim()) {
 				return;
