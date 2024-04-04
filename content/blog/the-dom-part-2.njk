@@ -1,0 +1,378 @@
+---
+title: The DOM part 2
+order: 13
+tags: ["posts"]
+layout: "layouts/post.njk"
+permalink: /blog/the-dom-part-2/index.html
+---
+
+{%- css %}{% include "public/css/the-dom-part-2.css" %}{% endcss %}
+
+
+<div class="container container-bg">
+    <div class="row">
+        <div class="col mt-3">
+        
+            <p>We will now build a webpage to show off our favorite animals, complete with filters to easily find what we're looking for. Say we have bears, dolphins, ducks, and frogs, clicking the bear filter will hide the rest, only showing bears.</p> 
+
+            <p>There's also a search box. Type in "dolphin water," and only images with dolphin and water in their alt attribute, like "Dolphin on Body of Water" will show up.</p> 
+
+            <p>You can also use both filters together. Search "green" and click the frog filter, and you'll only see the "green frog" images.</p> 
+
+            <h2 class="h3 mb-2">Step 1</h2>
+
+            <ul>
+                <li><p class="m-0">Create a form with a search input, 4 radio buttons (one for each animal) and one more labelled Show All” that is checked by default.</p></li>
+                <li><p class="m-0">Set the value on each radio button, eg. value="frog". For the show all radio button: value="all"</p></li>
+            </ul>
+
+            <pre>
+                <code class="language-markup">
+                    &lt;h1&gt;Animal Filtering&lt;/h1&gt;
+                    &lt;form id="filterAnimals" class="animal-form"&gt;
+                        &lt;fieldset class="animal-form__fieldset"&gt;
+                            &lt;legend class="animal-form__legend"&gt;Animal Type&lt;/legend&gt;
+                            &lt;div class="animal-form__radio-group"&gt;
+                                &lt;div class="animal-form__radio-container"&gt;
+                                    &lt;input type="radio" name="animalName" id="bear" value="bear" class="animal-form__radio-input"&gt;
+                                    &lt;label for="bear" class="animal-form__label"&gt;Bear&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class="animal-form__radio-container"&gt;
+                                    &lt;input type="radio" name="animalName" id="dolphin" value="dolphin" class="animal-form__radio-input"&gt;
+                                    &lt;label for="dolphin" class="animal-form__label"&gt;Dolphin&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class="animal-form__radio-container"&gt;
+                                    &lt;input type="radio" name="animalName" id="duck" value="duck" class="animal-form__radio-input"&gt;
+                                    &lt;label for="duck" class="animal-form__label"&gt;Duck&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class="animal-form__radio-container"&gt;
+                                    &lt;input type="radio" name="animalName" id="frog" value="frog" class="animal-form__radio-input"&gt;
+                                    &lt;label for="frog" class="animal-form__label"&gt;Frog&lt;/label&gt;
+                                &lt;/div&gt;
+                                &lt;div class="animal-form__radio-container"&gt;
+                                    &lt;input type="radio" name="animalName" id="all" value="all" class="animal-form__radio-input" checked&gt;
+                                    &lt;label for="all" class="animal-form__label"&gt;Show All&lt;/label&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/fieldset&gt;
+                        &lt;div class="animal-form__search-container"&gt;
+                            &lt;label for="search" class="animal-form__label--search"&gt;Search&lt;/label&gt;
+                            &lt;input type="search" name="searchAnimals" id="searchAnimals" class="animal-form__search-input"&gt;
+                        &lt;/div&gt;
+                    &lt;/form&gt;
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/KKYZbmB" target="_blank" aria-label="Live example on CodePen showcasing the animal filter form implementation">live example on CodePen</a>.</p>
+
+
+            <h2 class="h3 my-2">Step 2</h2>
+
+            <ul>
+                <li><p class="m-0">Add 16 images from <a href="https://www.pexels.com" target="_blank" rel="noopener noreferrer">pexels.com</a> in a random order. For each image, include a data-animal attribute (data- attributes are a way to store extra information on HTML elements, used for storing custom data private to the page or application) to specify the type of animal it represents, for example, data-animal="frog".</p></li>
+                <li><p class="m-0">Add an imageFilter class to each image.</p></li>
+            </ul>
+
+            <pre>
+                <code class="language-markup">
+                    &lt;section class="animals-container"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/158109/kodiak-brown-bear-adult-portrait-wildlife-158109.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Brown Bear on a Body of Water" data-animal="bear"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/35435/pexels-photo.jpg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Brown Bear" data-animal="bear"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/1068554/pexels-photo-1068554.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Close-Up Photography of Grizzly Bear" data-animal="bear"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/598966/pexels-photo-598966.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Grayscale Photo of a Polar Bear Cub " data-animal="bear"&gt;
+
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/64219/dolphin-marine-mammals-water-sea-64219.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Cute Dolphine Underwater" data-animal="dolphin"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/1986374/pexels-photo-1986374.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Gray Dolphin on Body of Water" data-animal="dolphin"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/225869/pexels-photo-225869.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Adorable Dolphins on Surface of Water" data-animal="dolphin"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/162079/dolphin-sea-marine-mammals-wise-162079.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Dolphin's Head in the Surface" data-animal="dolphin"&gt;
+
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/162140/duckling-birds-yellow-fluffy-162140.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Duckling on Black Soil during Daytime" data-animal="duck"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/660266/pexels-photo-660266.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Depth of Field Photography of Mallard Duck on Body of Water" data-animal="duck"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/209035/pexels-photo-209035.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Brown White and Blue Duck" data-animal="duck"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/833687/pexels-photo-833687.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Green and Gray Mallard Duck" data-animal="duck"&gt;
+
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/70083/frog-macro-amphibian-green-70083.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Green Frog" data-animal="frog"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/76957/tree-frog-frog-red-eyed-amphibian-76957.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Green Blue Yellow and Orange Frog on Green Leaf" data-animal="frog"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/45863/frog-butterfly-pond-mirroring-45863.jpeg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Macro Photography of Green Frog" data-animal="frog"&gt;
+                        &lt;img class="imageFilter" loading="lazy"
+                            src="https://images.pexels.com/photos/35669/hyla-meridionalis-the-frog-amphibians.jpg?auto=compress&amp;amp;cs=tinysrgb&amp;amp;h=350"
+                            alt="Shallow Focus Photography of Green Frog" data-animal="frog"&gt;
+                    &lt;/section&gt;
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/rNbpodE" target="_blank" aria-label="Live example on CodePen showcasing adding images from pexels implementation">live example on CodePen</a>.</p>
+
+            <h2 class="h3 my-2">Step 3 - Using JavaScript</h2>
+
+            <ul>
+                <li><p class="m-0">Add a variable animalRadios that holds all the animal radio buttons.</p></li>
+                <li><p class="m-0">Add a variable images that holds all images with the imageFilter class.</p></li>
+                <li><p class="m-0">Loop through each animal radio button and add a change event listener that calls a function filterAnimals.</p></li>
+                <li><p class="m-0">Add a class of hidden in CSS with display: none</p></li>
+            </ul>
+
+            <pre>
+                <code class="language-javascript">
+                    // Add a animalRadios variable.
+                    const animalRadios = document.querySelectorAll('.animal-form input[name="animalName"]');
+                    // Add a images variable.
+                    const images = document.querySelectorAll('.imageFilter');
+                    // Add change event listener to radio buttons.
+                    animalRadios.forEach(radio => radio.addEventListener('change', filterAnimals));
+                </code>
+                <br/>
+                <code class="language-css">
+                    /* Add hidden class to css */
+                    .hidden {
+                        display: none;
+                    }
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/YzMYddV" target="_blank" aria-label="Live example on CodePen showcasing initial javascript and css implementation">live example on CodePen</a>.</p>
+
+            <h2 class="h3 my-2">Step 4</h2>
+
+            <ul>
+                <li><p class="m-0">In the filterAnimals function loop through each item in the images array.</p></li>
+                <li><p class="m-0">If the selected animal is all remove the class hidden from the image.</p></li>
+                <li><p class="m-0">If the selected animal is frog, add the hidden class if the image isn’t a frog; otherwise remove it.</p></li>
+            </ul>
+
+            <pre>
+                <code class="language-javascript">
+                    // Define a function called filterAnimals
+                        const filterAnimals = () => {
+                        // Select the currently selected animal from the radio buttons
+                        const selectedAnimal = document.querySelector(
+                            '.animal-form input[name="animalName"]:checked'
+                        ).value;
+
+                    // Loop through each image element
+                        images.forEach(img => {
+                            // Check if the selected animal matches the data-animal attribute of the current image
+                            const animalMatch = selectedAnimal === 'all' || img.dataset.animal === selectedAnimal;
+
+                            // If the animal matches, add the 'hidden' class to the image, then remove it after 50 milliseconds
+                            if (animalMatch) {
+                                img.classList.add('hidden');
+                                setTimeout(() => {
+                                    img.classList.remove('hidden');
+                                }, 50);
+                            } 
+                            // If the animal does not match, simply add the 'hidden' class to the image
+                            else {
+                                img.classList.add('hidden');
+                            }
+                        });
+                    };
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/PogEVYe" target="_blank" aria-label="Live example on CodePen showcasing javascript implementation">live example on CodePen</a>.</p>
+
+            <h2 class="h3 my-2">Step 5</h2>
+
+            <ul>
+                <li><p class="m-0">Add a keyup event listener to the search element.</p></li>
+                <li><p class="m-0">The text entered should be used to filter based on the image alt attribute.</p></li>
+                <li><p class="m-0">The selected animal radio button should also be taken into account.</p></li>
+                <li><p class="m-0">Pressing enter shouldn’t submit the form.</p></li>
+            </ul>
+
+            <pre>
+                <code class="language-javascript">
+                    // Add search input variable
+                    const searchInput = document.querySelector('#searchAnimals');
+                    // Add form variable
+                    const animalForm = document.querySelector('.animal-form');
+                    // Define a function called filterAnimals
+                    const filterAnimals = () => {
+                    // Get the search term from the search input, remove any leading or trailing whitespace, and convert to lowercase
+                    const searchTerm = searchInput.value.trim().toLowerCase();
+                    
+                    // Get the value of the currently selected animal from the radio buttons
+                    const selectedAnimal = document.querySelector(
+                        '.animal-form input[name="animalName"]:checked'
+                    ).value;
+
+                    // Loop through each image element
+                        images.forEach(img => {
+                            // Get the alt text of the current image, convert to lowercase
+                            const altText = img.alt.toLowerCase();
+                            
+                            // Split the search term into an array of individual terms
+                            const searchTerms = searchTerm.split(' ');
+                            
+                            // Check if every term in the search term array is included in the alt text of the image
+                            const searchMatch = searchTerms.every(term => altText.includes(term));
+
+                            // Check if the selected animal matches the data-animal attribute of the current image
+                            const animalMatch =
+                            selectedAnimal === 'all' || img.dataset.animal === selectedAnimal;
+
+                            // If both the search term and the selected animal match, add the 'hidden' class to the image and remove it after 50 milliseconds
+                            if (searchMatch && animalMatch) {
+                                img.classList.add('hidden');
+                                setTimeout(() => {
+                                    img.classList.remove('hidden');
+                                }, 50);
+                            } 
+                            // If either the search term or the selected animal does not match, add the 'hidden' class to the image
+                            else {
+                                img.classList.add('hidden');
+                            }
+                        });
+                    };
+
+                    
+                    // Add key up event listener to search element.
+                    searchInput.addEventListener('keyup', () => {
+                        if (!searchInput.value.trim()) {
+                            return;
+                        }
+                        filterAnimals();
+                    });
+
+                    //  Prevent form submission
+                    animalForm.addEventListener('submit', e => e.preventDefault());
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/gOyoqPK" target="_blank" aria-label="Live example on CodePen showcasing javascript implementation">live example on CodePen</a>.</p>
+
+            <h2 class="h3 my-2">Step 6</h2>
+
+            <ul>
+                <li><p class="m-0">Add some helper text above the images that says something like “showing animals that match the search “{searchString}” and the filter "{filter}"</p></li>
+                <li><p class="m-0">Inform the user that there are no results when nothing matches</p></li>
+            </ul>
+
+            <pre>
+                <code class="language-markup">
+                    &lt;!-- Add elements to display helper text above image container--&gt;
+                    &lt;p class="animal__filter-text"&gt;&lt;/p&gt;
+                    &lt;p class="animal__no-result"&gt;No results&lt;/p&gt;
+                </code>
+                <br/>
+                <br/>
+                <code class="language-javascript">
+                    // Get elements
+                    const filterTextElement = document.querySelector('.animal__filter-text');
+                    const noResultText = document.querySelector('.animal__no-result');
+                   // Define a function to generate the helper text based on search term and selected animal filter
+                    const showHelperText = (searchTerm, selectedAnimal) => {
+                    let filterText = 'Showing all animals'; // Default text for showing all animals
+                    
+                    // Update text based on search term and selected animal filter
+                    if (searchTerm && selectedAnimal !== 'all') {
+                        filterText += ` that match the search "${searchTerm}" and the filter ${selectedAnimal}`;
+                    } else if (searchTerm) {
+                        filterText += ` that match the search "${searchTerm}"`;
+                    } else if (selectedAnimal !== 'all') {
+                        filterText += ` with the filter ${selectedAnimal}`;
+                    }
+
+                    return filterText; // Return the generated filter text
+                    };
+
+                    // Define a function to display "No results" text if imagesCount is 0, otherwise hide it
+                    const showNoResultText = imagesCount => {
+                        if (imagesCount === 0) {
+                            noResultText.style.display = 'block'; // Display "No results" text
+                        } else {
+                            noResultText.style.display = ''; // Hide "No results" text
+                        }
+                    };
+
+                    // Define a function to filter animals based on search term and selected animal filter
+                    const filterAnimals = () => {
+                    const searchTerm = searchInput.value.trim().toLowerCase(); // Get the search term from the search input
+                    const selectedAnimal = document.querySelector(
+                        '.animal-form input[name="animalName"]:checked'
+                    ).value; // Get the value of the currently selected animal filter
+
+                    let imagesCount = 0; // Initialize counter for matching images
+
+                    filterTextElement.textContent = showHelperText(searchTerm, selectedAnimal); // Display helper text
+
+                    // Loop through each image element
+                    images.forEach(img => {
+                    const altText = img.alt.toLowerCase(); // Get the alt text of the image and convert to lowercase
+                    const searchTerms = searchTerm.split(' '); // Split the search term into an array of individual terms
+                    const searchMatch = searchTerms.every(term => altText.includes(term)); // Check if all search terms are included in the alt text
+
+                    const animalMatch =
+                        selectedAnimal === 'all' || img.dataset.animal === selectedAnimal; // Check if the image matches the selected animal filter
+
+                    // If both search term and animal filter match, add the 'hidden' class to the image 
+                    // and increment imagesCount to keep track of matched images
+                        if (searchMatch && animalMatch) {
+                            img.classList.add('hidden');
+                            
+                            // Use setTimeout to briefly hide the image before removing the 'hidden' class 
+                            // This is done to trigger the CSS transition for smoother visibility change
+                            setTimeout(() => {
+                            img.classList.remove('hidden');
+                            }, 50);
+                            
+                            // Increment imagesCount to keep track of matched images
+                            imagesCount++;
+                        } else {
+                            img.classList.add('hidden'); // Otherwise, add the 'hidden' class to the image
+                        }
+                    });
+
+
+                        showNoResultText(imagesCount); // Display "No results" text if imagesCount is 0
+                    };
+
+                </code>
+            </pre>
+
+            <p>Check out this <a href="https://codepen.io/Harp007/pen/vYMpbWj" target="_blank" aria-label="Live example on CodePen showcasing javascript implementation">live example on CodePen</a>.</p>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+
+
+
+
+

@@ -72,7 +72,6 @@ export const handleAuthUi = () => {
 		.then((data) => {
 			if (data.authenticated) {
 				adjustUiForAuthenticatedUser(data.user.firstName);
-
 				return;
 			} else {
 				adjustUiForGuestUser();
